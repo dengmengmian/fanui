@@ -1,6 +1,12 @@
 # FanUI Web Visual DNA
 
-This document describes the target visual character of FanUI Web V0.1. Values are intentionally semantic rather than frozen into exact tokens.
+This document describes the target visual character of FanUI Web. Exact token values remain intentionally unfrozen, but V0.2 adds stronger rules for visual finish, hierarchy contrast, and composition.
+
+Read together with:
+
+- `docs/foundations/visual-system.md`
+- `docs/foundations/typography.md`
+- `docs/website/product-showcase.md`
 
 ## Character
 
@@ -12,7 +18,8 @@ FanUI should feel:
 - polished;
 - approachable;
 - productive;
-- visually calm even when information is dense.
+- visually calm even when information is dense;
+- rich enough to feel intentionally designed.
 
 It should not feel:
 
@@ -23,7 +30,18 @@ It should not feel:
 - over-rounded;
 - glassy by default;
 - decorated with arbitrary gradients;
-- spacious to the point of inefficiency.
+- spacious to the point of inefficiency;
+- structurally correct but visually unfinished.
+
+## Core formulations
+
+> **Dense, but calm.**
+
+> **Structured, not sterile.**
+
+> **Rich enough to feel designed. Calm enough to stay usable.**
+
+> **Product stays calm. Marketing may be expressive.**
 
 ## Visual hierarchy order
 
@@ -32,12 +50,27 @@ Default hierarchy should be established in this order:
 1. Typography
 2. Spacing and grouping
 3. Surface/background contrast
-4. Border and divider
-5. Color emphasis
-6. Shadow/elevation
-7. Decorative effects
+4. Object scale
+5. Border and divider
+6. Color emphasis
+7. Shadow/elevation
+8. Decorative effects
 
 If a layout requires strong shadows or saturated color merely to reveal hierarchy, the underlying structure is probably weak.
+
+If all regions still look equally important after applying the first five channels, the page has a **same-volume hierarchy problem**.
+
+## Visual amplitude
+
+Pages should intentionally vary visual amplitude.
+
+- **Low:** operational tables, settings, inspectors, dense editors.
+- **Medium:** dashboards, docs home, onboarding, product overview.
+- **High:** selected marketing hero/product showcase sections only.
+
+Do not render every section at the same amplitude.
+
+A polished page should contain quiet and strong regions rather than repeating one card/heading/screenshot rhythm from top to bottom.
 
 ## Density
 
@@ -84,6 +117,7 @@ Color roles:
 - **Brand/primary:** primary action and brand identity.
 - **Selection:** low-saturation brand tint.
 - **Semantic:** success, warning, danger, information, protocol/state.
+- **Data:** visualization/category differentiation.
 - **Decorative:** marketing-only visual expression.
 
 Do not let brand color dominate every interactive element.
@@ -98,14 +132,16 @@ Prefer:
 - light borders for explicit boundaries;
 - tinted selection backgrounds;
 - cards for genuinely independent or comparable objects;
-- clear parent/child surface relationships.
+- clear parent/child surface relationships;
+- selective use of open/unboxed regions to create hierarchy contrast.
 
 Avoid:
 
 - card-per-section layouts;
 - nested rounded containers without semantic need;
 - floating every region above the canvas;
-- identical visual treatment for unrelated hierarchy levels.
+- identical visual treatment for unrelated hierarchy levels;
+- enclosing every region with a full border rectangle.
 
 ## Borders
 
@@ -118,19 +154,17 @@ Use them to:
 - clarify panels and inspector boundaries;
 - reinforce focus or selection.
 
-Prefer subtle dividers over boxing every group.
+Prefer subtle dividers over boxing every group. A page where every object is enclosed can feel like a polished wireframe rather than a finished product.
 
 ## Radius
 
 FanUI uses moderate softness.
 
-The radius system should eventually distinguish:
+The semantic relationship should generally be:
 
-- compact controls;
-- normal controls;
-- product surfaces;
-- marketing media/visual frames;
-- overlays.
+```text
+compact control < product surface < overlay < marketing showcase
+```
 
 Avoid using one large radius everywhere. Marketing may use softer, larger frames than dense application UI.
 
@@ -145,7 +179,7 @@ Use shadow for:
 - menus;
 - drag states;
 - important floating overlays;
-- selected marketing visual compositions where depth helps storytelling.
+- selected marketing product compositions where depth helps storytelling.
 
 Do not shadow every card.
 
@@ -158,19 +192,28 @@ FanUI uses one coherent typographic family but four operating modes:
 3. **Documentation typography** — navigation density plus code/readability support.
 4. **Editorial typography** — long-form reading rhythm and comfortable measure.
 
-### Hierarchy
-
 Typography should do more hierarchy work than color.
 
-Use:
+The page should retain clear hierarchy even if brand color, icons, and shadows are temporarily removed.
 
-- weight;
-- size;
-- line height;
-- density;
-- spacing around text;
+See `docs/foundations/typography.md`.
 
-before introducing new colors or boxes.
+## Product evidence
+
+For product-led websites, product UI must receive visual weight proportional to the importance of the claim.
+
+Do not repeatedly render core product evidence as small browser-window thumbnails.
+
+Use the Product Showcase scale system:
+
+- Small;
+- Medium;
+- Large;
+- Hero.
+
+A core or hero claim usually requires Large or Hero evidence.
+
+See `docs/website/product-showcase.md`.
 
 ## Iconography
 
@@ -226,3 +269,15 @@ Website surfaces may use controlled:
 - motion.
 
 But the product must remain the content anchor. Decoration should never be the only evidence in a feature section.
+
+## Visual completion test
+
+Before considering a page finished, check:
+
+- one clear visual anchor exists;
+- major hierarchy levels are visibly different;
+- important regions do not all share the same card/heading rhythm;
+- product evidence is readable at normal browser scale;
+- border usage is selective;
+- removing brand color would not destroy hierarchy;
+- the page feels richer than a wireframe but quieter than a concept shot.
