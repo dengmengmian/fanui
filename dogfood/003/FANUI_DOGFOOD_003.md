@@ -1,25 +1,25 @@
-# FanUI Dogfood #3 — V0.3.3 Responsive Render Target
+# FanUI Dogfood #3 — V0.3.4 Mobile Precision Render Target
 
 ## Purpose
 
-Dogfood #3 now validates **FanUI Web V0.3.3 Responsive / Mobile Closure** on top of the V0.3.2 Product Fidelity baseline.
+Dogfood #3 now validates **FanUI Web V0.3.4 Mobile Precision Closure** on top of the V0.3.3 Responsive Transformation and V0.3.2 Product Fidelity baselines.
 
-Desktop visual acceptance established that the major IA, scale, fidelity, semantic color, editorial, Docs optical layout, and Workspace ownership directions were viable. Mobile screenshots then exposed a separate system-level gap: narrow-screen behavior was still largely Desktop compression rather than deliberate task transformation.
+Desktop acceptance established the major IA, scale, fidelity, semantic color, editorial, Docs optical layout, and Workspace ownership direction. V0.3.3 then fixed structural Mobile transformation. Real phone screenshots exposed the next layer: mobile chrome, navigation replacement completeness, task-vs-editorial typography, local scrolling, 375px pressure, touch geometry, and breakpoint icon precision.
 
-## V0.3.3 findings addressed
+## V0.3.4 findings addressed
 
 ```text
-Shrunk Desktop Evidence       → task-first crop / chrome removal / reflow
-Cramped Split                 → deliberate text-first stacking
-Hidden Without Replacement    → mobile site/docs/workspace context paths
-Mobile Empty Canvas           → remaining canvas recomputed after panes collapse
-Desktop Toolbar Wrap          → mobile context + primary action + compact view path
-Runtime Takeover              → capped trace + stacked artifacts
-Whole-page Horizontal Scroll  → local scroll only where semantically appropriate
-Tiny Touch UI                 → 40–44px-class mobile primary controls
+Double-decker Website Header  → one persistent row + complete Menu drawer
+Truncated Docs Chips          → complete Start/Build/Operate/Reference drawer
+Editorial-sized Docs          → dedicated task-reading mobile scale
+Wrapped Code Semantics        → preserved preformatted code + local scroll
+Multi-row Tab Risk            → one-line local-scroll category/tab strategy
+390-only Confidence           → required 375 × 812 pressure rules
+Tiny Icon Target              → 40–44px control geometry, compact glyph
+Mobile Icon Regression        → semantic/centering/stroke/baseline invariance
 ```
 
-## Responsive decision model
+## Responsive + precision decision model
 
 Reference viewport matrix:
 
@@ -28,10 +28,10 @@ Reference viewport matrix:
 1024 × 900    Compact desktop / landscape tablet
 768 × 1024    Tablet portrait
 390 × 844     Mobile
-375 × 812     Small-mobile spot check
+375 × 812     Required small-mobile pressure test
 ```
 
-Important regions are now classified with explicit transformations:
+Important regions continue to use explicit transformations:
 
 ```text
 preserve
@@ -46,123 +46,141 @@ sheet
 drawer
 ```
 
+V0.3.4 adds a second pass after the transformation:
+
+```text
+chrome budget
+navigation completeness
+surface-specific typography
+local-scroll semantics
+touch geometry
+icon precision
+375px pressure
+```
+
 ## Surface implementation
 
 ### Homepage
 
-- explicit mobile navigation path;
-- Hero display/lead/action scale recalibrated;
-- CTA group stacks;
-- Hero product evidence removes low-priority Desktop Sidebar/Inspector and lets the active run own mobile width;
-- product steps remain readable without pinch zoom;
+- phone Website header is now one persistent row;
+- Product/Docs/Blog/Pricing move into a Menu drawer;
+- Open Flowbit remains the primary phone CTA;
+- menu glyph remains compact inside a 44px target;
+- Hero/product evidence keeps the V0.3.3 task-first mobile transformation;
 - split stories stack text-first;
 - workflow graph reflows vertically;
-- artifact evidence becomes task-first rather than retaining Desktop mini-shell geometry.
+- repeated feature icons retain semantic fit and first-line alignment.
 
 ### Pricing
 
 - one self-serve plan per row on phone widths;
-- Enterprise becomes a stacked alternate purchasing path;
-- comparison matrix uses local horizontal scrolling;
-- document-level horizontal scrolling is forbidden.
+- Enterprise remains a stacked alternate purchasing path;
+- detailed comparison uses local horizontal scrolling;
+- document-level horizontal scrolling remains forbidden;
+- 375px title/gutter pressure is explicitly calibrated.
 
 ### Documentation
 
-- Desktop sidebar collapses;
-- search remains first-class;
-- explicit mobile Docs navigation replaces hidden sidebar access;
-- active Getting Started route is retained;
-- Quickstart cards and link groups stack;
-- code blocks scroll locally.
+- Desktop Sidebar now transforms into a **full Docs Drawer** rather than a partial chip strip;
+- Search remains persistent and first-class;
+- the drawer exposes Start / Build / Operate / Reference sections;
+- Docs Home/Article use a denser task-reading type scale than Blog;
+- code/configuration keeps line semantics through local horizontal scroll;
+- drawer trigger uses direct sidebar/navigation icon semantics with ~44px touch geometry.
 
 ### Editorial / Blog
 
-- category navigation scrolls locally;
+- category navigation is a one-line local scroller when width is insufficient;
 - Featured composition stacks;
 - article cards become a one-column discovery flow;
 - Editorial visuals retain idea-bearing content;
-- article title/deck/Hero/body rhythm compresses deliberately.
+- Blog index/article use a distinct sustained-reading mobile scale rather than Docs scale.
 
-### Product Home
+### Product Home / AI Workspace
 
-- Desktop application sidebar collapses;
-- attention and continue-work surfaces become a task-first single-column flow.
+- Desktop application/sidebar transformation remains task-first;
+- top icon controls now use explicit semantic classes;
+- low-priority Help/Notification controls collapse on narrow phones while Search remains;
+- phone icon targets use ~44px geometry with compact centered glyphs;
+- Workspace graph remains vertical on phone;
+- Runtime remains capped;
+- Artifact output remains accessible;
+- Approval Inspector remains a sequential Mobile Review section.
 
-### AI / Professional Workspace
+## Icon precision changes
 
-Desktop classification remains:
-
-```yaml
-experience: web_app
-primary_archetype: ai_workspace
-secondary_archetype: professional_workspace
-core_value_loop: define_configure_run_observe_review_act
-```
-
-Mobile transformation:
+The Mobile pass explicitly checks the same failures previously found on Desktop:
 
 ```text
-Desktop Navigator     → compact project/workflow context + Browse path
-Desktop horizontal graph → vertical workflow nodes
-Desktop Workspace tabs → mobile Browse / Workflow / Run / Artifacts / Review path
-Desktop Runtime       → capped, internally scrollable trace
-Desktop Artifact pane → stacked below trace
-Desktop Inspector     → sequential Review / Approval section
-Desktop primary action → 40px+ mobile Run control
+Approximate Icon Semantics
+Glyph Drift
+Icon-box Override
+Text-block Centering
 ```
 
-This is intentionally not a scaled Desktop shell.
+and adds:
+
+```text
+Tiny Icon Target
+Mobile Icon Regression
+```
+
+Workspace navigation semantics were tightened:
+
+```text
+Workspace     → Workflow
+Recent runs   → Activity
+Environments  → Layers
+Integrations  → Plug
+```
+
+The goal is not more icons. It is more defensible icons.
 
 ## Static / mechanical validation
 
 The repository contains `dogfood/003/scripts/verify-responsive.mjs` and CI runs it before `next build`.
 
-The gate verifies that:
+The gate checks:
 
-- `v034.css` is loaded after Desktop/fidelity/precision layers;
-- tablet/mobile/small-mobile breakpoints exist;
-- document overflow guard exists;
-- mobile Website, Docs, and Workspace replacement paths are present;
-- workflow graph reflow exists;
+- `v035.css` is imported after `v034.css`;
+- 820 / 640 / 390 / 375 response bands exist;
+- Website Menu/Drawer exists and the old second nav band is disabled;
+- Docs full Mobile Drawer exists and includes deeper IA;
+- Docs task-reading typography is present;
+- code semantics use local scrolling;
+- Blog categories use local scrolling and Blog body has its own scale;
+- Workspace Mobile context/Review path remains available;
 - Runtime is capped;
 - Inspector remains accessible;
-- Pricing comparison uses local scroll;
-- responsive specification and Skill routing are connected.
-
-Latest validated responsive implementation gate:
-
-```text
-workflow: FanUI Dogfood 003 Build
-run: #18 / 34340780742
-head: 1deff3c28a5a791b10cc095ae64a8d90d5ab8d20
-Verify responsive closure: PASS
-Next build: PASS
-conclusion: success
-```
+- icon-only workspace controls have explicit classes and ~44px geometry;
+- responsive/mobile-precision/icon specifications are connected to the Skill path.
 
 ## Current status
 
 ```text
-SPEC_V033_RESPONSIVE=PASS
-SKILL_ROUTING=PASS
+SPEC_V034_MOBILE_PRECISION=PASS
+RESPONSIVE_DECISION_LAYER=PASS
+ICONOGRAPHY_PRECISION=PASS
 EVAL_GATE_COVERAGE=PASS
-DOGFOOD_RESPONSIVE_IMPLEMENTATION=COMPLETE
-RESPONSIVE_STATIC_GATE=PASS
-REMOTE_BUILD=PASS
+DOGFOOD_V035_IMPLEMENTATION=COMPLETE
+RESPONSIVE_PRECISION_STATIC_GATE=PENDING_FINAL_HEAD
+REMOTE_BUILD=PENDING_FINAL_HEAD
 RENDERED_DESKTOP_ACCEPTANCE=PROVISIONAL_PASS
 RENDERED_TABLET_ACCEPTANCE=PENDING
-RENDERED_MOBILE_ACCEPTANCE=PENDING
-SMALL_MOBILE_SPOT_CHECK=PENDING
+RENDERED_MOBILE_390_ACCEPTANCE=PENDING
+RENDERED_SMALL_MOBILE_375_ACCEPTANCE=PENDING
 ```
 
 ## Final visual authority
 
-Static gates prove that the responsive model is wired into the implementation; they do **not** prove optical quality in a real browser.
+Static gates prove that Mobile Precision is wired into the implementation. They do **not** prove optical quality in a real browser.
 
-Final V0.3.3 acceptance requires rendered screenshots according to `SCREENSHOT_PLAN.md`, especially:
+Final V0.3.4 acceptance requires screenshots according to `SCREENSHOT_PLAN.md`, especially:
 
-- 768 × 1024;
-- 390 × 844;
-- 375 × 812 spot checks.
+- 390 × 844 with Website and Docs drawers opened;
+- 375 × 812 pressure checks;
+- Docs code block with internal scrolling behavior;
+- Website feature icon alignment;
+- Workspace touch/icon geometry.
 
-Only rendered acceptance should promote V0.3.3 responsive bands into future component/token defaults.
+Only rendered acceptance should promote these Mobile bands into future primitives/tokens.
