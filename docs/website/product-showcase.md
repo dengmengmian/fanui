@@ -4,9 +4,11 @@
 
 Product-led websites should use the product itself as visual evidence. A product screenshot is not decorative support; at the right scale it becomes the main proof of the claim.
 
-This pattern defines how much visual weight product UI should receive.
+V0.3 adds concrete calibration bands so AI does not technically choose `Hero` while still rendering a small screenshot.
 
 ## 1. Showcase scales
+
+Reference viewport: approximately 1440px desktop.
 
 ### Small
 
@@ -15,6 +17,13 @@ Use for:
 - one specific capability;
 - a local interaction detail;
 - a supporting visual beside concise copy.
+
+Calibration:
+
+```text
+~30–45% of local content width
+or roughly 360–520px in a normal desktop section
+```
 
 Rules:
 
@@ -29,6 +38,13 @@ Use for:
 - normal feature sections;
 - side-by-side claim + evidence;
 - a focused workflow or object view.
+
+Calibration:
+
+```text
+~50–65% of local content width
+or roughly 560–760px
+```
 
 Rules:
 
@@ -45,6 +61,13 @@ Use for:
 - multi-step or multi-panel product stories;
 - sections where the product itself should dominate the viewport.
 
+Calibration:
+
+```text
+~65–85% of local content width
+or roughly 760–1040px
+```
+
 Rules:
 
 - allow the product visual to occupy a substantial share of the content width;
@@ -55,13 +78,24 @@ Rules:
 
 Use when the product is the primary evidence for the homepage value proposition.
 
+Calibration:
+
+```text
+~78–90vw at wide desktop
+recommended max-width: 1120–1280px
+```
+
 Rules:
 
-- the product view should be one of the largest visual objects in the first viewport or immediately after the hero copy;
+- the product view should be one of the largest visual objects in the first viewport or immediately after the Hero copy;
 - avoid reducing the product to a narrow thumbnail beneath oversized text;
 - maintain readable UI details at common desktop widths;
 - frame or crop intentionally;
 - controlled depth, tint, gradient, or background field may be used to separate the product from the page canvas.
+
+Hard check:
+
+> At 1440px, the main product structure must be inspectable without browser zoom.
 
 ## 2. Evidence strength
 
@@ -85,9 +119,9 @@ Shows enough shell/navigation to establish that this is a real product.
 
 Good for:
 
-- hero;
-- large product story;
-- professional workspace explanation.
+- Hero;
+- Large product story;
+- Professional Workspace explanation.
 
 ### Task crop
 
@@ -122,9 +156,9 @@ text right + screenshot left
 
 FanUI may use:
 
-- full-width hero product frame;
-- asymmetric text + large product frame;
-- one large UI plus two detail crops;
+- full-width Hero product frame;
+- asymmetric text + Large product frame;
+- one Large UI plus two Detail crops;
 - workflow sequence;
 - stacked before/after states;
 - product frame with contextual callouts;
@@ -142,7 +176,8 @@ Symptoms:
 - labels are too small to read;
 - screenshot is mostly empty chrome;
 - screenshot occupies less visual weight than secondary copy;
-- the same tiny browser-frame mockup is repeated across sections.
+- the same tiny browser-frame mockup is repeated across sections;
+- a `Hero` screenshot is materially below the calibrated Hero width without a reason.
 
 Correction:
 
@@ -150,9 +185,24 @@ Correction:
 - enlarge the visual;
 - reduce decorative browser chrome;
 - reduce copy;
-- use a large or hero showcase scale.
+- use a Large or Hero showcase scale.
 
-## 6. Browser/window chrome
+## 6. Product visual quality
+
+A larger screenshot cannot rescue a visually weak Product UI.
+
+Marketing evidence should expose meaningful product richness such as:
+
+- selected/current states;
+- semantic status color;
+- hierarchy between navigation and workspace;
+- real data/content density;
+- code, trace, chart, timeline, or structured output where the product genuinely uses them;
+- visible relationship between input, process, and result.
+
+Avoid filling a showcase with neutral rows and borders only. Product evidence should look like a real working product, not a wireframe enlarged for marketing.
+
+## 7. Browser/window chrome
 
 Use browser chrome only when it adds context.
 
@@ -163,7 +213,7 @@ Rules:
 - vary framing when appropriate; not every image needs the same browser mockup;
 - product UI should remain visually dominant inside the frame.
 
-## 7. Marketing decoration
+## 8. Marketing decoration
 
 Controlled decoration may support the showcase:
 
@@ -176,7 +226,7 @@ Controlled decoration may support the showcase:
 
 Decoration must not become stronger than the UI evidence.
 
-## 8. Section rhythm
+## 9. Section rhythm
 
 Do not make every product section the same visual size.
 
@@ -192,7 +242,7 @@ Trust / copy — quiet
 CTA — medium
 ```
 
-## 9. AI decision model
+## 10. AI decision model
 
 Before implementing product evidence, classify:
 
@@ -200,6 +250,7 @@ Before implementing product evidence, classify:
 showcase:
   importance: supporting | normal | core | hero
   scale: small | medium | large | hero
+  target_width: ...
   crop: context | task | detail
   primary_claim: ...
   ui_evidence: ...
@@ -209,7 +260,9 @@ showcase:
 
 If `importance` is `core` or `hero`, a Small showcase is usually wrong.
 
-## 10. Anti-pattern
+For `hero`, the agent must choose a width inside the Hero calibration band or document why not.
+
+## 11. Anti-pattern
 
 > **Product Screenshot as Thumbnail**
 
