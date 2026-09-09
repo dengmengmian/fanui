@@ -72,7 +72,19 @@ For every Core/Hero product visual:
 - [ ] Borders/dividers/surfaces are used according to hierarchy.
 - [ ] Shadows are restrained in Product UI.
 
-## I. Homepage
+## I. Iconography and icon-text alignment
+
+When repeated icons or icon-only controls are present, check `docs/foundations/iconography.md`.
+
+- [ ] Each icon has a defensible semantic meaning; it is not merely visually adjacent to the concept.
+- [ ] Peer icons use consistent glyph size and stroke weight.
+- [ ] Glyphs are optically centered inside their icon containers.
+- [ ] Icon containers align with the first-line text anchor, not the center of a multi-line text block.
+- [ ] Broad descendant selectors do not override icon-box display, margin, line-height, or color.
+- [ ] Icon-only controls have accessible labels/tooltips and adequate hit areas.
+- [ ] No Icon Confetti, Approximate Icon Semantics, Glyph Drift, or Icon-box Override.
+
+## J. Homepage
 
 - [ ] Hero display and CTA scale match calibrated range.
 - [ ] Hero product evidence is Large/Hero scale and readable.
@@ -81,7 +93,7 @@ For every Core/Hero product visual:
 - [ ] Product visuals are not repeated small screenshots.
 - [ ] Marketing brand expression is richer than Product UI without overwhelming it.
 
-## J. Documentation
+## K. Documentation
 
 - [ ] Left navigation is readable at 13–14px-class scale.
 - [ ] Docs Home content is optically balanced inside remaining canvas.
@@ -90,7 +102,7 @@ For every Core/Hero product visual:
 - [ ] Getting Started is visually stronger than low-priority deep links.
 - [ ] Deep information architecture does not become a flat card grid.
 
-## K. Editorial / Blog
+## L. Editorial / Blog
 
 - [ ] Index supports discovery rather than Marketing conversion.
 - [ ] Featured and Latest visuals contain an editorial idea.
@@ -100,7 +112,7 @@ For every Core/Hero product visual:
 - [ ] Reader encounters useful text at a reasonable point in first viewport.
 - [ ] CTA pressure stays out of the article body.
 
-## L. Pricing
+## M. Pricing
 
 - [ ] Plan summary helps a buyer choose before detailed comparison.
 - [ ] Recommended plan is clear without distorting the grid.
@@ -109,7 +121,7 @@ For every Core/Hero product visual:
 - [ ] Comparison rows are dense enough for decision-making.
 - [ ] Pricing does not become a generic Marketing card gallery.
 
-## M. Professional / AI Workspace
+## N. Professional / AI Workspace
 
 - [ ] Workspace owns the remaining viewport height.
 - [ ] Browser page does not leave a large blank region below the core workspace.
@@ -120,7 +132,7 @@ For every Core/Hero product visual:
 - [ ] Internal pane scrolling is used where appropriate.
 - [ ] Current project/workflow/run state is obvious.
 
-## N. Anti-pattern gate
+## O. Anti-pattern gate
 
 - [ ] No Card Soup.
 - [ ] No Fake SaaS Dashboard.
@@ -139,6 +151,10 @@ For every Core/Hero product visual:
 - [ ] No Semantic-color Collapse.
 - [ ] No Rounded Rectangle Everywhere.
 - [ ] No Tiny Product Typography.
+- [ ] No Approximate Icon Semantics.
+- [ ] No Glyph Drift.
+- [ ] No Icon-box Override.
+- [ ] No Text-block Centering for icon + title + description rows.
 
 ## Completion gate
 
