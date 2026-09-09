@@ -126,6 +126,9 @@ Read:
 - `docs/foundations/spacing-rhythm.md`
 - `docs/foundations/color-expression.md`
 - `docs/foundations/radius-depth.md`
+- `docs/foundations/experience-metrics.md`
+
+`experience-metrics.md` is mandatory for every substantial page, not only Homepage work. It prevents Homepage, Docs, Blog, Pricing, and Product UI from collapsing into one generic spacing/typography system.
 
 Target:
 
@@ -148,17 +151,38 @@ Remember:
 
 > Large canvas requires proportionally confident content scale.
 
-### Step 7 — Calibrate scale before styling details
+> Shared rhythm, different operating density.
 
-For substantial pages, especially Website surfaces, explicitly choose calibrated ranges before implementation.
+### Step 7 — Calibrate the current experience before styling details
 
-Reference desktop viewport: ~1440px.
+Reference desktop viewport: approximately **1440px**.
 
-For a product Homepage, internal reasoning should include:
+Choose metrics from `docs/foundations/experience-metrics.md` for the actual experience family.
+
+Do not use one generic `max-width`, one heading scale, one `py-*` value, or one control height across all pages.
+
+Internal reasoning should include:
+
+```yaml
+experience_metrics:
+  reference_viewport: 1440
+  family: website | documentation | editorial | pricing | web_app
+  primary_container: ...
+  reading_measure: ... | none
+  header_height: ...
+  title_scale: ...
+  primary_control_height: ...
+  major_vertical_rhythm: ...
+  local_vertical_rhythm: ...
+  density: ...
+  visual_amplitude: ...
+  brand_expression: ...
+```
+
+For a Product Homepage, typical calibration includes:
 
 ```yaml
 visual_calibration:
-  viewport_reference: 1440
   standard_container: 1080-1200
   wide_product_container: 1200-1320
   hero_display: 56-64
@@ -167,17 +191,17 @@ visual_calibration:
   hero_cta_height: 40-48
   hero_showcase: 78-90vw
   hero_showcase_max: 1120-1280
-  brand_expression: medium | high
-  section_rhythm: varied
 ```
 
-For Product UI, use the Product typography/density ranges instead of Marketing scales.
+For Documentation, Editorial, Pricing, and Product UI, use their dedicated bands instead of these Marketing values.
 
 Calibration ranges are not immutable tokens. Choose within them deliberately. Deviate only for a clear content/brand/product reason.
 
-Hard rule:
+Hard rules:
 
 > Do not silently fall back to generic framework defaults when a FanUI calibrated range exists.
+
+> Do not copy Homepage spacing into Docs, Blog, Pricing, or Product UI.
 
 ### Step 8 — Set visual amplitude and brand expression
 
@@ -192,7 +216,9 @@ Typical mapping:
 
 ```text
 Professional/AI Workspace → low amplitude / low brand expression
-Docs/Pricing/App Home → medium amplitude / medium brand expression
+Documentation article → low amplitude / low brand expression
+Docs Home / Blog Index / Pricing → medium amplitude / low-medium or medium brand expression
+Editorial article body → low-medium amplitude / low brand expression
 Homepage Hero/Core Product Story → high amplitude / high or medium-high brand expression
 ```
 
@@ -203,7 +229,8 @@ Check for:
 - same-volume page;
 - anonymous neutral + accent;
 - timid Hero;
-- underscaled content on a large canvas.
+- underscaled content on a large canvas;
+- uniform-spacing product family.
 
 ### Step 9 — Choose components semantically
 
@@ -292,14 +319,19 @@ At minimum check for:
 - generic purple SaaS identity;
 - underscaled content on a large canvas;
 - timid product Hero;
-- anonymous neutral + accent.
+- anonymous neutral + accent;
+- uniform-spacing product family;
+- marketing-sized documentation;
+- dashboard-sized editorial;
+- landing-page pricing;
+- website-sized product UI.
 
 ### Step 13 — Check Chinese and English behavior
 
 For any interface that could be bilingual:
 
 - verify Chinese title wrapping;
-- use the Chinese Marketing calibration band where relevant;
+- use the Chinese calibration band where relevant;
 - verify English technical terms inside Chinese copy;
 - verify button and navigation width;
 - verify table column pressure;
@@ -324,6 +356,8 @@ A Web App with the wrong primary archetype cannot pass simply through visual pol
 A product-led website whose core product evidence is repeatedly unreadable/tiny cannot pass simply through good copy and spacing.
 
 A wide-desktop Homepage that materially ignores FanUI scale calibration without an intentional reason cannot pass simply because it is clean and aligned.
+
+A product family that uses the same spacing, title scale, container, and control density across Homepage, Docs, Blog, Pricing, and Web App cannot pass cross-surface calibration.
 
 ## Output expectations for AI-generated UI
 
@@ -356,6 +390,12 @@ fanui:
   density: medium_compact
   visual_amplitude: low
   brand_expression: low
+  metrics:
+    top_bar: 52
+    global_sidebar: 220
+    project_navigator: 260
+    inspector: 320
+    workspace_padding: 20
 ```
 
 ### Marketing Homepage
@@ -391,4 +431,4 @@ The YAML is a reasoning aid, not required user-visible output.
 
 Apifox is the primary design reference and Pixso is the secondary reference, but never copy them literally. Use `references/` to understand what FanUI extracts from each source.
 
-FanUI V0.3 calibration exists to reproduce **quality characteristics** such as confident scale, product evidence weight, color discipline, and rhythm—not another product's exact layout, color, or assets.
+FanUI calibration exists to reproduce **quality characteristics** such as confident scale, product evidence weight, cross-surface density, color discipline, and rhythm—not another product's exact layout, color, or assets.
