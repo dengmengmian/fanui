@@ -1,0 +1,35 @@
+/* V0.3.3 micro precision: icon/text optical alignment */
+.feature-row{
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr);
+  column-gap:12px;
+  align-items:start;
+}
+.feature-row .feature-icon{
+  width:28px;
+  height:28px;
+  margin:1px 0 0;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  align-self:start;
+  line-height:1;
+  font-size:0;
+  color:#5d46d3;
+}
+.feature-row .feature-icon svg{
+  display:block;
+  width:15px;
+  height:15px;
+  stroke-width:1.8;
+}
+.feature-row > div > b{
+  line-height:1.35;
+}
+.feature-row > div > span{
+  display:block;
+  margin-top:3px;
+  color:#817d88;
+  font-size:13px;
+  line-height:1.5;
+}
