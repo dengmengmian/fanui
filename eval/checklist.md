@@ -1,222 +1,145 @@
-# FanUI Web Checklist
+# FanUI Evaluation Checklist
 
-Use this before considering substantial UI work complete.
+Use this checklist before calling a substantial FanUI page complete.
 
-## Classification
+## A. Classification
 
-- [ ] Experience family is identified: Website / Documentation / Editorial / Pricing / Web App.
-- [ ] Page archetype is identified.
-- [ ] Primary user and primary task/value are clear.
-- [ ] One primary visual anchor is identified.
+- [ ] Experience family is explicit.
+- [ ] Web App primary archetype is explicit when applicable.
+- [ ] Core value loop is explicit.
+- [ ] Primary task/action is explicit.
+- [ ] One primary visual/task anchor is identifiable.
 
-## Web App archetype — mandatory when applicable
+## B. Cross-surface calibration
 
-- [ ] Primary Web App archetype is explicitly classified: Management Console / Professional Workspace / Data Application / AI Workspace.
-- [ ] Secondary archetype is identified when the product is hybrid.
-- [ ] Core value loop is written down before navigation is designed.
-- [ ] Default home is justified: dashboard / workspace / collection / last context.
-- [ ] Task-oriented products have not drifted into a generic management console.
-- [ ] Domain nouns have not automatically become equal top-level navigation items.
-- [ ] Project-local objects stay project-local when that matches the real workflow.
+- [ ] Correct `experience-metrics.md` family is used.
+- [ ] Homepage, Docs, Editorial, Pricing, and Product UI do not share one generic max-width/H1/spacing/control recipe.
+- [ ] Major vertical rhythm matches the page family.
+- [ ] Control density matches the page family.
+- [ ] Brand expression level is intentional.
 
-## Cross-surface calibration — mandatory
+## C. Optical layout
 
-- [ ] `docs/foundations/experience-metrics.md` was used for the current page family.
-- [ ] Desktop calibration was checked at approximately 1440px for substantial desktop-first surfaces.
-- [ ] Container width is appropriate to the page family rather than copied from another page.
-- [ ] Title scale is appropriate to the page family rather than copied from Homepage/Product UI.
-- [ ] Major vertical rhythm is appropriate to the page family.
-- [ ] Local spacing is appropriate to the task density.
-- [ ] Primary control height fits the experience family.
-- [ ] Reading measure is intentional for Docs/Editorial.
-- [ ] Visual amplitude is explicitly chosen: Low / Medium / High.
-- [ ] Brand Expression Level is explicitly chosen: Low / Medium / High.
-- [ ] The product family does not use one universal `max-width`, heading scale, `py-*`, card gap, or control height everywhere.
+- [ ] Main content is balanced in the effective/remaining canvas.
+- [ ] Sidebars/inspectors do not accidentally pull content to one edge.
+- [ ] Split sections allocate width according to content importance.
+- [ ] Large empty side fields have a real purpose.
 
-### Homepage calibration
+## D. Typography and readability
 
-- [ ] Standard content and Wide Product containers use intentional widths rather than arbitrary framework defaults.
-- [ ] Hero typography is selected from the calibrated Marketing range or a deviation is explicitly justified.
-- [ ] Chinese Hero copy uses an appropriate width/scale rather than forced narrow wrapping.
-- [ ] Hero CTA scale is marketing-appropriate rather than copied from Product UI.
-- [ ] Core/Hero product evidence uses Large/Hero scale and is readable without zoom.
-- [ ] Major section spacing follows a deliberate rhythm rather than one repeated section template.
+- [ ] Marketing display type is confident but not theatrical.
+- [ ] Documentation uses reading/retrieval scale, not Marketing scale.
+- [ ] Editorial body uses sustained-reading scale.
+- [ ] Product rows/tree/table/inspector respect Minimum Readability Floor.
+- [ ] Secondary text is muted but still readable.
+- [ ] Chinese wrapping and mixed-language labels remain stable.
 
-### Documentation calibration
+## E. Product Evidence Fidelity
 
-- [ ] Docs shell uses compact navigation plus a comfortable reading/content column.
-- [ ] Article body is not constrained to a marketing container.
-- [ ] Article headings and spacing are materially smaller/tighter than Homepage Marketing.
-- [ ] Docs body does not inherit compact Product UI typography.
-- [ ] Search, navigation row height, and article rhythm fit repeated retrieval/reading.
+For every Core/Hero product visual:
 
-### Editorial calibration
+- [ ] Current context is visible.
+- [ ] Navigation/workspace structure is believable.
+- [ ] Selected/current state is visible.
+- [ ] Running/completed/waiting/failure states are realistic where relevant.
+- [ ] Labels/data/metadata are meaningful rather than placeholders.
+- [ ] Primary/secondary actions are believable.
+- [ ] Semantic object/status roles are distinguishable.
+- [ ] Product evidence is readable without zoom.
+- [ ] Large frames contain enough meaningful content to earn their area.
 
-- [ ] Blog index and article page use different discovery vs reading compositions.
-- [ ] Article body measure is reading-oriented.
-- [ ] Body size/line-height support sustained reading.
-- [ ] Metadata is visually subordinate to title/summary.
-- [ ] Editorial spacing is more breathable than Product UI but less theatrical than Homepage Hero.
+## F. Effective content density
 
-### Pricing calibration
+- [ ] A large visual could not be reduced 30–40% with no information loss.
+- [ ] Major evidence surfaces use meaningful content across most of their usable area.
+- [ ] Sparse diagrams are not placed inside oversized frames.
+- [ ] Whitespace supports hierarchy rather than hiding missing content.
 
-- [ ] Plan group width supports cross-plan comparison.
-- [ ] Plan surfaces are compact enough that meaningful comparison remains visible.
-- [ ] Price, unit, target audience, and CTA hierarchy are clear.
-- [ ] Comparison rows use decision-oriented density rather than marketing spacing.
-- [ ] FAQ/final CTA use distinct but not excessive stage separation.
+## G. Color
 
-### Web App calibration
+- [ ] Brand and semantic color are separated.
+- [ ] Running is not styled like Completed.
+- [ ] Approval/Waiting is distinct from brand Primary Action.
+- [ ] Selection is distinct from object type and process state.
+- [ ] Product evidence gains richness from meaningful state/object color, not decorative gradients.
+- [ ] Danger remains reserved for actual failure/destructive state.
 
-- [ ] Shell regions use Product UI density, not Website-scale controls.
-- [ ] Main workspace uses available canvas rather than a narrow centered marketing container.
-- [ ] Tree/nav rows, tabs, toolbars, and table rows fit sustained professional use.
-- [ ] Inspector/sidebar widths support context without starving the workspace.
-- [ ] Current work receives more area than decorative or summary regions.
+## H. Surface hierarchy
 
-## Hierarchy
+- [ ] Radius decreases toward dense operational surfaces.
+- [ ] Marketing major frames are not visually identical to Product panels.
+- [ ] Tree/table/repeated rows are not all individual 12–16px cards.
+- [ ] Borders/dividers/surfaces are used according to hierarchy.
+- [ ] Shadows are restrained in Product UI.
 
-- [ ] The most important thing is visually obvious.
-- [ ] Secondary information is subordinate.
-- [ ] There is one dominant action per local decision scope.
-- [ ] Typography and spacing do most hierarchy work before decoration.
-- [ ] Major regions do not all speak at the same visual volume.
+## I. Homepage
 
-## Visual finish
+- [ ] Hero display and CTA scale match calibrated range.
+- [ ] Hero product evidence is Large/Hero scale and readable.
+- [ ] Hero evidence is high fidelity, not a wireframe.
+- [ ] Later sections vary composition and amplitude.
+- [ ] Product visuals are not repeated small screenshots.
+- [ ] Marketing brand expression is richer than Product UI without overwhelming it.
 
-- [ ] Page/section visual amplitude is intentional: low / medium / high.
-- [ ] At least two hierarchy levels are clearly visible without relying on brand color.
-- [ ] Section/card/screenshot treatment is not mechanically repeated everywhere.
-- [ ] Border use is selective rather than enclosing every group.
-- [ ] The page feels richer than a wireframe but calmer than a concept shot.
-- [ ] Brand character comes from more than one accent color.
-- [ ] Important content scale is proportionate to the desktop canvas.
+## J. Documentation
 
-## Layout
+- [ ] Left navigation is readable at 13–14px-class scale.
+- [ ] Docs Home content is optically balanced inside remaining canvas.
+- [ ] Article reading measure is appropriate.
+- [ ] Local TOC does not distort the article position.
+- [ ] Getting Started is visually stronger than low-priority deep links.
+- [ ] Deep information architecture does not become a flat card grid.
 
-- [ ] Layout reflects information architecture rather than a generic template.
-- [ ] Major regions have clear relationships.
-- [ ] Current context is visible where relevant.
-- [ ] Responsive behavior preserves the primary task.
-- [ ] Large canvas does not contain a timid underscaled content island.
+## K. Editorial / Blog
 
-## Density
+- [ ] Index supports discovery rather than Marketing conversion.
+- [ ] Featured and Latest visuals contain an editorial idea.
+- [ ] No generic gradient-placeholder cover dominates the page.
+- [ ] Article Hero visual is strong/supporting/none by deliberate choice.
+- [ ] Large Hero area is earned by meaningful content.
+- [ ] Reader encounters useful text at a reasonable point in first viewport.
+- [ ] CTA pressure stays out of the article body.
 
-- [ ] Controls are not oversized without reason.
-- [ ] Web App repeated rows/actions are efficient to scan.
-- [ ] Marketing/content pages have enough compositional breathing room.
-- [ ] Whitespace communicates grouping rather than status/prestige.
-- [ ] Compact controls and generous page composition are not confused with each other.
+## L. Pricing
 
-## Surfaces
+- [ ] Plan summary helps a buyer choose before detailed comparison.
+- [ ] Recommended plan is clear without distorting the grid.
+- [ ] Price/unit baseline hierarchy is clean.
+- [ ] Enterprise/private path feels intentionally separate.
+- [ ] Comparison rows are dense enough for decision-making.
+- [ ] Pricing does not become a generic Marketing card gallery.
 
-- [ ] Every card/panel has a semantic reason.
-- [ ] No unnecessary nested rounded containers exist.
-- [ ] Borders/dividers are structural, not decorative.
-- [ ] Selected/current surfaces are visibly distinct.
-- [ ] Open/unboxed regions are used when a full container is unnecessary.
+## M. Professional / AI Workspace
 
-## Color
+- [ ] Workspace owns the remaining viewport height.
+- [ ] Browser page does not leave a large blank region below the core workspace.
+- [ ] Navigator, workspace, inspector, and runtime panes have clear ownership.
+- [ ] Main working canvas receives flexible width.
+- [ ] Runtime/result information has enough persistent area when core to the task.
+- [ ] Workflow nodes contain realistic type/state/metadata.
+- [ ] Internal pane scrolling is used where appropriate.
+- [ ] Current project/workflow/run state is obvious.
 
-- [ ] Brand, selection, semantic status, data, and decoration roles are distinct.
-- [ ] Saturated color is not used everywhere.
-- [ ] Status is not communicated by color alone where critical.
-- [ ] The product would still retain hierarchy if brand color were temporarily neutralized.
-- [ ] Homepage expression is intentionally stronger than dense Product Workspace expression.
-- [ ] Brand identity is not only neutral UI + one purple/blue CTA.
-
-## Typography
-
-- [ ] Text hierarchy is clear.
-- [ ] Marketing / Product / Docs / Editorial typography mode is appropriate.
-- [ ] Reading width is appropriate for Docs/Editorial.
-- [ ] Metadata does not compete with primary content.
-- [ ] Chinese text wraps naturally.
-- [ ] Mixed Chinese/English technical strings remain readable.
-- [ ] Removing icons would not collapse text hierarchy.
-- [ ] Wide-desktop marketing headings do not default to safe underscaled values without reason.
-
-## Product evidence — Website
-
-- [ ] Real product evidence is used when available.
-- [ ] Decorative imagery does not replace proof.
-- [ ] Feature copy is concise enough for the visual to carry meaning.
-- [ ] Each major product showcase is classified Small / Medium / Large / Hero.
-- [ ] Showcase width falls inside the calibrated range or deviation is justified.
-- [ ] Core/Hero evidence is not presented as a tiny screenshot.
-- [ ] Product UI is readable at normal desktop browser scale.
-- [ ] Screenshot crops focus on the actual task, not irrelevant chrome.
-- [ ] Product sections vary composition instead of repeating left-text/right-thumbnail endlessly.
-- [ ] Product UI itself contains enough hierarchy/state richness to work as marketing evidence.
-
-## Documentation
-
-- [ ] Search is discoverable when documentation is large.
-- [ ] Current navigation location is clear.
-- [ ] Homepage/task entry points do not dump the full tree.
-- [ ] Code, tables, callouts, and images are readable and consistent.
-- [ ] Categories do not all default to identical cards without hierarchy justification.
-
-## Editorial
-
-- [ ] Article index optimizes discovery.
-- [ ] Article page optimizes reading.
-- [ ] Product CTA pressure is restrained.
-- [ ] Category navigation reflects reader intent.
-
-## Pricing
-
-- [ ] Plan target audience is clear.
-- [ ] Billing period and unit are explicit.
-- [ ] Important plan differences are visible before the full matrix.
-- [ ] Enterprise/custom buying path is distinct when needed.
-- [ ] Detailed comparison is progressively disclosed.
-- [ ] FAQ addresses real purchase friction.
-- [ ] Recommendation emphasis does not rely only on a louder border/color treatment.
-
-## Web App
-
-- [ ] Organization/project/module/object hierarchy is not flattened into one ambiguous navigation list.
-- [ ] Tabs represent modes/views of the same context.
-- [ ] Toolbars do not contain many equal-weight actions.
-- [ ] Lists vs tables are selected based on scan vs comparison needs.
-- [ ] Empty/loading/error states tell the user what is happening and what to do next.
-- [ ] For Professional/AI Workspace products, the main surface contains real work rather than mostly overview statistics.
-- [ ] Current project/task/object remains visible during the core value loop.
-- [ ] Runs/results/artifacts stay connected to the work that produced them when appropriate.
-- [ ] Product UI density stays compact enough for sustained work.
-
-## Anti-pattern pass
+## N. Anti-pattern gate
 
 - [ ] No Card Soup.
-- [ ] No gray-on-gray sterility.
-- [ ] No fake SaaS dashboard.
-- [ ] No default decorative AI gradient/orb language.
-- [ ] No excessive roundedness.
-- [ ] No icon confetti.
-- [ ] No nested surface maze.
-- [ ] No invisible current context.
-- [ ] No management console drift.
-- [ ] No noun-trap navigation.
-- [ ] No same-volume page.
-- [ ] No product screenshot as thumbnail for core evidence.
-- [ ] No border-grid / polished-wireframe finish.
-- [ ] No generic-purple-SaaS identity as the only brand language.
-- [ ] No underscaled content on a large canvas.
-- [ ] No timid product Hero.
-- [ ] No anonymous neutral + accent brand system.
-- [ ] No uniform-spacing product family.
-- [ ] No Marketing-sized Documentation.
-- [ ] No Dashboard-sized Editorial.
-- [ ] No Landing-page Pricing.
-- [ ] No Website-sized Product UI.
+- [ ] No Fake SaaS Dashboard.
+- [ ] No Management Console Drift.
+- [ ] No Noun-trap Navigation.
+- [ ] No Same-volume Page.
+- [ ] No Product Screenshot as Thumbnail.
+- [ ] No Generic Purple SaaS Identity.
+- [ ] No Uniform-spacing Product Family.
+- [ ] No Fake Product Evidence.
+- [ ] No Sparse Evidence in Oversized Frame.
+- [ ] No Sidebar-edge Docs Alignment.
+- [ ] No Editorial Placeholder Art.
+- [ ] No Un-earned Article Hero.
+- [ ] No Workspace Below-the-fold Void.
+- [ ] No Semantic-color Collapse.
+- [ ] No Rounded Rectangle Everywhere.
+- [ ] No Tiny Product Typography.
 
-## Final
+## Completion gate
 
-- [ ] FanUI rubric score is at least 85 for major new surfaces.
-- [ ] No hard-fail condition exists.
-- [ ] The result feels clean, structured, refined, productive, and calm under complexity.
-- [ ] The page looks like part of the same product family as other FanUI surfaces without forcing every page type into the same layout.
-- [ ] The result is visually finished, not merely structurally correct.
-- [ ] The calibrated ranges were used as intentional design constraints rather than blindly copied values.
-- [ ] Cross-surface consistency was checked across every implemented FanUI page family, not only the current page in isolation.
+A page should not be considered complete when a hard failure remains even if the numeric score is above 85.

@@ -2,15 +2,13 @@
 
 ## Purpose
 
-Use this skill when designing, implementing, revising, or reviewing a web interface that should follow FanUI.
-
-FanUI is a decision + calibration system. Do not start by choosing colors, gradients, cards, or components.
+Use FanUI when designing, implementing, revising, or reviewing Web UI. FanUI is an AI-native **decision, calibration, fidelity, and evaluation system**. It is not a generic component skin.
 
 ## Required workflow
 
-### Step 1 — Classify the experience
+### 1. Classify the experience
 
-Choose one primary family:
+Choose one or more:
 
 - `website`
 - `documentation`
@@ -18,106 +16,91 @@ Choose one primary family:
 - `pricing`
 - `web_app`
 
-If the task spans multiple families, classify each surface separately.
+### 2. Classify Web App archetype
 
-### Step 2 — If Web App, classify the archetype
-
-This step is mandatory for every substantial `web_app` task.
-
-Read:
-
-`docs/web-app/archetypes.md`
-
-Choose one primary archetype:
+For every substantial Web App, read `docs/web-app/archetypes.md` and choose:
 
 - `management_console`
 - `professional_workspace`
 - `data_application`
 - `ai_workspace`
 
-Optional: choose one secondary archetype.
-
-Identify the product's **core value loop** before designing navigation.
+Optional secondary archetype is allowed.
 
 Hard rule:
 
-> Do not default task-oriented products to management-console information architecture.
+> Do not default task-oriented products to management-console IA.
 
-Do not infer one top-level navigation item per domain noun (`Projects`, `Agents`, `Runs`, `Artifacts`, etc.) unless those are genuinely independent administrative collections.
+Identify the core value loop before navigation.
 
-### Step 3 — Identify the primary task
+### 3. Identify task and context
 
-State internally:
+Before styling, state internally:
 
 ```yaml
 fanui:
   experience: ...
-  primary_archetype: ... # required for web_app
+  primary_archetype: ...
   secondary_archetype: ...
   core_value_loop: ...
   page_archetype: ...
   primary_user: ...
   primary_task: ...
   primary_action: ...
+  current_context: ...
   key_information: ...
 ```
 
-Do not proceed until the page has a clear task or narrative role.
+### 4. Establish hierarchy and primary visual anchor
 
-### Step 4 — Establish hierarchy
-
-Order page information by importance.
-
-Typical Web App order:
-
-```text
-current object/task
-→ state
-→ primary action
-→ working content
-→ secondary actions
-→ metadata
-```
-
-Typical Website order:
+Website default narrative:
 
 ```text
 value proposition
-→ evidence
+→ product evidence
 → capability story
 → trust
 → conversion
 ```
 
-Identify one **primary visual anchor** for each substantial page.
+Web App default hierarchy:
 
-### Step 5 — Select the FanUI pattern
+```text
+current context
+→ current state
+→ primary action
+→ working content
+→ supporting detail
+→ metadata
+```
 
-Read the relevant pattern documents.
+Every substantial surface needs one primary visual/task anchor.
+
+### 5. Load the relevant pattern
 
 Website:
 
-- Homepage: `docs/website/homepage.md`
-- Hero: `docs/website/hero.md`
-- Navigation: `docs/website/navigation.md`
-- Product showcase: `docs/website/product-showcase.md`
-- Pricing: `docs/website/pricing.md`
-- Documentation: `docs/website/documentation.md`
-- Editorial: `docs/website/editorial-blog.md`
+- `docs/website/homepage.md`
+- `docs/website/hero.md`
+- `docs/website/navigation.md`
+- `docs/website/product-showcase.md`
+- `docs/website/pricing.md`
+- `docs/website/documentation.md`
+- `docs/website/editorial-blog.md`
+- `docs/website/editorial-visuals.md`
 
 Web App:
 
-- Archetypes: `docs/web-app/archetypes.md`
-- App shell: `docs/web-app/app-shell.md`
-- Workspace: `docs/web-app/workspace.md`
+- `docs/web-app/archetypes.md`
+- `docs/web-app/app-shell.md`
+- `docs/web-app/workspace.md`
+- `docs/web-app/viewport-ownership.md`
 
-Do not reuse a homepage pattern for docs, blog, or product workspaces.
+Do not reuse Homepage composition for Docs/Blog/Product UI. Do not reuse Management Console shells for AI/Professional Workspaces without explicit justification.
 
-Do not reuse a Management Console shell for a Professional/AI Workspace without explicit task justification.
+### 6. Load calibrated foundations
 
-### Step 6 — Apply Visual DNA and calibrated foundations
-
-Read:
+Mandatory for substantial work:
 
 - `docs/02-visual-dna.md`
 - `docs/foundations/visual-system.md`
@@ -127,25 +110,16 @@ Read:
 - `docs/foundations/color-expression.md`
 - `docs/foundations/radius-depth.md`
 - `docs/foundations/experience-metrics.md`
+- `docs/foundations/fidelity-density.md`
+- `docs/foundations/optical-layout.md`
+- `docs/foundations/semantic-product-color.md`
+- `docs/foundations/surface-hierarchy.md`
 
-`experience-metrics.md` is mandatory for every substantial page, not only Homepage work. It prevents Homepage, Docs, Blog, Pricing, and Product UI from collapsing into one generic spacing/typography system.
-
-Target:
-
-- clean;
-- structured;
-- refined;
-- productive;
-- calm under complexity;
-- visually finished rather than merely structurally correct.
-
-Remember:
+Core formulations:
 
 > Dense, but calm.
 
 > Structured, not sterile.
-
-> Rich enough to feel designed. Calm enough to stay usable.
 
 > Product stays calm. Marketing may be expressive.
 
@@ -153,23 +127,24 @@ Remember:
 
 > Shared rhythm, different operating density.
 
-### Step 7 — Calibrate the current experience before styling details
+> Large evidence must earn its area through fidelity.
 
-Reference desktop viewport: approximately **1440px**.
+> Workspace owns the viewport.
 
-Choose metrics from `docs/foundations/experience-metrics.md` for the actual experience family.
+### 7. Calibrate the experience
 
-Do not use one generic `max-width`, one heading scale, one `py-*` value, or one control height across all pages.
+Reference desktop viewport: ~1440px.
 
-Internal reasoning should include:
+Use `experience-metrics.md`; do not reuse one max-width, H1, `py-*`, button height, or radius across all surface families.
+
+Internal calibration should include:
 
 ```yaml
 experience_metrics:
-  reference_viewport: 1440
-  family: website | documentation | editorial | pricing | web_app
+  viewport: 1440
+  family: ...
   primary_container: ...
-  reading_measure: ... | none
-  header_height: ...
+  reading_measure: ...
   title_scale: ...
   primary_control_height: ...
   major_vertical_rhythm: ...
@@ -179,33 +154,33 @@ experience_metrics:
   brand_expression: ...
 ```
 
-For a Product Homepage, typical calibration includes:
+For Homepage, typical wide-desktop bands remain:
 
-```yaml
-visual_calibration:
-  standard_container: 1080-1200
-  wide_product_container: 1200-1320
-  hero_display: 56-64
-  chinese_hero_display: 52-60
-  hero_lead: 18-20
-  hero_cta_height: 40-48
-  hero_showcase: 78-90vw
-  hero_showcase_max: 1120-1280
+```text
+standard container       1080–1200px
+wide product container   1200–1320px
+Hero display             56–64px
+Chinese Hero             52–60px
+Hero lead                18–20px
+Hero CTA                 40–48px
+Hero evidence            78–90vw, max 1120–1280px
 ```
 
-For Documentation, Editorial, Pricing, and Product UI, use their dedicated bands instead of these Marketing values.
+Use dedicated ranges for Docs, Editorial, Pricing, and Product UI.
 
-Calibration ranges are not immutable tokens. Choose within them deliberately. Deviate only for a clear content/brand/product reason.
+### 8. Apply optical layout
 
-Hard rules:
+Read `optical-layout.md`.
 
-> Do not silently fall back to generic framework defaults when a FanUI calibrated range exists.
+For sidebars/inspectors, reason about the **remaining canvas**.
 
-> Do not copy Homepage spacing into Docs, Blog, Pricing, or Product UI.
+Documentation content should not simply hug the sidebar while leaving hundreds of unused pixels on the opposite side.
 
-### Step 8 — Set visual amplitude and brand expression
+Split Marketing sections should allocate width according to content/evidence weight, not default to 50/50.
 
-Classify each major page/region as:
+### 9. Set visual amplitude and brand expression
+
+Classify regions:
 
 ```text
 Visual amplitude: low | medium | high
@@ -215,220 +190,191 @@ Brand expression: low | medium | high
 Typical mapping:
 
 ```text
-Professional/AI Workspace → low amplitude / low brand expression
-Documentation article → low amplitude / low brand expression
-Docs Home / Blog Index / Pricing → medium amplitude / low-medium or medium brand expression
-Editorial article body → low-medium amplitude / low brand expression
-Homepage Hero/Core Product Story → high amplitude / high or medium-high brand expression
+AI / Professional Workspace    low / low
+Docs article                   low / low
+Docs Home / Blog Index         medium / low-medium
+Pricing                        medium / medium
+Homepage Hero                  high / high
 ```
 
-Do not render every region at the same visual amplitude.
+Avoid same-volume pages.
 
-Check for:
+### 10. Choose components semantically
 
-- same-volume page;
-- anonymous neutral + accent;
-- timid Hero;
-- underscaled content on a large canvas;
-- uniform-spacing product family.
+Use tables for comparison, trees for hierarchy, tabs for alternate views of one object, inspectors for persistent secondary detail, lists for scan tasks, overlays for temporary secondary work.
 
-### Step 9 — Choose components semantically
+Do not create a card because content needs a box.
 
-Use components because the information/interaction calls for them.
+Apply `surface-hierarchy.md`: radius/elevation should become tighter and quieter toward operational UI.
 
-Examples:
+### 11. Enforce Product Evidence Fidelity
 
-- comparison across columns → table;
-- scan objects → list;
-- hierarchical objects → tree;
-- alternate views of one object → tabs;
-- secondary persistent object detail → inspector;
-- destructive confirmation → dialog;
-- temporary narrow task → drawer/popover depending scope.
-
-Never create a card just because content needs a container.
-
-Use radius, border, and elevation bands from `docs/foundations/radius-depth.md`; do not apply one large radius everywhere.
-
-### Step 10 — For product websites, classify product evidence scale
-
-Read `docs/website/product-showcase.md`.
-
-For each important product visual decide:
+For every core/Hero product visual, classify:
 
 ```yaml
 showcase:
   importance: supporting | normal | core | hero
   scale: small | medium | large | hero
-  target_width: ...
   crop: context | task | detail
   readable_without_zoom: true | false
+  fidelity:
+    context: true | false
+    navigation: true | false
+    state: true | false
+    data: true | false
+    actions: true | false
+    semantic_roles: true | false
+    depth: true | false
 ```
 
-Calibrated wide-desktop guidance:
+Hero/Core evidence can fail even when its pixel width is correct.
 
-```text
-Small: ~30–45% local width
-Medium: ~50–65%
-Large: ~65–85%
-Hero: ~78–90vw, max ~1120–1280px
-```
+Check:
 
-Core/hero product evidence should not be rendered as a small thumbnail.
+- believable current context;
+- real state distinctions;
+- realistic labels/data/metadata;
+- useful action hierarchy;
+- semantic role color;
+- believable navigation/inspector/runtime structure.
 
-A larger screenshot is not enough if the Product UI itself looks like a neutral wireframe. Ensure product evidence contains real hierarchy, selection, semantic states, and meaningful content.
+Avoid a large frame containing a few tiny nodes. Use `fidelity-density.md`.
 
-### Step 11 — Apply color with roles and expression
+### 12. Enforce effective density and readability
 
-Read `docs/foundations/color-expression.md`.
+Ask whether a large surface would lose nothing if reduced 30–40%. If yes, either reduce the surface or increase its meaningful content.
 
-Keep separate roles for:
+Do not use tiny typography to fake professional density. Respect the Minimum Readability Floor in `fidelity-density.md`.
+
+### 13. Apply semantic product color
+
+Read `semantic-product-color.md`.
+
+Keep these roles distinct:
 
 - brand;
 - interaction;
 - selection;
-- semantic status;
+- running/info;
+- success;
+- warning/approval;
+- danger;
+- agent;
+- tool;
+- artifact;
+- domain-specific type;
 - data visualization;
 - decoration.
 
-Do not randomly mix them.
+Brand color says who the product is. Semantic color says what is happening.
 
-Do not reduce brand identity to neutral UI + one purple/blue primary button.
+### 14. Enforce viewport ownership for Professional / AI Workspaces
 
-### Step 12 — Check FanUI anti-patterns
+Read `viewport-ownership.md`.
 
-Read `docs/anti-patterns/core.md`.
+Core workspace should normally use remaining viewport height and internal pane scrolling.
 
-At minimum check for:
+A page with a 450–550px workspace region and a large blank area below is a failure unless the workflow is intentionally document-shaped.
 
-- Card Soup;
-- gray-on-gray sterility;
-- fake SaaS dashboard;
-- decorative AI visuals by default;
-- excessive roundedness;
-- icon confetti;
-- multiple primary actions;
-- empty-space-as-quality;
-- nested surface maze;
-- invisible current context;
-- management console drift;
-- noun-trap navigation;
-- same-volume page;
-- product screenshot as thumbnail;
-- border-grid/wireframe finish;
-- generic purple SaaS identity;
-- underscaled content on a large canvas;
-- timid product Hero;
-- anonymous neutral + accent;
-- uniform-spacing product family;
-- marketing-sized documentation;
-- dashboard-sized editorial;
-- landing-page pricing;
-- website-sized product UI.
+### 15. Use an Editorial Visual System
 
-### Step 13 — Check Chinese and English behavior
+For Blog/Editorial read `editorial-visuals.md`.
 
-For any interface that could be bilingual:
+Do not use pastel gradient rectangles with empty white panels as default article art.
 
-- verify Chinese title wrapping;
-- use the Chinese calibration band where relevant;
-- verify English technical terms inside Chinese copy;
-- verify button and navigation width;
-- verify table column pressure;
-- verify pricing units;
-- avoid layouts that only work with short English placeholders.
+Prefer idea-bearing visuals derived from workflow, traces, approvals, artifacts, code, data, topology, or product concepts.
 
-### Step 14 — Evaluate before completion
+A large article Hero image is optional; it must earn its area.
 
-Use `eval/checklist.md` for every substantial UI task.
+### 16. Check anti-patterns
 
-Use `eval/rubric.md` when:
+Read both:
 
-- designing a new page;
-- redesigning a major page;
-- reviewing AI-generated UI;
-- deciding whether a result is ready to become a FanUI reference.
+- `docs/anti-patterns/core.md`
+- `docs/anti-patterns/v032.md`
 
-A score below 85 should normally trigger revision.
+V0.3.2 additions include:
 
-A Web App with the wrong primary archetype cannot pass simply through visual polish.
+- Fake Product Evidence;
+- Sparse Evidence in an Oversized Frame;
+- Sidebar-edge Docs Alignment;
+- Editorial Placeholder Art;
+- Un-earned Article Hero;
+- Workspace Below-the-fold Void;
+- Semantic-color Collapse;
+- Rounded Rectangle Everywhere;
+- Tiny Product Typography.
 
-A product-led website whose core product evidence is repeatedly unreadable/tiny cannot pass simply through good copy and spacing.
+### 17. Check Chinese / English behavior
 
-A wide-desktop Homepage that materially ignores FanUI scale calibration without an intentional reason cannot pass simply because it is clean and aligned.
+Validate Chinese title wrapping, mixed technical labels, navigation width, pricing units, tables, product rows, and minimum readability.
 
-A product family that uses the same spacing, title scale, container, and control density across Homepage, Docs, Blog, Pricing, and Web App cannot pass cross-surface calibration.
+### 18. Evaluate before completion
 
-## Output expectations for AI-generated UI
+Use:
 
-Before implementation, the agent should be able to summarize internally.
+- `eval/checklist.md` for every substantial task;
+- `eval/rubric.md` for new/redesigned major surfaces.
 
-### Web App
+Score below 85 normally triggers revision.
+
+Hard failures cannot be rescued by average score:
+
+- wrong Web App archetype;
+- tiny/unreadable core product evidence;
+- Hero scale outside calibration without reason;
+- cross-surface density collapse;
+- fake/sparse core product evidence;
+- Professional/AI Workspace not owning its viewport;
+- primary editorial visual that is obviously a placeholder;
+- documentation with severe optical imbalance;
+- operational typography below readability floor across repeated rows.
+
+## Output expectations
+
+### AI / Professional Workspace reasoning example
 
 ```yaml
 fanui:
   experience: web_app
   primary_archetype: ai_workspace
   secondary_archetype: professional_workspace
-  core_value_loop: define_run_review_ai_work
-  page_archetype: project_workspace
+  core_value_loop: define_configure_run_observe_review_act
   primary_task: operate_current_workflow
-  default_home: last_context
-  layout:
-    global_sidebar: true
-    project_navigator: true
-    tree: true
-    workspace_tabs: true
-    inspector: true
-  hierarchy:
-    - current_project
-    - current_workflow
-    - run_state
-    - working_content
-    - artifact
-    - metadata
   density: medium_compact
   visual_amplitude: low
   brand_expression: low
-  metrics:
-    top_bar: 52
-    global_sidebar: 220
-    project_navigator: 260
-    inspector: 320
-    workspace_padding: 20
+  viewport_ownership: full_remaining_height
+  panes:
+    navigator: 220
+    workspace: flexible
+    inspector: 300
+    runtime: persistent_bottom_pane
+  fidelity:
+    realistic_state: true
+    semantic_roles: true
+    current_context: true
 ```
 
-### Marketing Homepage
+### Product Homepage reasoning example
 
 ```yaml
 fanui:
   experience: website
-  page_archetype: product_home
-  primary_story: ...
-  primary_cta: ...
   primary_visual_anchor: hero_product_showcase
-  evidence: real_product_ui
-  visual_amplitude: high
   brand_expression: high
-  calibration:
-    standard_container: 1160
-    hero_display: 60
-    hero_lead: 19
-    hero_cta_height: 44
-    hero_showcase_width: 1240
-  showcase:
+  hero_display: 60
+  hero_showcase_width: 1240
+  product_evidence:
     scale: hero
-    crop: context
     readable_without_zoom: true
+    fidelity: high
+  optical_balance: checked
   section_rhythm: varied
 ```
 
-The exact values above are examples inside the calibrated bands, not global FanUI tokens.
-
-The YAML is a reasoning aid, not required user-visible output.
+These YAML blocks are reasoning aids, not required user-visible output.
 
 ## Reference rule
 
-Apifox is the primary design reference and Pixso is the secondary reference, but never copy them literally. Use `references/` to understand what FanUI extracts from each source.
-
-FanUI calibration exists to reproduce **quality characteristics** such as confident scale, product evidence weight, cross-surface density, color discipline, and rhythm—not another product's exact layout, color, or assets.
+Apifox remains the primary reference and Pixso secondary. Never clone their exact assets/layouts. FanUI extracts quality characteristics: mature scale, credible product evidence, readable density, optical balance, semantic color discipline, and cross-surface coherence.
