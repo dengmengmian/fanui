@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use FanUI when designing, implementing, revising, or reviewing Web UI. FanUI is an AI-native **decision, calibration, fidelity, precision, and evaluation system**. It is not a generic component skin.
+Use FanUI when designing, implementing, revising, or reviewing Web UI. FanUI is an AI-native **decision, calibration, fidelity, responsive, precision, and evaluation system**. It is not a generic component skin.
 
 ## Required workflow
 
@@ -88,6 +88,7 @@ Website:
 - `docs/website/documentation.md`
 - `docs/website/editorial-blog.md`
 - `docs/website/editorial-visuals.md`
+- `docs/website/mobile.md`
 
 Web App:
 
@@ -95,6 +96,7 @@ Web App:
 - `docs/web-app/app-shell.md`
 - `docs/web-app/workspace.md`
 - `docs/web-app/viewport-ownership.md`
+- `docs/web-app/mobile-workspace.md`
 
 Do not reuse Homepage composition for Docs/Blog/Product UI. Do not reuse Management Console shells for AI/Professional Workspaces without explicit justification.
 
@@ -115,6 +117,7 @@ Mandatory for substantial work:
 - `docs/foundations/semantic-product-color.md`
 - `docs/foundations/surface-hierarchy.md`
 - `docs/foundations/iconography.md`
+- `docs/foundations/responsive.md`
 
 Core formulations:
 
@@ -134,9 +137,11 @@ Core formulations:
 
 > Icon meaning comes before icon decoration.
 
+> Responsive preserves task hierarchy, not desktop geometry.
+
 ### 7. Calibrate the experience
 
-Reference desktop viewport: ~1440px.
+Reference wide desktop viewport: ~1440px.
 
 Use `experience-metrics.md`; do not reuse one max-width, H1, `py-*`, button height, or radius across all surface families.
 
@@ -171,7 +176,59 @@ Hero evidence            78–90vw, max 1120–1280px
 
 Use dedicated ranges for Docs, Editorial, Pricing, and Product UI.
 
-### 8. Apply optical layout
+### 8. Define responsive transformations
+
+Read `docs/foundations/responsive.md` for every substantial page. Responsive work is required even when the request only names Desktop UI unless the target explicitly excludes narrow screens.
+
+Validate at least these reference classes:
+
+```text
+1440 × 1000   wide desktop
+1024 × 900    compact desktop / tablet landscape
+768 × 1024    tablet portrait
+390 × 844     mobile
+375 × 812     small mobile
+```
+
+For every important region choose explicit transformations:
+
+```text
+preserve | scale | stack | reorder | collapse | scroll | crop | replace | sheet | drawer
+```
+
+Internal responsive reasoning should include:
+
+```yaml
+responsive:
+  viewport_family: mobile
+  primary_task: ...
+  preserve: [...]
+  stack: [...]
+  collapse: [...]
+  replace: [...]
+  local_scroll: [...]
+  hidden_with_replacement:
+    sidebar: drawer | selector | none
+    inspector: sheet | section | none
+  product_evidence:
+    strategy: crop | stack | replace
+    readable_without_zoom: true
+  touch_targets: checked
+```
+
+Hard rules:
+
+- do not merely shrink Desktop product evidence below readable scale;
+- do not keep cramped split layouts on Mobile;
+- hiding an essential sidebar/inspector/TOC requires a replacement access path;
+- document-level horizontal scrolling is a failure;
+- mobile primary controls should normally provide 40–44px touch targets;
+- Desktop workspace geometry may transform sequentially on Mobile when that preserves the task better.
+
+For Website/Docs/Editorial/Pricing also read `docs/website/mobile.md`.
+For Professional/AI Workspace also read `docs/web-app/mobile-workspace.md`.
+
+### 9. Apply optical layout
 
 Read `optical-layout.md`.
 
@@ -181,7 +238,9 @@ Documentation content should not simply hug the sidebar while leaving hundreds o
 
 Split Marketing sections should allocate width according to content/evidence weight, not default to 50/50.
 
-### 9. Set visual amplitude and brand expression
+After a responsive transformation, recompute the remaining canvas; do not preserve Desktop empty fields.
+
+### 10. Set visual amplitude and brand expression
 
 Classify regions:
 
@@ -202,7 +261,7 @@ Homepage Hero                  high / high
 
 Avoid same-volume pages.
 
-### 10. Choose components semantically
+### 11. Choose components semantically
 
 Use tables for comparison, trees for hierarchy, tabs for alternate views of one object, inspectors for persistent secondary detail, lists for scan tasks, overlays for temporary secondary work.
 
@@ -210,7 +269,7 @@ Do not create a card because content needs a box.
 
 Apply `surface-hierarchy.md`: radius/elevation should become tighter and quieter toward operational UI.
 
-### 11. Apply iconography precision
+### 12. Apply iconography precision
 
 Read `docs/foundations/iconography.md` whenever icons are part of repeated rows, navigation, feature explanations, controls, or product state.
 
@@ -237,7 +296,7 @@ optical Y fix  0–2px only when needed
 
 If a glyph still looks wrong after ~2px optical correction, choose a better glyph rather than forcing the alignment.
 
-### 12. Enforce Product Evidence Fidelity
+### 13. Enforce Product Evidence Fidelity
 
 For every core/Hero product visual, classify:
 
@@ -270,13 +329,15 @@ Check:
 
 Avoid a large frame containing a few tiny nodes. Use `fidelity-density.md`.
 
-### 13. Enforce effective density and readability
+On Mobile, Product Evidence Fidelity is re-evaluated after transformation; Desktop fidelity does not automatically carry over.
+
+### 14. Enforce effective density and readability
 
 Ask whether a large surface would lose nothing if reduced 30–40%. If yes, either reduce the surface or increase its meaningful content.
 
 Do not use tiny typography to fake professional density. Respect the Minimum Readability Floor in `fidelity-density.md`.
 
-### 14. Apply semantic product color
+### 15. Apply semantic product color
 
 Read `semantic-product-color.md`.
 
@@ -298,15 +359,17 @@ Keep these roles distinct:
 
 Brand color says who the product is. Semantic color says what is happening.
 
-### 15. Enforce viewport ownership for Professional / AI Workspaces
+### 16. Enforce viewport ownership for Professional / AI Workspaces
 
-Read `viewport-ownership.md`.
+Read `viewport-ownership.md` and `mobile-workspace.md`.
 
-Core workspace should normally use remaining viewport height and internal pane scrolling.
+Desktop core workspace should normally use remaining viewport height and internal pane scrolling.
 
-A page with a 450–550px workspace region and a large blank area below is a failure unless the workflow is intentionally document-shaped.
+A Desktop page with a 450–550px workspace region and a large blank area below is a failure unless the workflow is intentionally document-shaped.
 
-### 16. Use an Editorial Visual System
+On Mobile, viewport ownership may become a deliberate sequential task flow. Persistent Desktop panes may transform into compact context, tabs, drawers, sheets, or sequential review sections.
+
+### 17. Use an Editorial Visual System
 
 For Blog/Editorial read `editorial-visuals.md`.
 
@@ -316,24 +379,24 @@ Prefer idea-bearing visuals derived from workflow, traces, approvals, artifacts,
 
 A large article Hero image is optional; it must earn its area.
 
-### 17. Check anti-patterns
+### 18. Check anti-patterns
 
-Read both:
+Read:
 
 - `docs/anti-patterns/core.md`
 - `docs/anti-patterns/v032.md`
+- `docs/anti-patterns/v033.md`
 
-V0.3.2 additions include:
+Responsive hard anti-patterns include:
 
-- Fake Product Evidence;
-- Sparse Evidence in an Oversized Frame;
-- Sidebar-edge Docs Alignment;
-- Editorial Placeholder Art;
-- Un-earned Article Hero;
-- Workspace Below-the-fold Void;
-- Semantic-color Collapse;
-- Rounded Rectangle Everywhere;
-- Tiny Product Typography.
+- Shrunk Desktop Evidence;
+- Hidden Without Replacement;
+- Cramped Split;
+- Desktop Toolbar Wrap;
+- Runtime Takeover;
+- Whole-page Horizontal Scroll;
+- Tiny Touch UI;
+- Mobile Empty Canvas.
 
 Iconography precision also rejects:
 
@@ -343,11 +406,11 @@ Iconography precision also rejects:
 - Icon-box Override;
 - Text-block Centering for icon + title + description rows.
 
-### 18. Check Chinese / English behavior
+### 19. Check Chinese / English behavior
 
-Validate Chinese title wrapping, mixed technical labels, navigation width, pricing units, tables, product rows, icon/text rows, and minimum readability.
+Validate Chinese title wrapping, mixed technical labels, navigation width, pricing units, tables, product rows, icon/text rows, minimum readability, and responsive transformation at Mobile widths.
 
-### 19. Evaluate before completion
+### 20. Evaluate before completion
 
 Use:
 
@@ -363,11 +426,14 @@ Hard failures cannot be rescued by average score:
 - Hero scale outside calibration without reason;
 - cross-surface density collapse;
 - fake/sparse core product evidence;
-- Professional/AI Workspace not owning its viewport;
+- Desktop Professional/AI Workspace not owning its viewport;
 - primary editorial visual that is obviously a placeholder;
 - documentation with severe optical imbalance;
 - operational typography below readability floor across repeated rows;
-- repeated icon/text patterns with visibly broken centering or semantically misleading glyphs.
+- repeated icon/text patterns with visibly broken centering or semantically misleading glyphs;
+- Desktop evidence merely shrunk into unreadable Mobile evidence;
+- essential mobile navigation/inspector context removed without a replacement path;
+- whole-page horizontal overflow at a reference Mobile viewport.
 
 ## Output expectations
 
@@ -389,6 +455,11 @@ fanui:
     workspace: flexible
     inspector: 300
     runtime: persistent_bottom_pane
+  mobile:
+    navigator: compact_context_or_drawer
+    graph: vertical_reflow
+    inspector: review_section_or_sheet
+    runtime: compact_pane
   fidelity:
     realistic_state: true
     semantic_roles: true
@@ -408,6 +479,10 @@ fanui:
     scale: hero
     readable_without_zoom: true
     fidelity: high
+  mobile:
+    hero_display: 40
+    split_sections: stack
+    product_evidence: crop_or_replace
   optical_balance: checked
   section_rhythm: varied
   iconography:
@@ -420,4 +495,4 @@ These YAML blocks are reasoning aids, not required user-visible output.
 
 ## Reference rule
 
-Apifox remains the primary reference and Pixso secondary. Never clone their exact assets/layouts. FanUI extracts quality characteristics: mature scale, credible product evidence, readable density, optical balance, semantic color discipline, component precision, and cross-surface coherence.
+Apifox remains the primary reference and Pixso secondary. Never clone their exact assets/layouts. FanUI extracts quality characteristics: mature scale, credible product evidence, readable density, optical balance, semantic color discipline, responsive transformation, component precision, and cross-surface coherence.
