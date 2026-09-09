@@ -1,135 +1,191 @@
 # FanUI Dogfood #3 — Screenshot Plan
 
-Primary viewport for visual acceptance:
+FanUI V0.3.3 treats responsive behavior as first-class acceptance. Desktop-only screenshots are no longer sufficient.
+
+## Viewport matrix
 
 ```text
-1440 × 1000
-Browser zoom: 100%
+Wide desktop     1440 × 1000
+Compact desktop  1024 × 900
+Tablet portrait   768 × 1024
+Mobile            390 × 844
+Small mobile      375 × 812
+Browser zoom      100%
 Light mode
 ```
 
-Capture these routes in order.
+## Phase A — Wide desktop baseline
 
-## 1. Homepage — first viewport
+Capture these routes at **1440 × 1000**:
 
-Route: `/`
+1. `/` — Hero + Product Showcase
+2. `/` — Design the work
+3. `/pricing` — plan summary
+4. `/docs` — Docs Home
+5. `/docs/getting-started` — Docs article
+6. `/blog` — Blog Index
+7. `/blog/reliable-agents` — Blog article
+8. `/app` — Product Home
+9. `/app/projects/atlas` — primary AI / Professional Workspace
+10. `/zh` — Chinese stress surface
 
-Capture:
+## Phase B — Tablet transformation
 
-- header;
-- full Hero copy;
-- CTA group;
-- majority of Hero Product Showcase.
-
-Check:
-
-- Hero display scale;
-- CTA weight;
-- 78–90vw evidence scale;
-- brand expression;
-- product UI readability.
-
-## 2. Homepage — product story
-
-Route: `/`
-
-Scroll to capture at least two later sections in separate screenshots:
-
-- `Design the work`;
-- `Operate with evidence`;
-- `Artifacts are first-class work`.
-
-Check section rhythm and same-volume avoidance.
-
-## 3. Pricing — plans
-
-Route: `/pricing`
-
-Capture H1, billing control, all self-serve plans, and Enterprise entry if possible.
-
-## 4. Pricing — comparison / FAQ
-
-Route: `/pricing`
-
-Capture the comparison matrix and a second screenshot of FAQ.
-
-## 5. Documentation Home
-
-Route: `/docs`
-
-Capture header/search, left navigation, title, quickstart entries, and part of Explore Flowbit.
-
-## 6. Documentation Article
-
-Route: `/docs/getting-started`
-
-Capture left navigation, article H1/intro, body/code/callout, and local TOC.
-
-## 7. Blog Index
-
-Route: `/blog`
-
-Capture title/category navigation, featured story, and first article row.
-
-## 8. Blog Article
-
-Route: `/blog/reliable-agents`
-
-Capture article header + cover, then one body screenshot showing paragraph/H2/callout rhythm.
-
-## 9. Web App Home
-
-Route: `/app`
-
-Capture the complete first viewport.
-
-Check that the page answers “what needs me / where do I continue?” rather than behaving like a generic KPI Dashboard.
-
-## 10. Primary Workspace
-
-Route: `/app/projects/atlas`
-
-Capture the complete first viewport.
-
-Required visible evidence:
-
-- project context;
-- workflow tree;
-- main workflow canvas;
-- active run state;
-- inspector;
-- dense product control scale.
-
-## 11. Chinese Stress Test
-
-Route: `/zh`
-
-Capture first viewport plus the stress cards.
-
-Check:
-
-- Chinese Hero wrapping;
-- mixed Chinese/English technical text;
-- long navigation/object labels;
-- pricing units;
-- semantic status labels.
-
----
-
-## Optional responsive set
-
-After 1440 acceptance, spot-check:
-
-```text
-1280 × 900
-390 × 844
-```
-
-Minimum mobile routes:
+At **768 × 1024**, capture:
 
 - `/`
 - `/pricing`
-- `/docs/getting-started`
+- `/docs`
+- `/blog`
 - `/app/projects/atlas`
 
-Do not use mobile results to excuse desktop calibration failures.
+Check:
+
+- split sections stack before they become cramped;
+- plans move to an appropriate narrower grid;
+- Docs navigation remains reachable;
+- Product evidence removes low-priority chrome rather than becoming unreadable;
+- Workspace graph and panes begin their mobile transformation cleanly.
+
+## Phase C — Mobile acceptance
+
+At **390 × 844**, capture all of:
+
+### 1. Homepage Hero
+
+Route: `/`
+
+Required evidence:
+
+- brand + primary CTA;
+- mobile navigation path;
+- Hero title/lead/actions;
+- Product Showcase with no giant unused field;
+- main product content readable without zoom.
+
+### 2. Homepage Product Story
+
+Route: `/`
+
+Scroll to `Design the work`.
+
+Required:
+
+- text above evidence;
+- no narrow side-by-side heading column;
+- workflow graph vertically reflowed;
+- feature icons/text remain aligned.
+
+### 3. Pricing
+
+Route: `/pricing`
+
+Required:
+
+- one clear plan per row;
+- price/unit readability;
+- Enterprise path stacked;
+- no page-level horizontal overflow.
+
+The detailed comparison may use **local** horizontal scrolling.
+
+### 4. Docs Home
+
+Route: `/docs`
+
+Required:
+
+- search remains visible;
+- replacement mobile Docs navigation is visible;
+- quickstart cards stack;
+- Explore list remains readable.
+
+### 5. Docs Article
+
+Route: `/docs/getting-started`
+
+Required:
+
+- active mobile Docs navigation;
+- article title/intro/body readable;
+- code blocks scroll locally if needed;
+- no missing navigation caused by hidden sidebar/TOC.
+
+### 6. Blog Index
+
+Route: `/blog`
+
+Required:
+
+- category row remains usable;
+- Featured story stacks;
+- editorial visual retains meaning;
+- Latest list is one-column and readable.
+
+### 7. Blog Article
+
+Route: `/blog/reliable-agents`
+
+Required:
+
+- article title does not fragment into unstable lines;
+- Hero visual earns its mobile area;
+- useful body content appears without excessive delay.
+
+### 8. Product Home
+
+Route: `/app`
+
+Required:
+
+- no desktop sidebar squeeze;
+- attention/continue content becomes task-first mobile flow.
+
+### 9. AI / Professional Workspace
+
+Route: `/app/projects/atlas`
+
+Required:
+
+- project/workflow/run context remains visible;
+- mobile Browse/Workflow/Run/Artifacts/Review path is visible;
+- horizontal graph becomes vertical nodes;
+- primary action remains a real touch target;
+- Runtime is capped and readable, not an accidental full-page takeover;
+- Artifact output remains accessible;
+- Approval Inspector is still accessible as a sequential mobile Review section;
+- no document-level horizontal scrolling.
+
+### 10. Chinese stress
+
+Route: `/zh`
+
+Required:
+
+- Chinese display title wraps naturally;
+- mixed Chinese/English labels remain stable;
+- stress cards stack without overflow.
+
+## Phase D — Small mobile spot-check
+
+At **375 × 812**, capture:
+
+- `/`
+- `/docs/getting-started`
+- `/pricing`
+- `/app/projects/atlas`
+
+This pass specifically catches narrow-edge regressions hidden at 390px.
+
+## Responsive hard-fail checklist
+
+Do not accept screenshots with:
+
+- Shrunk Desktop Evidence;
+- Hidden Without Replacement;
+- Cramped Split;
+- Desktop Toolbar Wrap;
+- Runtime Takeover;
+- Whole-page Horizontal Scroll;
+- Tiny Touch UI;
+- Mobile Empty Canvas.
