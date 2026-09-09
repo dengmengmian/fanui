@@ -2,11 +2,11 @@
 
 **FanUI is an AI-native UI design system for building consistent, polished web experiences with coding agents.**
 
-FanUI is not primarily a component library. It is a design language, page-pattern system, calibration framework, product-fidelity model, AI decision system, and evaluation rubric.
+FanUI is not primarily a component library. It is a design language, page-pattern system, calibration framework, product-fidelity model, responsive decision system, AI decision system, and evaluation rubric.
 
 ## Current scope
 
-FanUI Web V0.3.2 covers five first-class web experience families:
+FanUI Web V0.3.3 covers five first-class web experience families:
 
 1. Product Website
 2. Documentation
@@ -41,6 +41,8 @@ Primary reference: **Apifox** across website/docs/blog/pricing/product UI. Secon
 
 > **Workspace owns the viewport.**
 
+> **Responsive preserves task hierarchy, not desktop geometry.**
+
 ## Evolution
 
 ### V0.1 — structure
@@ -57,18 +59,22 @@ Added calibrated bands for typography, containers, Hero/product evidence scale, 
 
 ### V0.3.2 — product fidelity closure
 
-Dogfood #3 showed that correct scale can still produce a high-quality demo rather than mature product UI. V0.3.2 adds:
+Added Product Evidence Fidelity, effective density, readability floor, optical layout, viewport ownership, editorial visual system, semantic product color, and surface hierarchy.
 
-- Product Evidence Fidelity;
-- Effective Content Density;
-- Minimum Readability Floor;
-- Optical Layout;
-- Workspace Viewport Ownership;
-- Editorial Visual System;
-- Semantic Product Color;
-- Surface Radius Hierarchy.
+### V0.3.3 — responsive / mobile closure
 
-See `docs/FANUI_V0.3.2.md`.
+Dogfood Mobile screenshots showed that Desktop quality does not automatically survive narrow screens. V0.3.3 adds:
+
+- Responsive Decision Layer;
+- explicit preserve/stack/reorder/collapse/crop/replace/sheet/drawer transformations;
+- Mobile Website patterns;
+- Mobile Professional/AI Workspace transformation;
+- touch-target and Mobile typography bands;
+- replacement access for hidden Sidebar/Inspector/TOC;
+- responsive hard-fail gates;
+- mandatory multi-viewport Dogfood acceptance.
+
+See `docs/FANUI_V0.3.3.md`.
 
 ## Repository map
 
@@ -81,6 +87,7 @@ fanui/
 │   ├── 01-philosophy.md
 │   ├── 02-visual-dna.md
 │   ├── FANUI_V0.3.2.md
+│   ├── FANUI_V0.3.3.md
 │   ├── foundations/
 │   │   ├── visual-system.md
 │   │   ├── typography.md
@@ -92,7 +99,9 @@ fanui/
 │   │   ├── fidelity-density.md
 │   │   ├── optical-layout.md
 │   │   ├── semantic-product-color.md
-│   │   └── surface-hierarchy.md
+│   │   ├── surface-hierarchy.md
+│   │   ├── iconography.md
+│   │   └── responsive.md
 │   ├── website/
 │   │   ├── homepage.md
 │   │   ├── hero.md
@@ -101,15 +110,18 @@ fanui/
 │   │   ├── pricing.md
 │   │   ├── documentation.md
 │   │   ├── editorial-blog.md
-│   │   └── editorial-visuals.md
+│   │   ├── editorial-visuals.md
+│   │   └── mobile.md
 │   ├── web-app/
 │   │   ├── archetypes.md
 │   │   ├── app-shell.md
 │   │   ├── workspace.md
-│   │   └── viewport-ownership.md
+│   │   ├── viewport-ownership.md
+│   │   └── mobile-workspace.md
 │   └── anti-patterns/
 │       ├── core.md
-│       └── v032.md
+│       ├── v032.md
+│       └── v033.md
 ├── references/
 ├── skill/SKILL.md
 ├── eval/
@@ -125,18 +137,19 @@ The Skill requires agents to:
 3. identify core value loop / primary task;
 4. choose page pattern and hierarchy;
 5. apply cross-surface calibrated metrics;
-6. check optical balance;
-7. enforce Product Evidence Fidelity and effective density;
-8. apply semantic color and surface hierarchy;
-9. enforce workspace viewport ownership or editorial visual rules when relevant;
-10. evaluate through FanUI hard gates before completion.
+6. define responsive transformations for important regions;
+7. check optical balance;
+8. enforce Product Evidence Fidelity and effective density at Desktop and Mobile;
+9. apply semantic color, surface hierarchy, and iconography precision;
+10. preserve Mobile access when Sidebar/Inspector/TOC collapses;
+11. evaluate through FanUI hard gates before completion.
 
 See `skill/SKILL.md`.
 
 ## Status
 
-**FanUI Web V0.3.2 — Product Fidelity Closure.**
+**FanUI Web V0.3.3 — Responsive / Mobile Closure.**
 
-Specification rules are being dogfooded against `dogfood/003` across Homepage, Pricing, Docs Home/Article, Blog Index/Article, Product Home, AI/Professional Workspace, and Chinese stress surface.
+Specification rules are dogfooded against `dogfood/003` across Homepage, Pricing, Docs Home/Article, Blog Index/Article, Product Home, AI/Professional Workspace, and Chinese stress surface.
 
-Final visual authority remains rendered screenshots at 1440 × 1000. Only rendered acceptance should promote calibration bands into future tokens/component defaults.
+Rendered authority now requires multi-viewport acceptance, including **1440 × 1000, 768 × 1024, and 390 × 844**, with a 375 × 812 narrow-edge spot check.
