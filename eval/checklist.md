@@ -18,14 +18,30 @@ Use this checklist before calling a substantial FanUI page complete.
 - [ ] Control density matches the page family.
 - [ ] Brand expression level is intentional.
 
-## C. Optical layout
+## C. Responsive transformation
+
+Read `docs/foundations/responsive.md`.
+
+- [ ] Page has been checked at 1440, 1024, 768, 390, and 375-class widths when materially relevant.
+- [ ] Important regions have deliberate `preserve / stack / reorder / collapse / scroll / crop / replace / sheet / drawer` strategies.
+- [ ] Desktop product evidence is not merely scaled until unreadable.
+- [ ] Two-column Marketing sections stack before text becomes cramped.
+- [ ] Hidden sidebar/Inspector/TOC/project navigation has a replacement access path.
+- [ ] Primary mobile touch targets are normally 40–44px or larger.
+- [ ] There is no document-level horizontal overflow.
+- [ ] Mobile vertical rhythm is intentionally compressed from Desktop.
+- [ ] Mobile typography remains stable rather than producing word-by-word headings.
+- [ ] Product evidence remains readable without pinch zoom.
+
+## D. Optical layout
 
 - [ ] Main content is balanced in the effective/remaining canvas.
 - [ ] Sidebars/inspectors do not accidentally pull content to one edge.
 - [ ] Split sections allocate width according to content importance.
 - [ ] Large empty side fields have a real purpose.
+- [ ] Remaining canvas is recomputed after responsive panes collapse.
 
-## D. Typography and readability
+## E. Typography and readability
 
 - [ ] Marketing display type is confident but not theatrical.
 - [ ] Documentation uses reading/retrieval scale, not Marketing scale.
@@ -34,7 +50,7 @@ Use this checklist before calling a substantial FanUI page complete.
 - [ ] Secondary text is muted but still readable.
 - [ ] Chinese wrapping and mixed-language labels remain stable.
 
-## E. Product Evidence Fidelity
+## F. Product Evidence Fidelity
 
 For every Core/Hero product visual:
 
@@ -47,15 +63,16 @@ For every Core/Hero product visual:
 - [ ] Semantic object/status roles are distinguishable.
 - [ ] Product evidence is readable without zoom.
 - [ ] Large frames contain enough meaningful content to earn their area.
+- [ ] Fidelity is re-evaluated after Mobile transformation.
 
-## F. Effective content density
+## G. Effective content density
 
 - [ ] A large visual could not be reduced 30–40% with no information loss.
 - [ ] Major evidence surfaces use meaningful content across most of their usable area.
 - [ ] Sparse diagrams are not placed inside oversized frames.
 - [ ] Whitespace supports hierarchy rather than hiding missing content.
 
-## G. Color
+## H. Color
 
 - [ ] Brand and semantic color are separated.
 - [ ] Running is not styled like Completed.
@@ -64,7 +81,7 @@ For every Core/Hero product visual:
 - [ ] Product evidence gains richness from meaningful state/object color, not decorative gradients.
 - [ ] Danger remains reserved for actual failure/destructive state.
 
-## H. Surface hierarchy
+## I. Surface hierarchy
 
 - [ ] Radius decreases toward dense operational surfaces.
 - [ ] Marketing major frames are not visually identical to Product panels.
@@ -72,7 +89,7 @@ For every Core/Hero product visual:
 - [ ] Borders/dividers/surfaces are used according to hierarchy.
 - [ ] Shadows are restrained in Product UI.
 
-## I. Iconography and icon-text alignment
+## J. Iconography and icon-text alignment
 
 When repeated icons or icon-only controls are present, check `docs/foundations/iconography.md`.
 
@@ -84,7 +101,7 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Icon-only controls have accessible labels/tooltips and adequate hit areas.
 - [ ] No Icon Confetti, Approximate Icon Semantics, Glyph Drift, or Icon-box Override.
 
-## J. Homepage
+## K. Homepage
 
 - [ ] Hero display and CTA scale match calibrated range.
 - [ ] Hero product evidence is Large/Hero scale and readable.
@@ -92,8 +109,10 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Later sections vary composition and amplitude.
 - [ ] Product visuals are not repeated small screenshots.
 - [ ] Marketing brand expression is richer than Product UI without overwhelming it.
+- [ ] Mobile Hero product evidence is cropped/transformed rather than compressed Desktop UI.
+- [ ] Mobile split feature sections stack in a deliberate order.
 
-## K. Documentation
+## L. Documentation
 
 - [ ] Left navigation is readable at 13–14px-class scale.
 - [ ] Docs Home content is optically balanced inside remaining canvas.
@@ -101,8 +120,10 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Local TOC does not distort the article position.
 - [ ] Getting Started is visually stronger than low-priority deep links.
 - [ ] Deep information architecture does not become a flat card grid.
+- [ ] When sidebar/TOC collapses on Mobile, a compact Docs navigation path remains.
+- [ ] Code blocks use local horizontal scroll rather than page overflow.
 
-## L. Editorial / Blog
+## M. Editorial / Blog
 
 - [ ] Index supports discovery rather than Marketing conversion.
 - [ ] Featured and Latest visuals contain an editorial idea.
@@ -111,8 +132,9 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Large Hero area is earned by meaningful content.
 - [ ] Reader encounters useful text at a reasonable point in first viewport.
 - [ ] CTA pressure stays out of the article body.
+- [ ] Mobile category navigation and editorial composition transform without cramped columns.
 
-## M. Pricing
+## N. Pricing
 
 - [ ] Plan summary helps a buyer choose before detailed comparison.
 - [ ] Recommended plan is clear without distorting the grid.
@@ -120,19 +142,26 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Enterprise/private path feels intentionally separate.
 - [ ] Comparison rows are dense enough for decision-making.
 - [ ] Pricing does not become a generic Marketing card gallery.
+- [ ] Mobile uses one plan per row or another clear decision pattern.
+- [ ] Comparison uses local scroll/alternate comparison, not whole-page overflow.
 
-## N. Professional / AI Workspace
+## O. Professional / AI Workspace
 
-- [ ] Workspace owns the remaining viewport height.
-- [ ] Browser page does not leave a large blank region below the core workspace.
+- [ ] Desktop Workspace owns the remaining viewport height.
+- [ ] Desktop browser page does not leave a large blank region below the core workspace.
 - [ ] Navigator, workspace, inspector, and runtime panes have clear ownership.
 - [ ] Main working canvas receives flexible width.
 - [ ] Runtime/result information has enough persistent area when core to the task.
 - [ ] Workflow nodes contain realistic type/state/metadata.
 - [ ] Internal pane scrolling is used where appropriate.
 - [ ] Current project/workflow/run state is obvious.
+- [ ] Mobile navigator has a compact context/drawer/selector replacement.
+- [ ] Mobile horizontal workflow graph reflows vertically or uses an intentional alternate view.
+- [ ] Mobile Inspector/approval remains accessible as sheet, drawer, tab, or sequential review section.
+- [ ] Mobile runtime is capped/collapsible/dedicated rather than accidentally taking over the page.
+- [ ] Desktop toolbar does not wrap chaotically on Mobile.
 
-## O. Anti-pattern gate
+## P. Anti-pattern gate
 
 - [ ] No Card Soup.
 - [ ] No Fake SaaS Dashboard.
@@ -155,6 +184,14 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] No Glyph Drift.
 - [ ] No Icon-box Override.
 - [ ] No Text-block Centering for icon + title + description rows.
+- [ ] No Shrunk Desktop Evidence.
+- [ ] No Hidden Without Replacement.
+- [ ] No Cramped Split.
+- [ ] No Desktop Toolbar Wrap.
+- [ ] No Runtime Takeover.
+- [ ] No Whole-page Horizontal Scroll.
+- [ ] No Tiny Touch UI.
+- [ ] No Mobile Empty Canvas.
 
 ## Completion gate
 
