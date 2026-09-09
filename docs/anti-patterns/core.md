@@ -204,3 +204,43 @@ when the real product loop happens inside a project/workflow/task.
 **Why it fails:** restraint becomes anonymity. The interface can be rebranded by changing one hex value.
 
 **Correction:** choose a Brand Expression Level and apply consistent brand behavior through display treatment, selection tint, product frame, section fields, and recurring motifs while preserving semantic color separation.
+
+## 25. Uniform-spacing Product Family
+
+**Symptom:** Homepage, Docs, Blog, Pricing, and Web App all use the same container width, `py-*`, H1 size, card gap, and control height.
+
+**Why it fails:** consistency is confused with sameness. Each surface loses the density and reading/comparison/task rhythm required by its job.
+
+**Correction:** use `docs/foundations/experience-metrics.md`. Preserve shared spacing rhythm and component language while changing operating density by experience family.
+
+## 26. Marketing-sized Documentation
+
+**Symptom:** Documentation uses Homepage-scale headings, 96–144px article gaps, oversized cards, and wide marketing containers.
+
+**Why it fails:** retrieval and reading become slow; deep technical content feels like a campaign page.
+
+**Correction:** use compact docs navigation, 720–840px reading measure, documentation typography, and 12–56px article rhythm bands.
+
+## 27. Dashboard-sized Editorial
+
+**Symptom:** Blog/Editorial uses compact app typography, dense boxed cards, tight metadata rows, and little paragraph rhythm.
+
+**Why it fails:** sustained reading and content discovery lose priority.
+
+**Correction:** use editorial title/body scales, narrower body measure, more paragraph rhythm, and lower CTA pressure.
+
+## 28. Landing-page Pricing
+
+**Symptom:** Pricing uses giant Hero spacing, oversized plan cards, large decorative surfaces, and too little comparison density.
+
+**Why it fails:** the buyer sees a marketing composition instead of a decision interface.
+
+**Correction:** keep plan cards comparison-friendly, price/unit hierarchy explicit, comparison rows dense, and stage transitions deliberate but not theatrical.
+
+## 29. Website-sized Product UI
+
+**Symptom:** operational rows, tabs, buttons, sidebars, and workspaces use Website-size controls and page gutters.
+
+**Why it fails:** repeated work becomes slow and the useful canvas shrinks.
+
+**Correction:** use medium-compact Product UI metrics, let the workspace occupy available width, and reserve large visual scale for true task hierarchy—not generic modernity.
