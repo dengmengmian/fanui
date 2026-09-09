@@ -19,6 +19,18 @@ Use this before considering substantial UI work complete.
 - [ ] Domain nouns have not automatically become equal top-level navigation items.
 - [ ] Project-local objects stay project-local when that matches the real workflow.
 
+## Calibration — mandatory for substantial Website work
+
+- [ ] Desktop calibration was checked at approximately 1440px.
+- [ ] Standard content and Wide Product containers use intentional widths rather than arbitrary framework defaults.
+- [ ] Hero typography is selected from the calibrated Marketing range or a deviation is explicitly justified.
+- [ ] Chinese Hero copy uses an appropriate width/scale rather than forced narrow wrapping.
+- [ ] Hero CTA scale is marketing-appropriate rather than copied from Product UI.
+- [ ] Core/Hero product evidence uses Large/Hero scale and is readable without zoom.
+- [ ] Brand Expression Level is explicitly chosen: Low / Medium / High.
+- [ ] Major section spacing follows a deliberate rhythm rather than one repeated section template.
+- [ ] Radius and depth vary semantically by control / surface / overlay / marketing frame.
+
 ## Hierarchy
 
 - [ ] The most important thing is visually obvious.
@@ -35,6 +47,7 @@ Use this before considering substantial UI work complete.
 - [ ] Border use is selective rather than enclosing every group.
 - [ ] The page feels richer than a wireframe but calmer than a concept shot.
 - [ ] Brand character comes from more than one accent color.
+- [ ] Important content scale is proportionate to the desktop canvas.
 
 ## Layout
 
@@ -42,6 +55,7 @@ Use this before considering substantial UI work complete.
 - [ ] Major regions have clear relationships.
 - [ ] Current context is visible where relevant.
 - [ ] Responsive behavior preserves the primary task.
+- [ ] Large canvas does not contain a timid underscaled content island.
 
 ## Density
 
@@ -65,6 +79,8 @@ Use this before considering substantial UI work complete.
 - [ ] Saturated color is not used everywhere.
 - [ ] Status is not communicated by color alone where critical.
 - [ ] The product would still retain hierarchy if brand color were temporarily neutralized.
+- [ ] Homepage expression is intentionally stronger than dense Product Workspace expression.
+- [ ] Brand identity is not only neutral UI + one purple/blue CTA.
 
 ## Typography
 
@@ -75,6 +91,7 @@ Use this before considering substantial UI work complete.
 - [ ] Chinese text wraps naturally.
 - [ ] Mixed Chinese/English technical strings remain readable.
 - [ ] Removing icons would not collapse text hierarchy.
+- [ ] Wide-desktop marketing headings do not default to safe underscaled values without reason.
 
 ## Product evidence — Website
 
@@ -82,10 +99,12 @@ Use this before considering substantial UI work complete.
 - [ ] Decorative imagery does not replace proof.
 - [ ] Feature copy is concise enough for the visual to carry meaning.
 - [ ] Each major product showcase is classified Small / Medium / Large / Hero.
+- [ ] Showcase width falls inside the calibrated range or deviation is justified.
 - [ ] Core/Hero evidence is not presented as a tiny screenshot.
 - [ ] Product UI is readable at normal desktop browser scale.
 - [ ] Screenshot crops focus on the actual task, not irrelevant chrome.
 - [ ] Product sections vary composition instead of repeating left-text/right-thumbnail endlessly.
+- [ ] Product UI itself contains enough hierarchy/state richness to work as marketing evidence.
 
 ## Documentation
 
@@ -122,6 +141,7 @@ Use this before considering substantial UI work complete.
 - [ ] For Professional/AI Workspace products, the main surface contains real work rather than mostly overview statistics.
 - [ ] Current project/task/object remains visible during the core value loop.
 - [ ] Runs/results/artifacts stay connected to the work that produced them when appropriate.
+- [ ] Product UI density stays compact enough for sustained work.
 
 ## Anti-pattern pass
 
@@ -139,6 +159,9 @@ Use this before considering substantial UI work complete.
 - [ ] No product screenshot as thumbnail for core evidence.
 - [ ] No border-grid / polished-wireframe finish.
 - [ ] No generic-purple-SaaS identity as the only brand language.
+- [ ] No underscaled content on a large canvas.
+- [ ] No timid product Hero.
+- [ ] No anonymous neutral + accent brand system.
 
 ## Final
 
@@ -147,3 +170,4 @@ Use this before considering substantial UI work complete.
 - [ ] The result feels clean, structured, refined, productive, and calm under complexity.
 - [ ] The page looks like part of the same product family as other FanUI surfaces without forcing every page type into the same layout.
 - [ ] The result is visually finished, not merely structurally correct.
+- [ ] The calibrated ranges were used as intentional design constraints rather than blindly copied values.
