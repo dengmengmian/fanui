@@ -4,7 +4,7 @@
 
 FanUI is a design language, calibrated visual framework, and AI execution system for modern web products. Its purpose is not to prescribe one visual template, but to constrain AI design decisions strongly enough that different pages and products remain coherent and visually mature.
 
-FanUI Web V0.3 treats five experience families as first-class:
+FanUI Web V0.3.1 treats five experience families as first-class:
 
 - Product Website
 - Documentation
@@ -37,11 +37,12 @@ FanUI Web Core
             └── AI Workspace
 ```
 
-The design system should answer three different questions:
+The design system should answer four different questions:
 
 1. **What should this feel like?** — Visual DNA.
 2. **How should this page behave?** — Page/archetype patterns.
-3. **At what scale and intensity should it be rendered?** — V0.3 calibration ranges.
+3. **At what scale and intensity should it be rendered?** — calibration ranges.
+4. **How should this surface differ from the rest of the product family?** — cross-surface experience metrics.
 
 ## Reference model
 
@@ -54,7 +55,8 @@ Apifox is used as the primary reference because the same product family demonstr
 - an editorial/blog system with categories and long-form content;
 - a pricing page that supports multiple plans, billing choices, enterprise options, feature comparison, and FAQ;
 - a complex professional Web App with dense navigation, trees, tabs, toolbars, forms, tables, protocol states, and workspaces;
-- confident visual scale, product evidence, brand expression, and information density.
+- confident visual scale, product evidence, brand expression, and information density;
+- clear cross-surface density differences without losing brand coherence.
 
 ### Secondary: Pixso
 
@@ -84,6 +86,8 @@ Working principles:
 
 > **Large canvas requires proportionally confident content scale.**
 
+> **Shared rhythm, different operating density.**
+
 ## Shared vs specialized rules
 
 All experience families should share:
@@ -98,44 +102,79 @@ All experience families should share:
 - interaction feedback;
 - accessibility baseline.
 
-They should not share identical scale, density, or composition.
+They should not share identical scale, density, reading measure, or composition.
 
 For example:
 
 - Web App controls may be compact, while Marketing Hero typography is substantially larger.
 - Professional/AI Workspace remains fluid and task-first rather than centered like a marketing page.
-- Documentation prioritizes scanability and navigation persistence.
-- Blog/article pages prioritize reading rhythm and editorial typography.
-- Pricing prioritizes comparison and decision confidence.
+- Documentation uses compact navigation + comfortable technical reading.
+- Blog index prioritizes discovery while article pages prioritize sustained reading.
+- Pricing prioritizes plan comparison and decision confidence.
 - Homepage Hero and core Product Showcase may use high Brand Expression and large evidence scale.
 
 ## Calibration model
 
-V0.3 introduces ranges where repeated dogfood showed that semantic guidance alone was insufficient.
+V0.3 introduced ranges where repeated dogfood showed that semantic guidance alone was insufficient.
 
-Calibration covers:
+V0.3.1 extends those ranges into a **cross-surface calibration model** through:
 
-- desktop container widths;
-- Hero typography;
-- CTA scale;
-- Product Showcase size;
-- spacing rhythm;
-- Brand Expression Levels;
+`docs/foundations/experience-metrics.md`
+
+Calibration now covers:
+
+- Website container widths and Hero/product evidence scale;
+- Documentation shell, reading measure, navigation density, article spacing;
+- Editorial index/article typography and reading rhythm;
+- Pricing plan/comparison density and stage spacing;
+- Web App shell widths, workspace padding, control and table density;
+- cross-surface Brand Expression Levels;
 - radius/border/depth bands;
-- Product UI density.
+- Chinese/English scale behavior.
 
-Calibration values are **ranges, not tokens**. They should prevent timid framework defaults without forcing every product into one exact visual implementation.
+Calibration values are **ranges, not tokens**. They should prevent timid framework defaults and one-size-fits-all styling without forcing every product into one exact implementation.
 
-## V0.3 success criterion
+## Cross-surface consistency model
 
-FanUI Web V0.3 succeeds if an AI can generate a Homepage, Docs site, Blog, Pricing page, and Web App that:
+Consistency means the surfaces share a design language.
+
+Consistency does **not** mean:
+
+```text
+same max-width
+same H1
+same section padding
+same Card gap
+same control height
+```
+
+The product family should instead preserve shared semantics while adapting operating density to the job.
+
+Reference order for macro spacing is generally:
+
+```text
+Homepage narrative transitions
+>
+Editorial / Pricing stage transitions
+>
+Documentation article transitions
+>
+Product UI task-region transitions
+```
+
+## V0.3.1 success criterion
+
+FanUI Web V0.3.1 succeeds if an AI can generate a Homepage, Docs site, Blog, Pricing page, and Web App that:
 
 - clearly belong to one design family;
 - fit their different tasks and archetypes;
 - avoid generic AI/SaaS template patterns;
 - use confident and proportionate visual scale at wide desktop widths;
+- use page-family-specific spacing, typography, width, and density;
 - preserve Product UI density and workspace usability;
 - show strong real product evidence on product-led websites;
 - express brand without collapsing into decoration;
 - remain usable in both Chinese and English;
 - require substantially less subjective cleanup after generation.
+
+See `docs/FANUI_V0.3.1_REFERENCE_VALIDATION.md` for the current cross-surface reference validation.
