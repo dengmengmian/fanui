@@ -170,9 +170,18 @@
   .blog-body h2{font-size:28px!important;line-height:1.24!important;margin-top:48px!important}
   .blog-body .callout{font-size:17px!important;line-height:1.68!important}
 
-  /* Pricing/category/tabs: local scrolling is allowed; whole-page scrolling is not. */
-  .billing{min-height:44px}
-  .billing button,.billing span{min-height:40px}
+  /* Pricing: segmented control children must stay inside the track's inner box. */
+  .billing{min-height:44px;display:flex;align-items:center}
+  .segmented{
+    width:max-content;height:44px;padding:3px;border-radius:11px;
+    display:inline-flex;align-items:stretch;overflow:hidden;
+  }
+  .segmented span{
+    height:36px!important;min-height:0!important;padding:0 14px;
+    display:flex;align-items:center;justify-content:center;white-space:nowrap;
+    line-height:1;border-radius:7px;
+  }
+  .segmented .active{height:36px!important;min-height:0!important;margin:0;box-shadow:0 2px 7px rgba(32,28,44,.08)}
   .comparison{-webkit-overflow-scrolling:touch}
 
   /* Workspace mobile task bar and icon precision. */
@@ -231,6 +240,7 @@
 
   .page-hero,.pricing-wrap{padding-inline:var(--mobile-gutter)}
   .page-hero h1{font-size:33px}
+  .segmented span{padding-inline:13px}
 
   .app-top{padding-inline:8px}
   .app-top .brand span:last-child{display:none}
@@ -249,5 +259,6 @@
   .article h1{font-size:29px}
   .blog-title{font-size:33px!important}
   .blog-article-head h1{font-size:33px!important}
+  .segmented span{padding-inline:12px}
   .flow-card-v2{min-height:112px}
 }
