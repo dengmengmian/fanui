@@ -111,6 +111,37 @@ Project/Task Context
 
 AI products should organize around task progress and resulting artifacts, not merely separate admin pages for Agents/Runs/Artifacts.
 
+## Calibrated wide-desktop shell metrics
+
+Reference viewport: approximately **1440px**.
+
+Use `docs/foundations/experience-metrics.md` as the cross-surface authority.
+
+Typical Professional / AI Workspace bands:
+
+```text
+Top/global bar: 48–56px
+Primary/global sidebar: 200–240px
+Project/secondary navigator: 232–300px
+Inspector: 280–360px
+Workspace header: 48–56px
+Dense workspace padding: 16–24px
+Normal workspace padding: 24–32px
+Tree/nav row: 30–36px
+Tabs: 36–42px
+Toolbar: 36–42px
+Compact control: 30–34px
+Default control: 34–40px
+Compact table row: 36–40px
+Normal table row: 40–46px
+```
+
+### Shell calibration rule
+
+The useful workspace should dominate the page. Avoid a narrow centered content column floating inside a large application canvas.
+
+Do not apply Website container widths (`1080–1200px`) to the main operational workspace unless the task genuinely benefits from a constrained reading/form width.
+
 ## Common FanUI shell regions
 
 ```text
@@ -235,6 +266,12 @@ fanui:
   needs_inspector: true | false
   context_selector: org | workspace | project | none
   workspace_mode_tabs: ...
+  metrics:
+    top_bar: 48-56
+    primary_sidebar: 200-240
+    secondary_navigator: 232-300
+    inspector: 280-360
+    workspace_padding: 16-24
 ```
 
 The AI should map archetype + hierarchy to regions before styling the shell.
