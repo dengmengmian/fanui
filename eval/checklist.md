@@ -19,17 +19,60 @@ Use this before considering substantial UI work complete.
 - [ ] Domain nouns have not automatically become equal top-level navigation items.
 - [ ] Project-local objects stay project-local when that matches the real workflow.
 
-## Calibration — mandatory for substantial Website work
+## Cross-surface calibration — mandatory
 
-- [ ] Desktop calibration was checked at approximately 1440px.
+- [ ] `docs/foundations/experience-metrics.md` was used for the current page family.
+- [ ] Desktop calibration was checked at approximately 1440px for substantial desktop-first surfaces.
+- [ ] Container width is appropriate to the page family rather than copied from another page.
+- [ ] Title scale is appropriate to the page family rather than copied from Homepage/Product UI.
+- [ ] Major vertical rhythm is appropriate to the page family.
+- [ ] Local spacing is appropriate to the task density.
+- [ ] Primary control height fits the experience family.
+- [ ] Reading measure is intentional for Docs/Editorial.
+- [ ] Visual amplitude is explicitly chosen: Low / Medium / High.
+- [ ] Brand Expression Level is explicitly chosen: Low / Medium / High.
+- [ ] The product family does not use one universal `max-width`, heading scale, `py-*`, card gap, or control height everywhere.
+
+### Homepage calibration
+
 - [ ] Standard content and Wide Product containers use intentional widths rather than arbitrary framework defaults.
 - [ ] Hero typography is selected from the calibrated Marketing range or a deviation is explicitly justified.
 - [ ] Chinese Hero copy uses an appropriate width/scale rather than forced narrow wrapping.
 - [ ] Hero CTA scale is marketing-appropriate rather than copied from Product UI.
 - [ ] Core/Hero product evidence uses Large/Hero scale and is readable without zoom.
-- [ ] Brand Expression Level is explicitly chosen: Low / Medium / High.
 - [ ] Major section spacing follows a deliberate rhythm rather than one repeated section template.
-- [ ] Radius and depth vary semantically by control / surface / overlay / marketing frame.
+
+### Documentation calibration
+
+- [ ] Docs shell uses compact navigation plus a comfortable reading/content column.
+- [ ] Article body is not constrained to a marketing container.
+- [ ] Article headings and spacing are materially smaller/tighter than Homepage Marketing.
+- [ ] Docs body does not inherit compact Product UI typography.
+- [ ] Search, navigation row height, and article rhythm fit repeated retrieval/reading.
+
+### Editorial calibration
+
+- [ ] Blog index and article page use different discovery vs reading compositions.
+- [ ] Article body measure is reading-oriented.
+- [ ] Body size/line-height support sustained reading.
+- [ ] Metadata is visually subordinate to title/summary.
+- [ ] Editorial spacing is more breathable than Product UI but less theatrical than Homepage Hero.
+
+### Pricing calibration
+
+- [ ] Plan group width supports cross-plan comparison.
+- [ ] Plan surfaces are compact enough that meaningful comparison remains visible.
+- [ ] Price, unit, target audience, and CTA hierarchy are clear.
+- [ ] Comparison rows use decision-oriented density rather than marketing spacing.
+- [ ] FAQ/final CTA use distinct but not excessive stage separation.
+
+### Web App calibration
+
+- [ ] Shell regions use Product UI density, not Website-scale controls.
+- [ ] Main workspace uses available canvas rather than a narrow centered marketing container.
+- [ ] Tree/nav rows, tabs, toolbars, and table rows fit sustained professional use.
+- [ ] Inspector/sidebar widths support context without starving the workspace.
+- [ ] Current work receives more area than decorative or summary regions.
 
 ## Hierarchy
 
@@ -162,6 +205,11 @@ Use this before considering substantial UI work complete.
 - [ ] No underscaled content on a large canvas.
 - [ ] No timid product Hero.
 - [ ] No anonymous neutral + accent brand system.
+- [ ] No uniform-spacing product family.
+- [ ] No Marketing-sized Documentation.
+- [ ] No Dashboard-sized Editorial.
+- [ ] No Landing-page Pricing.
+- [ ] No Website-sized Product UI.
 
 ## Final
 
@@ -171,3 +219,4 @@ Use this before considering substantial UI work complete.
 - [ ] The page looks like part of the same product family as other FanUI surfaces without forcing every page type into the same layout.
 - [ ] The result is visually finished, not merely structurally correct.
 - [ ] The calibrated ranges were used as intentional design constraints rather than blindly copied values.
+- [ ] Cross-surface consistency was checked across every implemented FanUI page family, not only the current page in isolation.
