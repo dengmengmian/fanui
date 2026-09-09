@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check, Play } from "lucide-react";
+import { ArrowRight, Check, Menu, Play } from "lucide-react";
 
 export function Brand() {
   return <Link className="brand" href="/"><span className="brand-mark">F</span><span>Flowbit</span></Link>;
@@ -11,8 +11,13 @@ export function SiteHeader() {
       <Brand/>
       <nav className="site-nav" aria-label="Primary"><Link href="/#product">Product</Link><Link href="/docs">Docs</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link></nav>
       <div className="header-actions"><Link className="btn" href="/app">Sign in</Link><Link className="btn btn-primary" href="/app/projects/atlas">Open Flowbit <ArrowRight size={15}/></Link></div>
+      <details className="mobile-site-menu">
+        <summary className="mobile-menu-trigger" aria-label="Open navigation"><Menu size={19}/></summary>
+        <nav className="mobile-site-drawer" aria-label="Mobile primary">
+          <Link href="/#product">Product</Link><Link href="/docs">Docs</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link><Link className="mobile-drawer-secondary" href="/app">Sign in</Link>
+        </nav>
+      </details>
     </div>
-    <nav className="mobile-site-nav" aria-label="Mobile primary"><Link href="/#product">Product</Link><Link href="/docs">Docs</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link></nav>
   </header>;
 }
 
