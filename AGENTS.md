@@ -14,18 +14,19 @@ FanUI exists to help AI-generated web interfaces remain visually coherent, struc
 
 Reference products are evidence for principles. Do not copy proprietary visual assets, copywriting, layouts, exact colors, or exact styles.
 
-## V0.3 boundaries
+## V0.3.1 boundaries
 
 Do:
 
 - codify visual hierarchy, visual finish, density, surfaces, navigation, content composition, page patterns, and anti-patterns;
-- provide calibrated ranges where dogfood proves semantic guidance is insufficient;
+- provide calibrated ranges where dogfood/reference validation proves semantic guidance is insufficient;
 - write rules in a way an AI can execute and verify;
 - explain when a pattern applies and when it does not;
-- distinguish Website, Documentation, Editorial, Pricing, and Web App behavior;
+- distinguish Product Website, Documentation, Editorial, Pricing, and Web App behavior;
+- use `docs/foundations/experience-metrics.md` to preserve cross-surface consistency without cross-surface sameness;
 - classify Web Apps into Management Console / Professional Workspace / Data Application / AI Workspace before shell design;
 - treat task-oriented products as workspace-first when the core value loop requires it;
-- calibrate Website Hero type, container width, CTA scale, product evidence, spacing rhythm, brand expression, radius, and depth;
+- calibrate typography, container width, CTA/control scale, product evidence, spacing rhythm, brand expression, radius, and depth by experience family;
 - keep rules compatible with Chinese and English interfaces;
 - use dogfood findings to refine rules before freezing implementation primitives.
 
@@ -40,6 +41,7 @@ Do not:
 - turn every domain noun into top-level navigation;
 - accept structurally correct but visually unfinished or visibly underscaled UI as FanUI-compliant;
 - silently fall back to framework defaults when FanUI has an explicit calibrated range;
+- use one universal max-width, H1 scale, section padding, card gap, or control height across Homepage, Docs, Blog, Pricing, and Product UI;
 - optimize for visual novelty over product clarity.
 
 ## Rule-writing format
@@ -50,7 +52,7 @@ Whenever possible, a FanUI rule should contain:
 2. **Rule** — what to do.
 3. **Use when** — context where it applies.
 4. **Avoid** — common failure modes.
-5. **Calibration** — range/scale where real dogfood established one.
+5. **Calibration** — range/scale where real dogfood/reference validation established one.
 6. **AI decision** — how an agent chooses between alternatives.
 
 ## Design hierarchy
@@ -63,7 +65,7 @@ When rules conflict, use this order:
 4. Navigation and state legibility
 5. Interaction efficiency
 6. Content readability
-7. Visual scale / calibration fit
+7. Cross-surface density / calibration fit
 8. Visual finish and consistency
 9. Brand expression
 10. Decoration
@@ -74,10 +76,9 @@ Never sacrifice the first six to improve the last two.
 
 Agents should use the installed skill entry point at `skill/SKILL.md`.
 
-For Web Apps, `docs/web-app/archetypes.md` is mandatory before shell implementation.
+For all substantial surfaces, read:
 
-For visual system and calibration, read:
-
+- `docs/foundations/experience-metrics.md`
 - `docs/02-visual-dna.md`
 - `docs/foundations/visual-system.md`
 - `docs/foundations/typography.md`
@@ -86,22 +87,27 @@ For visual system and calibration, read:
 - `docs/foundations/color-expression.md`
 - `docs/foundations/radius-depth.md`
 
+For Web Apps, `docs/web-app/archetypes.md` is mandatory before shell implementation.
+
 For product-led websites, additionally read:
 
 - `docs/website/hero.md`
 - `docs/website/navigation.md`
 - `docs/website/product-showcase.md`
 
+For page-family-specific work, read the matching Documentation / Editorial / Pricing / App Shell / Workspace pattern file.
+
 ## Calibration policy
 
-V0.3 calibrated values are **bands**, not universal constants.
+V0.3.1 calibrated values are **bands**, not universal constants.
 
 Agents should:
 
-1. select a value inside the relevant band;
+1. select a value inside the relevant page-family band;
 2. adapt for copy length, language, viewport, and product character;
 3. document a meaningful deviation when leaving the band;
-4. never copy the exact visual values of a reference product merely because it is a reference.
+4. compare implemented page families against each other so consistency does not collapse into sameness;
+5. never copy the exact visual values of a reference product merely because it is a reference.
 
 ## Completion standard
 
@@ -110,9 +116,9 @@ A UI task is not complete because it renders or because its information architec
 Before completion, the agent should:
 
 1. verify experience/archetype/pattern fit;
-2. verify V0.3 calibration where applicable;
+2. verify page-family calibration and cross-surface consistency;
 3. check visual hierarchy, amplitude, and brand expression;
 4. check FanUI anti-patterns;
 5. evaluate against `eval/checklist.md`;
 6. for substantial work, score with `eval/rubric.md`;
-7. revise if the result is structurally correct but still feels like a wireframe, generic SaaS template, management-console drift, timid Hero, or underscaled large-canvas composition.
+7. revise if the result is structurally correct but still feels like a wireframe, generic SaaS template, management-console drift, timid Hero, underscaled large-canvas composition, or one-size-fits-all product-family styling.
