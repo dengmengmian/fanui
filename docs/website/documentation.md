@@ -94,6 +94,56 @@ Use:
 - predictable image treatment;
 - meaningful whitespace between conceptual sections.
 
+## Calibrated wide-desktop metrics
+
+Reference viewport: approximately **1440px**.
+
+Use `docs/foundations/experience-metrics.md` as the cross-surface authority.
+
+Typical Documentation bands:
+
+```text
+Docs header: 56–64px
+Left navigation: 232–280px
+Right local TOC: 176–224px when present
+Docs-home content: 880–1040px
+Article reading measure: 720–840px
+Search height: 40–44px
+Docs-home search width: ~560–760px
+Nav row: 30–36px
+```
+
+Typography:
+
+```text
+Docs-home title: 30–38px
+Article H1: 32–40px
+Chinese Article H1: 30–38px
+H2: 24–28px
+H3: 18–22px
+Body: 15–17px
+Technical/code UI: 13–14px
+```
+
+Article rhythm:
+
+```text
+Title → intro: 12–20px
+Intro → first content: 28–40px
+H2 top: 40–56px
+H2 bottom: 16–24px
+H3 top: 28–40px
+Paragraph gap: 12–20px
+Code/callout vertical gap: 20–28px
+Previous/Next top: 48–72px
+```
+
+### Calibration rule
+
+Docs should feel denser than marketing and more breathable than Product UI.
+
+Do not reuse Homepage-scale 96–144px vertical gaps inside article flow. Do not shrink docs body into compact 13–14px operational UI typography merely because navigation is dense.
+
 ## Content primitives
 
 FanUI documentation should define coherent patterns for:
@@ -153,6 +203,12 @@ search_priority: high
 local_toc: required | optional | none
 content_mode: learning | reference | task
 code_density: low | medium | high
+metrics:
+  header_height: 56-64
+  left_nav: 232-280
+  article_measure: 720-840
+  body: 15-17
+  h2_top_gap: 40-56
 ```
 
 The AI should design the shell based on retrieval needs, not reuse a generic marketing page.
