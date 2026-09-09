@@ -5,6 +5,12 @@ on:
     branches: [main]
     paths:
       - "dogfood/003/**"
+      - "skill/**"
+      - "docs/foundations/responsive.md"
+      - "docs/website/mobile.md"
+      - "docs/web-app/mobile-workspace.md"
+      - "docs/anti-patterns/v033.md"
+      - "eval/**"
       - ".github/workflows/fanui-dogfood-003.yml"
   workflow_dispatch:
 
@@ -25,5 +31,7 @@ jobs:
           cache-dependency-path: dogfood/003/package.json
       - name: Install dependencies
         run: npm install
+      - name: Verify responsive closure
+        run: npm run verify:responsive
       - name: Build
         run: npm run build
