@@ -6,7 +6,7 @@ FanUI is not primarily a component library. It is a design language, page-patter
 
 ## Current scope
 
-FanUI Web V0.3.3 covers five first-class web experience families:
+FanUI Web V0.3.4 covers five first-class web experience families:
 
 1. Product Website
 2. Documentation
@@ -43,6 +43,8 @@ Primary reference: **Apifox** across website/docs/blog/pricing/product UI. Secon
 
 > **Responsive preserves task hierarchy, not desktop geometry.**
 
+> **Mobile precision preserves access, readability, touch geometry, and icon semantics.**
+
 ## Evolution
 
 ### V0.1 — structure
@@ -63,7 +65,7 @@ Added Product Evidence Fidelity, effective density, readability floor, optical l
 
 ### V0.3.3 — responsive / mobile closure
 
-Dogfood Mobile screenshots showed that Desktop quality does not automatically survive narrow screens. V0.3.3 adds:
+Added:
 
 - Responsive Decision Layer;
 - explicit preserve/stack/reorder/collapse/crop/replace/sheet/drawer transformations;
@@ -74,7 +76,21 @@ Dogfood Mobile screenshots showed that Desktop quality does not automatically su
 - responsive hard-fail gates;
 - mandatory multi-viewport Dogfood acceptance.
 
-See `docs/FANUI_V0.3.3.md`.
+### V0.3.4 — mobile precision closure
+
+Rendered phone dogfood exposed a second-level mobile gap after the main responsive transformation was already correct. V0.3.4 adds:
+
+- single-row mobile Website header + complete navigation drawer;
+- Docs Sidebar → full mobile drawer instead of truncated navigation chips;
+- separate Docs vs Editorial mobile typography scales;
+- category/tab local-scroll rules;
+- code/configuration local horizontal scrolling without destructive wrapping;
+- explicit 375 × 812 small-mobile pressure testing;
+- 44px phone touch geometry for primary/icon-only controls;
+- mobile icon semantic/centering/stroke/baseline invariance;
+- mobile precision anti-patterns and hard-fail gates.
+
+See `docs/foundations/mobile-precision.md`.
 
 ## Repository map
 
@@ -101,7 +117,8 @@ fanui/
 │   │   ├── semantic-product-color.md
 │   │   ├── surface-hierarchy.md
 │   │   ├── iconography.md
-│   │   └── responsive.md
+│   │   ├── responsive.md
+│   │   └── mobile-precision.md
 │   ├── website/
 │   │   ├── homepage.md
 │   │   ├── hero.md
@@ -121,7 +138,8 @@ fanui/
 │   └── anti-patterns/
 │       ├── core.md
 │       ├── v032.md
-│       └── v033.md
+│       ├── v033.md
+│       └── v034.md
 ├── references/
 ├── skill/SKILL.md
 ├── eval/
@@ -138,18 +156,21 @@ The Skill requires agents to:
 4. choose page pattern and hierarchy;
 5. apply cross-surface calibrated metrics;
 6. define responsive transformations for important regions;
-7. check optical balance;
-8. enforce Product Evidence Fidelity and effective density at Desktop and Mobile;
-9. apply semantic color, surface hierarchy, and iconography precision;
-10. preserve Mobile access when Sidebar/Inspector/TOC collapses;
-11. evaluate through FanUI hard gates before completion.
+7. close mobile precision: navigation, surface-specific type, touch targets, local scrolling, 375px pressure, and icon invariance;
+8. check optical balance;
+9. enforce Product Evidence Fidelity and effective density at Desktop and Mobile;
+10. apply semantic color, surface hierarchy, and iconography precision;
+11. preserve Mobile access when Sidebar/Inspector/TOC collapses;
+12. evaluate through FanUI hard gates before completion.
 
 See `skill/SKILL.md`.
 
 ## Status
 
-**FanUI Web V0.3.3 — Responsive / Mobile Closure.**
+**FanUI Web V0.3.4 — Mobile Precision Closure.**
 
 Specification rules are dogfooded against `dogfood/003` across Homepage, Pricing, Docs Home/Article, Blog Index/Article, Product Home, AI/Professional Workspace, and Chinese stress surface.
 
-Rendered authority now requires multi-viewport acceptance, including **1440 × 1000, 768 × 1024, and 390 × 844**, with a 375 × 812 narrow-edge spot check.
+Mechanical validation now gates both Responsive Transformation and Mobile Precision before `next build`.
+
+Rendered authority requires multi-viewport acceptance, including **1440 × 1000, 768 × 1024, 390 × 844, and 375 × 812**. A passing build proves implementation integrity, not final visual acceptance.
