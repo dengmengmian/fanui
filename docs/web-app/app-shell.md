@@ -8,10 +8,36 @@ The application shell maintains orientation across complex products. It is the p
 - What context am I in?
 - What can I switch?
 - What is global vs local?
+- Where does the actual work happen?
+
+## Mandatory first step: classify the Web App
+
+Before choosing Sidebar / Topbar / Rail / Tree / Inspector, read:
+
+`docs/web-app/archetypes.md`
+
+Classify the product as one primary archetype:
+
+- `management_console`
+- `professional_workspace`
+- `data_application`
+- `ai_workspace`
+
+A secondary archetype may be added when necessary.
+
+Do not design the shell before this classification exists.
+
+## Core warning
+
+> **Do not default task-oriented products to management-console information architecture.**
+
+A domain containing nouns such as `Projects`, `Agents`, `Runs`, `Artifacts`, `Models`, or `Users` does not mean every noun should become an equal top-level sidebar destination.
+
+If users primarily create, edit, execute, debug, review, or supervise work inside a project/object context, prefer a workspace-first shell.
 
 ## Shell is a hierarchy model
 
-Do not choose Sidebar / Topbar / Rail based on fashion. Choose them based on information architecture.
+Do not choose Sidebar / Topbar / Rail based on fashion. Choose them based on information architecture and archetype.
 
 A complex professional Web App commonly has levels such as:
 
@@ -26,6 +52,65 @@ Organization / Team
 
 The UI should not flatten all levels into one sidebar.
 
+## Shell patterns by archetype
+
+### Management Console
+
+Typical:
+
+```text
+Global Navigation
+→ Resource Collection
+→ Table/List
+→ Resource Detail
+```
+
+Sidebar destinations may legitimately represent independent administrative resource types.
+
+### Professional Workspace
+
+Typical:
+
+```text
+Global Navigation
+→ Project Context
+→ Object Tree / Secondary Navigation
+→ Main Workspace
+→ Tabs / Toolbar
+→ Optional Inspector / Result Panel
+```
+
+The workspace is the product center of gravity.
+
+### Data Application
+
+Typical:
+
+```text
+Dataset/Object Context
+→ View Selector
+→ Filter/Search
+→ Table/Board/Grid
+→ Record Detail / Inspector
+```
+
+The collection/view is the workspace.
+
+### AI Workspace
+
+Typical:
+
+```text
+Project/Task Context
+→ Goal / Workflow / Agent
+→ Execution State
+→ Steps / Tools
+→ Artifact / Result
+→ Approval / Intervention
+```
+
+AI products should organize around task progress and resulting artifacts, not merely separate admin pages for Agents/Runs/Artifacts.
+
 ## Common FanUI shell regions
 
 ```text
@@ -38,7 +123,7 @@ Optional Inspector / Detail Panel
 Transient Overlays
 ```
 
-These may map to different physical arrangements.
+These may map to different physical arrangements depending on archetype.
 
 ## Sidebar
 
@@ -55,11 +140,12 @@ Sidebar rules:
 - group labels should be weaker than destinations;
 - icons should support scanning, not decorate;
 - avoid excessive top-level destinations;
-- project/workspace selectors should be visually distinct from module navigation.
+- project/workspace selectors should be visually distinct from module navigation;
+- do not use the sidebar as a dumping ground for every domain noun.
 
 ## Tree / object navigation
 
-A tree is appropriate when the user operates on hierarchical objects such as APIs, files, folders, tests, schemas, projects, or assets.
+A tree is appropriate when the user operates on hierarchical objects such as APIs, files, folders, tests, schemas, projects, workflows, assets, or artifacts.
 
 Tree rules:
 
@@ -112,6 +198,19 @@ Good use:
 
 Do not add an inspector merely to fill empty horizontal space.
 
+## Dashboard/home
+
+A dashboard is optional.
+
+Use it only when it answers meaningful cross-context questions such as:
+
+- What needs attention now?
+- What changed?
+- Where should I continue?
+- What is running or failing?
+
+Professional Workspace and AI Workspace products may open directly into the last/current workspace.
+
 ## Responsive behavior
 
 For narrow screens:
@@ -124,14 +223,18 @@ For narrow screens:
 ## AI decision model
 
 ```yaml
-experience: web_app
-hierarchy_levels: ...
-primary_switch_frequency: high | medium | low
-needs_sidebar: true | false
-needs_tree: true | false
-needs_inspector: true | false
-context_selector: org | workspace | project | none
-workspace_mode_tabs: ...
+fanui:
+  experience: web_app
+  primary_archetype: management_console | professional_workspace | data_application | ai_workspace
+  secondary_archetype: ... | none
+  core_value_loop: ...
+  default_home: dashboard | workspace | collection | last_context
+  hierarchy_levels: ...
+  needs_sidebar: true | false
+  needs_tree: true | false
+  needs_inspector: true | false
+  context_selector: org | workspace | project | none
+  workspace_mode_tabs: ...
 ```
 
-The AI should map hierarchy to regions before styling the shell.
+The AI should map archetype + hierarchy to regions before styling the shell.
