@@ -11,9 +11,12 @@ Examples:
 - workflow composition → workflow / nodes / route semantics;
 - bounded authority → shield / lock / permission semantics;
 - history / versions → history / clock / version semantics;
-- continue / open downstream → directional arrow semantics.
+- continue / open downstream → directional arrow semantics;
+- documentation navigation → sidebar / panel / navigation semantics;
+- environment context → layers / environment semantics;
+- integrations → plug / connection semantics.
 
-Avoid approximate metaphors when a direct one exists. A Git branch icon should not stand in for a generic workflow merely because both contain branches. A robot icon should not stand in for agent permissions or boundaries.
+Avoid approximate metaphors when a direct one exists. A Git branch icon should not stand in for a generic workflow merely because both contain branches. A robot icon should not stand in for agent permissions or boundaries. A decorative sparkle should not replace a direct workspace or navigation metaphor when one exists.
 
 ## 2. Icon + text optical alignment
 
@@ -96,7 +99,33 @@ Icon-only controls require:
 
 Do not make ambiguous product concepts icon-only.
 
-## 7. Anti-patterns
+Desktop glyph geometry and mobile touch geometry are separate concerns. On phone widths, keep the glyph compact while increasing the clickable control:
+
+```text
+mobile touch target  40–44px minimum
+mobile glyph          16–19px typical
+stroke                1.7–2.0
+```
+
+Do not enlarge the icon to fill the larger hit area.
+
+## 7. Breakpoint invariance
+
+A correct desktop icon can still fail on Mobile if breakpoint CSS changes its box geometry.
+
+At each responsive transformation verify:
+
+- semantic meaning is unchanged unless the control itself changed role;
+- the glyph remains centered in the control;
+- peer glyph size/stroke remains consistent;
+- icon + wrapped text keeps first-line alignment;
+- mobile selectors do not overwrite `display`, `place-items`, `line-height`, `margin`, or color of dedicated icon boxes;
+- drawer/menu icons use direct navigation semantics;
+- hidden desktop controls that reappear in a mobile drawer do not acquire decorative or approximate replacement icons.
+
+For Mobile Precision also read `docs/foundations/mobile-precision.md`.
+
+## 8. Anti-patterns
 
 ### Icon Confetti
 Icons appear beside nearly every label without improving scanning or meaning.
@@ -113,13 +142,21 @@ A broad CSS selector accidentally changes the centering, margin, line-height, or
 ### Text-block Centering
 An icon is vertically centered against an entire title + description block, leaving it visibly lower than the title anchor.
 
+### Tiny Icon Target
+An icon-only control exposes only the SVG-sized hit area instead of a practical 40–44px touch target on phone widths.
+
+### Mobile Icon Regression
+A breakpoint makes a previously correct icon visibly off-center, semantically approximate, or inconsistent with its peers.
+
 ## Completion check
 
-For every repeated icon + text pattern, verify at rendered size:
+For every repeated icon + text pattern and icon-only control, verify at rendered size:
 
 1. semantic meaning is immediately defensible;
 2. glyph is centered inside its own box;
 3. icon box aligns with the first line of text;
 4. peer icons share size/stroke/box geometry;
 5. no broad CSS rule overrides icon-specific layout;
-6. the pattern still works with Chinese labels and wrapping.
+6. icon-only controls have adequate hit targets and accessible labels;
+7. the pattern still works with Chinese labels and wrapping;
+8. the same checks pass at 390px and 375px when the pattern appears on Mobile.
