@@ -118,4 +118,65 @@
 
 **Why it fails:** visual decisions become arbitrary.
 
-**Correction:** experience family → task → hierarchy → pattern → component → styling → evaluation.
+**Correction:** experience family → Web App archetype when applicable → task → hierarchy → pattern → component → visual system → evaluation.
+
+## 16. Management Console Drift
+
+**Symptom:** a product whose core value is creating, editing, executing, debugging, reviewing, or supervising work is organized primarily as Overview + resource-list pages.
+
+Typical drift:
+
+```text
+Overview
+Projects
+Agents
+Runs
+Artifacts
+Settings
+```
+
+when the real product loop happens inside a project/workflow/task.
+
+**Why it fails:** the product becomes an administration interface instead of a working environment. Context is repeatedly lost and users spend navigation effort moving between nouns rather than completing work.
+
+**Correction:** classify the Web App archetype. For Professional/AI Workspace products, make project/task/workspace context primary and move administrative collections to supporting surfaces.
+
+## 17. Noun-trap Navigation
+
+**Symptom:** every domain noun automatically becomes a first-level navigation destination.
+
+**Why it fails:** domain vocabulary is mistaken for information architecture.
+
+**Correction:** organize navigation around hierarchy, context, and the core value loop. Keep project-local objects inside project navigation when that reflects how work is actually performed.
+
+## 18. Same-volume Page
+
+**Symptom:** every section uses similar heading size, card treatment, border strength, spacing, and screenshot scale.
+
+**Why it fails:** the page is orderly but visually flat. Nothing feels intentionally dominant or subordinate.
+
+**Correction:** define visual amplitude. Create quiet, medium, and strong regions. Use one primary visual anchor and vary composition instead of adding random decoration.
+
+## 19. Product Screenshot as Thumbnail
+
+**Symptom:** a product-led website uses small browser-frame screenshots that are technically present but unreadable at normal scale.
+
+**Why it fails:** the product cannot function as evidence. The reader sees a placeholder for proof rather than proof itself.
+
+**Correction:** classify showcase importance and scale. Core/hero claims normally require Large/Hero product evidence, tighter cropping, and readable UI details.
+
+## 20. Border-grid / Wireframe Finish
+
+**Symptom:** nearly every region is a white rectangle with a subtle gray border, producing a clean but wireframe-like finish.
+
+**Why it fails:** border becomes the only hierarchy mechanism and the interface lacks visual depth or product character.
+
+**Correction:** mix open regions, surface shifts, spacing, typography, selective borders, and explicit selection states. Not every semantic group requires a surrounding rectangle.
+
+## 21. Generic Purple SaaS Identity
+
+**Symptom:** the design's only brand distinction is a purple/blue primary button and a few tinted badges.
+
+**Why it fails:** changing one color would make the entire product indistinguishable from a generic template.
+
+**Correction:** create product character through composition, typography, surface language, product-specific visuals, interaction patterns, and restrained brand motifs—not color alone.
