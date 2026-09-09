@@ -6,7 +6,14 @@ export function Brand() {
 }
 
 export function SiteHeader() {
-  return <header className="site-header"><div className="site-header-inner"><Brand/><nav className="site-nav" aria-label="Primary"><Link href="/#product">Product</Link><Link href="/docs">Docs</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link></nav><div className="header-actions"><Link className="btn" href="/app">Sign in</Link><Link className="btn btn-primary" href="/app/projects/atlas">Open Flowbit <ArrowRight size={15}/></Link></div></div></header>;
+  return <header className="site-header">
+    <div className="site-header-inner">
+      <Brand/>
+      <nav className="site-nav" aria-label="Primary"><Link href="/#product">Product</Link><Link href="/docs">Docs</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link></nav>
+      <div className="header-actions"><Link className="btn" href="/app">Sign in</Link><Link className="btn btn-primary" href="/app/projects/atlas">Open Flowbit <ArrowRight size={15}/></Link></div>
+    </div>
+    <nav className="mobile-site-nav" aria-label="Mobile primary"><Link href="/#product">Product</Link><Link href="/docs">Docs</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link></nav>
+  </header>;
 }
 
 export function SiteFooter() {
