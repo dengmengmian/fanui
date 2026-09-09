@@ -2,6 +2,8 @@
 
 Responsive design in FanUI is not desktop compression. It is a controlled transformation of hierarchy, evidence, navigation, and interaction as available width changes.
 
+After defining the main transformation strategy, always continue with `docs/foundations/mobile-precision.md` for phone-level navigation, typography, code, touch, overflow, and icon precision.
+
 ## Viewport classes
 
 Use these as validation bands, not device-brand breakpoints:
@@ -23,6 +25,8 @@ Reference acceptance matrix:
 390 × 844     Mobile
 375 × 812     Small mobile
 ```
+
+390px is not the minimum acceptance width. A design that only works at 390px and breaks at 375px is unfinished.
 
 ## Transformation vocabulary
 
@@ -68,7 +72,25 @@ If a sidebar, inspector, TOC, environment selector, or project navigator disappe
 
 `display:none` is not an information architecture strategy.
 
-### 4. Touch targets
+### 4. Mobile persistent chrome must compress first
+
+Prefer one primary mobile header row plus a drawer/sheet over stacking multiple permanent navigation rows.
+
+Typical transformation:
+
+```text
+Desktop Website
+Brand | Primary nav | Secondary action | CTA
+
+Mobile Website
+Brand | CTA | Menu
+              ↓
+           Drawer
+```
+
+For documentation, a complex desktop sidebar should normally become a full navigation drawer rather than a partial horizontal chip strip.
+
+### 5. Touch targets
 
 For mobile controls:
 
@@ -79,39 +101,45 @@ horizontal gutter        16–20px
 control gap              8–12px
 ```
 
-Visual glyph size may remain 14–18px inside the larger touch target.
+Visual glyph size may remain 14–19px inside the larger touch target.
 
-### 5. Mobile typography
+### 6. Mobile typography is surface-specific
 
-Typical mobile starting bands:
+Do not use one phone type scale across Marketing, Docs, Editorial, and Product UI.
+
+Starting bands:
 
 ```text
-Website Hero             38–44px
-Website section H2       30–36px
-Page title               30–38px
-Lead                     16–18px
-Body                     15–17px
+Website Hero             34–42px
+Website section H2       29–34px
+Website Lead             16–17px
+Docs Home H1             28–32px
+Docs Article H1          29–33px
+Docs H2                  23–26px
+Docs Body                15.5–16.5px
+Editorial Index Title    33–38px
+Editorial Article H1     33–38px
+Editorial Body           17.5–19px
 Product primary text     13–15px
-Product metadata         11.5–13px
-Docs body                16–17px
-Editorial body           16.5–18px
+Product metadata         11–12.5px
 ```
 
-Do not preserve 56–64px desktop display type when it creates unstable 3–5 word line fragments.
+Documentation optimizes retrieval and task reading. Editorial may breathe more.
 
-### 6. Section rhythm compresses, hierarchy remains
+### 7. Section rhythm compresses, hierarchy remains
 
 Desktop 96–144px vertical bands usually compress to roughly 64–88px on mobile. Local gaps compress less aggressively.
 
 Do not create giant desktop-style whitespace around mobile content.
 
-### 7. Local horizontal scroll is allowed when semantically correct
+### 8. Local horizontal scroll is allowed when semantically correct
 
 Good uses:
 
 - category tabs;
 - comparison tables;
 - compact secondary tab bars;
+- code/configuration blocks;
 - timeline/history strips.
 
 Bad uses:
@@ -119,6 +147,23 @@ Bad uses:
 - the entire page;
 - core paragraph reading;
 - a desktop workspace screenshot that should have transformed.
+
+Code is not prose: preserve code formatting and use internal horizontal scroll rather than destructive wrapping.
+
+### 9. Icon precision survives breakpoints
+
+Desktop icon correctness does not automatically carry over to Mobile.
+
+At phone widths verify:
+
+- semantic glyph still matches the action/concept;
+- peer glyphs retain consistent size and stroke;
+- glyph remains optically centered inside larger touch targets;
+- icon + wrapped text still aligns to the first-line information anchor;
+- mobile CSS does not override icon-box display, line-height, or margin;
+- icon-only controls retain accessible labels and practical hit areas.
+
+Read `iconography.md` and `mobile-precision.md` together.
 
 ## Responsive reasoning template
 
@@ -142,14 +187,23 @@ responsive:
   product_evidence:
     strategy: crop | stack | replace
     readable_without_zoom: true
+  chrome:
+    persistent_rows: 1
   touch_targets: checked
+  icon_precision: checked
+  small_mobile_375: checked
 ```
 
 ## Hard failures
 
 - Desktop evidence is merely scaled until unreadable.
 - A two-column Marketing section remains two cramped columns below ~560px.
-- Essential sidebar/inspector navigation is removed without replacement access.
+- Essential sidebar/inspector/navigation is removed without replacement access.
 - Core actions are smaller than practical touch targets.
 - Mobile page develops horizontal document-level overflow.
 - Product Workspace becomes a long accidental desktop canvas rather than a deliberate mobile task flow.
+- Website keeps a double-decker persistent mobile header without a strong reason.
+- Docs replaces a complex sidebar with an incomplete chip strip.
+- Code/configuration semantics are broken by ordinary prose wrapping.
+- A repeated icon/control pattern regresses in centering or semantics only at Mobile widths.
+- 375×812 produces header collision, tab wrapping, or document-level overflow.
