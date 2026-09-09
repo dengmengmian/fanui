@@ -33,6 +33,8 @@ Editorial header / category navigation
 → Newsletter / product CTA (restrained)
 ```
 
+The index may expose categories prominently, but category navigation should remain more content-oriented and lower-pressure than the primary Product Website navigation.
+
 ## Article card
 
 A useful article card typically carries:
@@ -63,6 +65,60 @@ Article body
 Related content
 Low-pressure product/newsletter CTA
 ```
+
+## Calibrated wide-desktop metrics
+
+Reference viewport: approximately **1440px**.
+
+Use `docs/foundations/experience-metrics.md` as the cross-surface authority.
+
+### Blog index
+
+```text
+Standard container: 1080–1200px
+Category/navigation band: 44–56px
+Featured composition gap: 48–72px
+Major index section separation: 56–88px
+Article grid/list gap: 24–36px
+Index/page title: 40–52px
+Featured article title: 32–44px
+Normal article title: 18–24px
+Summary: 15–17px
+Metadata/category: 12–14px
+```
+
+### Article page
+
+```text
+Article header container: 880–1040px
+Article title: 44–58px
+Chinese article title: 40–54px
+Deck/summary: 18–21px
+Body: 16–18px
+Body line-height: ~1.75–1.9
+Body measure: 680–760px
+Hero/cover max width: 960–1160px when useful
+```
+
+Editorial rhythm:
+
+```text
+Category → title: 12–20px
+Title → deck: 20–28px
+Deck → metadata: 20–28px
+Metadata → cover/body: 32–56px
+Paragraph gap: 16–24px
+H2 top: 48–64px
+H3 top: 32–44px
+Related content top: 64–96px
+End CTA/newsletter separation: 72–112px
+```
+
+### Calibration rule
+
+Editorial should be more breathable than Product UI and more reading-driven than Homepage Marketing.
+
+Do not make every article a same-sized Card. Do not use compact 14px app typography as the long-form body. Do not create Homepage-scale display type for ordinary article cards.
 
 ## Editorial typography
 
@@ -121,6 +177,12 @@ content_priority: discover | read | update | convert
 featured_story: true | false
 category_nav: true | false
 technical_content: true | false
+metrics:
+  index_container: 1080-1200
+  article_body_measure: 680-760
+  article_title: 44-58
+  body: 16-18
+  paragraph_gap: 16-24
 ```
 
 The AI should optimize article pages for reading and index pages for discovery.
