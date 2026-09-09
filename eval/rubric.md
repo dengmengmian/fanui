@@ -6,11 +6,12 @@ This rubric evaluates whether a web interface follows FanUI strongly enough to s
 
 Total: **100 points**.
 
-V0.3 explicitly evaluates three dogfood failures:
+V0.3.1 explicitly evaluates four dogfood/reference failures:
 
 1. choosing the wrong Web App archetype;
 2. producing structurally correct but visually unfinished UI;
-3. using safe-but-timid visual scale, spacing, and brand expression on wide desktop pages.
+3. using safe-but-timid visual scale, spacing, and brand expression on wide desktop pages;
+4. applying one generic spacing/typography/container system across Homepage, Docs, Blog, Pricing, and Product UI.
 
 ## 1. Information Hierarchy — 15
 
@@ -33,7 +34,7 @@ V0.3 explicitly evaluates three dogfood failures:
 
 ## 2. Experience / Archetype Fit — 15
 
-Evaluate whether the page structure matches the product's actual value loop.
+Evaluate whether the page structure matches the product's actual value loop and page family.
 
 For Web App, explicitly classify:
 
@@ -54,6 +55,8 @@ For Website/Docs/Editorial/Pricing, evaluate whether the correct experience fami
 ### Major deduction
 
 A task-oriented product designed mainly as a generic management console should score **0–5** here unless a strong business reason justifies it.
+
+A Docs/Blog/Pricing surface that is materially implemented as a generic Homepage section set should also receive a major deduction.
 
 ## 3. Task / Conversion Effectiveness — 15
 
@@ -86,17 +89,49 @@ Full score requires:
 - product evidence receives appropriate visual scale;
 - wide-desktop content scale is proportionate to the canvas;
 - Marketing / Product / Docs / Editorial typography uses the correct calibrated mode;
+- container width and reading measure fit the experience family;
+- major and local spacing fit the experience family;
 - border, surface, spacing, and typography are balanced;
 - the interface does not look like a polished wireframe;
 - brand character exists beyond one accent color;
 - Brand Expression Level fits the experience.
 
-For a product-led Homepage at ~1440px, specifically check:
+### Cross-surface calibration checks
+
+For products implementing multiple FanUI families, explicitly compare:
+
+```text
+Homepage
+Documentation
+Editorial / Blog
+Pricing
+Web App
+```
+
+A strong product family should share design language while changing operating density.
+
+Check that:
+
+- Homepage uses confident Marketing scale and chapter rhythm;
+- Docs uses compact navigation + comfortable reading rhythm;
+- Editorial uses discovery/reading rhythm and narrower article measure;
+- Pricing uses dense decision/comparison rhythm;
+- Product UI uses medium-compact operational density and full useful canvas.
+
+Using the same `max-width`, H1 size, section padding, card gap, and button height everywhere is a calibration failure, not consistency.
+
+### Homepage-specific check at ~1440px
 
 - Hero display is confidently scaled relative to the viewport;
 - Hero CTA is not merely an internal Product UI button reused in marketing;
 - core product evidence is Large/Hero scale and inspectable without zoom;
 - standard and Wide Product containers are intentional rather than arbitrary framework defaults.
+
+### Calibration scoring guidance
+
+- **13–15:** uses calibrated ranges intentionally for the current family and remains coherent with other product surfaces; deviations are justified.
+- **9–12:** generally correct but one or two important scales/rhythms remain timid, generic, or borrowed from another page family.
+- **0–8:** materially ignores FanUI calibration, uses a one-size-fits-all spacing/type system, or looks underscaled/anonymous/template-like.
 
 Deduct for:
 
@@ -107,13 +142,12 @@ Deduct for:
 - anonymous neutral + accent branding;
 - timid Hero scale;
 - underscaled content on large canvas;
-- monotonous composition.
-
-### Calibration scoring guidance
-
-- **13–15:** uses calibrated ranges intentionally; deviations are coherent and justified.
-- **9–12:** generally correct but one or two important scales remain timid/generic.
-- **0–8:** wide desktop page materially ignores FanUI calibration and looks underscaled, anonymous, or template-like.
+- monotonous composition;
+- uniform-spacing product family;
+- Marketing-sized Documentation;
+- Dashboard-sized Editorial;
+- Landing-page Pricing;
+- Website-sized Product UI.
 
 ## 5. Layout & Navigation — 10
 
@@ -125,7 +159,8 @@ Evaluate:
 - current context;
 - navigation depth;
 - workspace structure where relevant;
-- website header scale and information density where relevant.
+- website header scale and information density where relevant;
+- reading/content measure where relevant.
 
 Full score requires users to understand location/context without explanation.
 
@@ -138,7 +173,8 @@ Full score:
 - page does not feel visually noisy;
 - whitespace supports structure rather than pretending to be quality;
 - operational UI remains compact while page composition can breathe;
-- large whitespace is earned by large type, product evidence, reading, or narrative separation.
+- large whitespace is earned by large type, product evidence, reading, or narrative separation;
+- the experience family has the correct operating density.
 
 ## 7. Surface / Component Semantics — 7
 
@@ -158,7 +194,7 @@ Evaluate:
 
 - hierarchy;
 - calibrated scale for the current experience mode;
-- line length;
+- line length/reading measure;
 - paragraph rhythm;
 - metadata treatment;
 - code/technical text where relevant;
@@ -175,7 +211,8 @@ Full score requires:
 - semantic state colors are used consistently;
 - decorative colors are separated from operational semantics;
 - brand identity is not dependent on accent color alone;
-- Homepage may be expressive while Workspace remains operationally calm.
+- Homepage may be expressive while Workspace remains operationally calm;
+- Docs/Editorial/Pricing inherit the same brand family without copying Homepage intensity.
 
 ## 10. Interaction Feedback & Accessibility — 5
 
@@ -210,5 +247,6 @@ Regardless of numeric score, do not mark a result FanUI-compliant when any of th
 - accessibility prevents keyboard/focus use of key interactions;
 - the design is primarily decorative imitation with little product evidence;
 - a product-led Homepage repeatedly uses unreadable thumbnail-scale product UI as core evidence;
-- a wide-desktop product Homepage is materially underscaled across Hero type, CTA, and primary evidence without an intentional reason;
+- a wide-desktop Product Homepage is materially underscaled across Hero type, CTA, and primary evidence without an intentional reason;
+- a multi-surface product materially applies the same Homepage-like or generic framework spacing/type/container system to Docs, Blog, Pricing, and Product UI;
 - generated layout breaks materially in Chinese or common English copy.
