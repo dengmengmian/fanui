@@ -1,10 +1,10 @@
 # FanUI Agent Instructions
 
-This repository defines an AI-native UI design system. Agents must preserve the distinction between **design rules**, **calibration bands**, **responsive transformations**, **fidelity gates**, and future **implementation tokens**.
+This repository defines an AI-native UI design system. Agents must preserve the distinction between **design rules**, **calibration bands**, **responsive transformations**, **mobile precision rules**, **fidelity gates**, and future **implementation tokens**.
 
 ## Mission
 
-FanUI exists to help AI-generated Web UI feel structurally correct, visually finished, realistically operational, responsive by design, and coherent across Website, Docs, Blog, Pricing, and Product UI.
+FanUI exists to help AI-generated Web UI feel structurally correct, visually finished, realistically operational, responsive by design, mobile-precise, and coherent across Website, Docs, Blog, Pricing, and Product UI.
 
 ## Reference priority
 
@@ -14,7 +14,7 @@ FanUI exists to help AI-generated Web UI feel structurally correct, visually fin
 
 References are evidence for principles. Do not copy proprietary assets, exact layouts, exact colors, or copywriting.
 
-## V0.3.3 boundaries
+## V0.3.4 boundaries
 
 Do:
 
@@ -22,6 +22,7 @@ Do:
 - classify Web App archetype before shell design;
 - use page-family calibration bands instead of one generic spacing/type recipe;
 - define responsive transformations explicitly rather than relying on framework breakpoints alone;
+- close Mobile Precision after the main responsive transformation is structurally correct;
 - reason about optical balance inside the remaining canvas;
 - require Product Evidence Fidelity for Core/Hero product visuals at Desktop and Mobile;
 - require realistic state, data, context, navigation, actions, and semantic roles in Product evidence;
@@ -31,6 +32,14 @@ Do:
 - make Desktop Professional/AI Workspace own remaining viewport height;
 - transform Mobile Workspace into a deliberate sequential/temporary-pane task model;
 - preserve replacement access when Sidebar, Inspector, TOC, or Navigator collapses;
+- use a single persistent Website phone header row plus a complete drawer by default;
+- transform complex Docs navigation into a complete drawer/selector path rather than a truncated chip subset;
+- keep Docs and Editorial mobile typography distinct;
+- preserve code/configuration formatting through local horizontal scroll;
+- use local scroll for tabs/categories when wrapping would destabilize navigation chrome;
+- verify 44px-class touch targets and compact centered glyphs for phone icon controls;
+- verify icon semantic fit, optical centering, first-line alignment, stroke consistency, and breakpoint invariance;
+- pressure-test primary routes at both 390×844 and 375×812;
 - use idea-bearing Editorial visuals rather than placeholder gradient tiles;
 - dogfood rules before freezing them into tokens/components.
 
@@ -45,6 +54,13 @@ Do not:
 - preserve cramped Desktop split layouts below mobile width;
 - allow document-level horizontal scrolling as a responsive solution;
 - allow Runtime/console stacking to accidentally take over a Mobile page;
+- keep a double-decker permanent Website header on phone without a strong task reason;
+- replace a complex Docs sidebar with a partial row of navigation chips;
+- use Blog-scale typography in task-oriented Docs;
+- wrap code/configuration as prose merely to eliminate all local horizontal movement;
+- let category/tab navigation collapse into unstable multi-row chrome;
+- expose a tiny SVG-sized hit target for an icon-only phone control;
+- allow Mobile CSS to regress icon centering, semantics, stroke, or first-line alignment;
 - allow Docs content to hug a sidebar while the opposite field is unused;
 - accept a Desktop Professional/AI Workspace with a large blank region below its core working area;
 - use giant article cover areas without meaningful editorial content;
@@ -57,7 +73,7 @@ Do not:
 
 Use `skill/SKILL.md` as the operational entry point.
 
-For substantial UI work, the V0.3.3 foundation set includes:
+For substantial UI work, the V0.3.4 foundation set includes:
 
 - `docs/foundations/experience-metrics.md`
 - `docs/foundations/fidelity-density.md`
@@ -66,6 +82,7 @@ For substantial UI work, the V0.3.3 foundation set includes:
 - `docs/foundations/surface-hierarchy.md`
 - `docs/foundations/iconography.md`
 - `docs/foundations/responsive.md`
+- `docs/foundations/mobile-precision.md`
 - existing Visual DNA / typography / layout / spacing / color / depth foundations.
 
 For Website/Docs/Editorial/Pricing mobile behavior also read `docs/website/mobile.md`.
@@ -82,6 +99,7 @@ Read anti-pattern sets:
 - `docs/anti-patterns/core.md`
 - `docs/anti-patterns/v032.md`
 - `docs/anti-patterns/v033.md`
+- `docs/anti-patterns/v034.md`
 
 ## Design hierarchy
 
@@ -91,16 +109,18 @@ When rules conflict, use this order:
 2. Experience / Web App archetype fit
 3. Information hierarchy and current context
 4. Responsive task/access preservation
-5. Interaction efficiency and authority
-6. Readability
-7. Product Evidence Fidelity / operational credibility
-8. Optical composition and effective density
-9. Cross-surface calibration
-10. Visual finish / surface hierarchy / component precision
-11. Brand expression
-12. Decoration
+5. Mobile navigation/access completeness
+6. Interaction efficiency and authority
+7. Readability
+8. Product Evidence Fidelity / operational credibility
+9. Optical composition and effective density
+10. Cross-surface calibration
+11. Component precision / icon semantics / touch geometry
+12. Visual finish / surface hierarchy
+13. Brand expression
+14. Decoration
 
-Never sacrifice the first eight to improve the last two.
+Never sacrifice the first ten to improve the last four.
 
 ## Completion standard
 
@@ -109,15 +129,19 @@ Before completion:
 1. classify experience/archetype;
 2. load relevant pattern and calibration;
 3. define responsive transformations;
-4. validate 1440 / 768 / 390-class behavior where materially relevant;
-5. check optical layout;
-6. check Product Evidence Fidelity at Desktop and Mobile when applicable;
-7. check effective density/readability floor;
-8. check semantic product color and iconography precision;
-9. check viewport ownership / Mobile Workspace or Editorial visual rules where applicable;
-10. check anti-pattern documents;
-11. evaluate with `eval/checklist.md`;
-12. score major work with `eval/rubric.md`;
-13. revise on any hard failure.
+4. apply `mobile-precision.md` after structural responsive work;
+5. validate 1440 / 768 / 390 / 375-class behavior where materially relevant;
+6. verify one-row Website mobile chrome and complete Docs/navigation replacement paths;
+7. verify surface-specific Mobile typography, local-scrolling strategy, and code semantics;
+8. verify touch targets and icon semantics/centering/first-line alignment at Desktop and Mobile;
+9. check optical layout;
+10. check Product Evidence Fidelity at Desktop and Mobile when applicable;
+11. check effective density/readability floor;
+12. check semantic product color;
+13. check viewport ownership / Mobile Workspace or Editorial visual rules where applicable;
+14. check anti-pattern documents;
+15. evaluate with `eval/checklist.md`;
+16. score major work with `eval/rubric.md`;
+17. revise on any hard failure.
 
-Rendered screenshot review remains the visual authority. A passing build proves code validity, not FanUI visual acceptance.
+Rendered screenshot review remains the visual authority. A passing build proves code validity and mechanical rule wiring, not FanUI visual acceptance.
