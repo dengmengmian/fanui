@@ -20,7 +20,7 @@ Use this checklist before calling a substantial FanUI page complete.
 
 ## C. Responsive transformation
 
-Read `docs/foundations/responsive.md`.
+Read `docs/foundations/responsive.md` and `docs/foundations/mobile-precision.md`.
 
 - [ ] Page has been checked at 1440, 1024, 768, 390, and 375-class widths when materially relevant.
 - [ ] Important regions have deliberate `preserve / stack / reorder / collapse / scroll / crop / replace / sheet / drawer` strategies.
@@ -33,6 +33,22 @@ Read `docs/foundations/responsive.md`.
 - [ ] Mobile typography remains stable rather than producing word-by-word headings.
 - [ ] Product evidence remains readable without pinch zoom.
 
+### C1. Mobile precision closure
+
+- [ ] Website phone header uses one persistent primary row unless a second row has a strong task reason.
+- [ ] Website primary navigation remains reachable through a complete drawer/menu after collapse.
+- [ ] Docs desktop sidebar becomes a complete drawer/selector path rather than a truncated chip subset.
+- [ ] Docs and Editorial use different mobile typography scales.
+- [ ] Docs task-reading type does not drift into oversized Editorial scale.
+- [ ] Category/tab strips remain one line and use intentional local scroll/collapse instead of unstable wrapping.
+- [ ] Code/configuration preserves formatting and scrolls internally rather than wrapping as prose.
+- [ ] Mobile icon-only controls provide practical 40–44px hit areas while keeping compact glyphs.
+- [ ] Repeated icon/text patterns remain semantically correct and optically aligned at phone widths.
+- [ ] Mobile CSS does not override icon-box centering, stroke consistency, first-line alignment, or color semantics.
+- [ ] Brand + CTA + menu/project controls survive 375×812 without collision.
+- [ ] Drawer/sheet surfaces remain fully inside the 375px viewport.
+- [ ] `scrollWidth <= clientWidth` for the document at 390px and 375px, excluding intentional local scrollers.
+
 ## D. Optical layout
 
 - [ ] Main content is balanced in the effective/remaining canvas.
@@ -44,7 +60,7 @@ Read `docs/foundations/responsive.md`.
 ## E. Typography and readability
 
 - [ ] Marketing display type is confident but not theatrical.
-- [ ] Documentation uses reading/retrieval scale, not Marketing scale.
+- [ ] Documentation uses reading/retrieval scale, not Marketing or Editorial scale.
 - [ ] Editorial body uses sustained-reading scale.
 - [ ] Product rows/tree/table/inspector respect Minimum Readability Floor.
 - [ ] Secondary text is muted but still readable.
@@ -99,7 +115,9 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Icon containers align with the first-line text anchor, not the center of a multi-line text block.
 - [ ] Broad descendant selectors do not override icon-box display, margin, line-height, or color.
 - [ ] Icon-only controls have accessible labels/tooltips and adequate hit areas.
-- [ ] No Icon Confetti, Approximate Icon Semantics, Glyph Drift, or Icon-box Override.
+- [ ] Mobile breakpoint rules preserve desktop icon semantics and optical geometry.
+- [ ] Navigation/drawer icons use direct navigation/sidebar meaning rather than decorative substitutes.
+- [ ] No Icon Confetti, Approximate Icon Semantics, Glyph Drift, Icon-box Override, Tiny Icon Target, or Mobile Icon Regression.
 
 ## K. Homepage
 
@@ -111,6 +129,7 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Marketing brand expression is richer than Product UI without overwhelming it.
 - [ ] Mobile Hero product evidence is cropped/transformed rather than compressed Desktop UI.
 - [ ] Mobile split feature sections stack in a deliberate order.
+- [ ] Mobile Website header does not consume unnecessary first-viewport height with a second permanent nav row.
 
 ## L. Documentation
 
@@ -120,8 +139,9 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Local TOC does not distort the article position.
 - [ ] Getting Started is visually stronger than low-priority deep links.
 - [ ] Deep information architecture does not become a flat card grid.
-- [ ] When sidebar/TOC collapses on Mobile, a compact Docs navigation path remains.
-- [ ] Code blocks use local horizontal scroll rather than page overflow.
+- [ ] When sidebar/TOC collapses on Mobile, a complete Docs navigation drawer/selector remains.
+- [ ] Mobile Docs does not use Editorial-sized title/body spacing.
+- [ ] Code blocks use local horizontal scroll and preserve structured formatting.
 
 ## M. Editorial / Blog
 
@@ -132,7 +152,8 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Large Hero area is earned by meaningful content.
 - [ ] Reader encounters useful text at a reasonable point in first viewport.
 - [ ] CTA pressure stays out of the article body.
-- [ ] Mobile category navigation and editorial composition transform without cramped columns.
+- [ ] Mobile category navigation remains a one-line local scroller or deliberate replacement.
+- [ ] Editorial mobile typography remains distinct from Docs task-reading typography.
 
 ## N. Pricing
 
@@ -160,6 +181,7 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Mobile Inspector/approval remains accessible as sheet, drawer, tab, or sequential review section.
 - [ ] Mobile runtime is capped/collapsible/dedicated rather than accidentally taking over the page.
 - [ ] Desktop toolbar does not wrap chaotically on Mobile.
+- [ ] Workspace icon-only controls maintain 40–44px targets and consistent 16–19px glyphs on Mobile.
 
 ## P. Anti-pattern gate
 
@@ -192,6 +214,14 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] No Whole-page Horizontal Scroll.
 - [ ] No Tiny Touch UI.
 - [ ] No Mobile Empty Canvas.
+- [ ] No Double-decker Mobile Header.
+- [ ] No Truncated Sidebar Replacement.
+- [ ] No Editorial-sized Documentation.
+- [ ] No Wrapped Code Semantics.
+- [ ] No Multi-row Category / Tab Collapse.
+- [ ] No Tiny Icon Target.
+- [ ] No Mobile Icon Regression.
+- [ ] No Header Collision at 375px.
 
 ## Completion gate
 
