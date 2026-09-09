@@ -4,6 +4,20 @@
 
 The workspace is the primary task surface. It should maximize task continuity, scanability, and control without becoming visually loud.
 
+For `professional_workspace` and `ai_workspace` archetypes, the workspace is usually the product center of gravity.
+
+Read first:
+
+`docs/web-app/archetypes.md`
+
+## Core principle
+
+> **The main screen is where work happens, not where resources are merely listed.**
+
+If users primarily create, edit, run, debug, review, compose, or supervise work, do not make generic resource-list pages the dominant product experience.
+
+A list can be an entry point. It should not replace the core workspace.
+
 ## Workspace priority
 
 Inside a Web App, visual priority generally follows:
@@ -17,6 +31,24 @@ Current object / task
 → Metadata
 ```
 
+The current work object should be visually stronger than shell chrome.
+
+## Workspace modes
+
+A workspace may be organized as:
+
+- editor/canvas;
+- split view;
+- table/view;
+- task/run view;
+- artifact/result view;
+- detail editor;
+- structured workflow;
+- timeline + result;
+- conversation + artifact, when AI interaction requires both.
+
+Choose from task semantics, not from a generic dashboard template.
+
 ## Tabs
 
 Use tabs for alternate modes/views of the same contextual object.
@@ -25,9 +57,10 @@ Good examples:
 
 - documentation / debug;
 - request / response;
-- overview / activity / settings;
+- workflow / runs / artifacts;
 - editor / preview;
-- conversation / changes.
+- conversation / changes;
+- task / activity / result.
 
 Do not use tabs for unrelated global navigation.
 
@@ -53,6 +86,32 @@ Use:
 - contextual actions near the object they affect.
 
 Avoid turning toolbars into a row of equally emphasized buttons.
+
+## Project/object navigator
+
+When a project contains workflows, APIs, agents, files, artifacts, schemas, or tasks, consider a local navigator/tree instead of promoting each object type into global navigation.
+
+Example:
+
+```text
+Global
+├── Home
+├── Projects
+└── Search
+
+Project: Atlas
+├── Workflows
+├── Agents
+├── Runs
+└── Artifacts
+
+Workspace
+├── Current workflow
+├── Run state
+└── Result
+```
+
+This preserves context and avoids management-console drift.
 
 ## Forms
 
@@ -139,7 +198,8 @@ Errors should answer:
 
 For AI/agent products, distinguish:
 
-- user intent/input;
+- user intent/goal;
+- plan/workflow;
 - agent progress;
 - tool/action state;
 - generated artifacts;
@@ -149,17 +209,59 @@ For AI/agent products, distinguish:
 
 Do not render every event as an undifferentiated chat bubble.
 
+Do not split `Agents`, `Runs`, and `Artifacts` into separate top-level management pages by default if their main value is inside project/task execution.
+
+Prefer a project/task context that keeps execution and outputs connected.
+
+## AI workspace composition
+
+A strong AI workspace may use:
+
+```text
+Project / Task Context
+├── Goal / Workflow
+├── Current Run
+├── Structured Steps
+├── Tool / Agent state
+├── Approval / Intervention
+└── Artifact / Result
+```
+
+Possible physical layout:
+
+```text
+Global Nav | Project Navigator | Main Task/Workflow | Inspector/Result
+```
+
+Not every product needs all four regions.
+
+## Workspace-first test
+
+For Professional/AI Workspace products, ask:
+
+- Can the user perform the core value loop without leaving the workspace repeatedly?
+- Does the current project/object remain visible?
+- Are run/result/artifact states connected to the work that produced them?
+- Is navigation organized by context rather than a flat noun list?
+- Does the main surface contain real work, not mostly overview statistics?
+
+If several answers are no, the product may have drifted into a management console.
+
 ## AI decision model
 
 ```yaml
 workspace:
+  primary_archetype: professional_workspace | ai_workspace | data_application | management_console
+  core_value_loop: ...
   primary_task: ...
   object: ...
   modes: ...
   comparison_needed: true | false
   persistent_context_needed: true | false
+  project_navigator_needed: true | false
+  inspector_needed: true | false
   data_density: low | medium | high
   long_running_state: true | false
 ```
 
-The workspace should be chosen from task semantics, not from a generic dashboard template.
+The workspace should be chosen from task semantics and archetype, not from a generic dashboard template.
