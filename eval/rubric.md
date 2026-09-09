@@ -6,10 +6,11 @@ This rubric evaluates whether a web interface follows FanUI strongly enough to s
 
 Total: **100 points**.
 
-V0.2 explicitly evaluates two failures discovered in dogfood:
+V0.3 explicitly evaluates three dogfood failures:
 
 1. choosing the wrong Web App archetype;
-2. producing structurally correct but visually unfinished UI.
+2. producing structurally correct but visually unfinished UI;
+3. using safe-but-timid visual scale, spacing, and brand expression on wide desktop pages.
 
 ## 1. Information Hierarchy — 15
 
@@ -73,7 +74,7 @@ For Docs/Editorial:
 
 - retrieval/reading goal dominates.
 
-## 4. Visual Finish & Composition — 15
+## 4. Visual Finish, Calibration & Composition — 15
 
 Evaluate whether the result feels intentionally designed rather than merely correctly laid out.
 
@@ -83,9 +84,19 @@ Full score requires:
 - meaningful variation in visual amplitude;
 - major sections do not all use the same card/heading rhythm;
 - product evidence receives appropriate visual scale;
+- wide-desktop content scale is proportionate to the canvas;
+- Marketing / Product / Docs / Editorial typography uses the correct calibrated mode;
 - border, surface, spacing, and typography are balanced;
 - the interface does not look like a polished wireframe;
-- brand character exists beyond one accent color.
+- brand character exists beyond one accent color;
+- Brand Expression Level fits the experience.
+
+For a product-led Homepage at ~1440px, specifically check:
+
+- Hero display is confidently scaled relative to the viewport;
+- Hero CTA is not merely an internal Product UI button reused in marketing;
+- core product evidence is Large/Hero scale and inspectable without zoom;
+- standard and Wide Product containers are intentional rather than arbitrary framework defaults.
 
 Deduct for:
 
@@ -93,7 +104,16 @@ Deduct for:
 - repeated small screenshots;
 - border-grid finish;
 - generic purple SaaS identity;
+- anonymous neutral + accent branding;
+- timid Hero scale;
+- underscaled content on large canvas;
 - monotonous composition.
+
+### Calibration scoring guidance
+
+- **13–15:** uses calibrated ranges intentionally; deviations are coherent and justified.
+- **9–12:** generally correct but one or two important scales remain timid/generic.
+- **0–8:** wide desktop page materially ignores FanUI calibration and looks underscaled, anonymous, or template-like.
 
 ## 5. Layout & Navigation — 10
 
@@ -104,7 +124,8 @@ Evaluate:
 - responsive logic;
 - current context;
 - navigation depth;
-- workspace structure where relevant.
+- workspace structure where relevant;
+- website header scale and information density where relevant.
 
 Full score requires users to understand location/context without explanation.
 
@@ -116,7 +137,8 @@ Full score:
 - controls use appropriate density;
 - page does not feel visually noisy;
 - whitespace supports structure rather than pretending to be quality;
-- operational UI remains compact while page composition can breathe.
+- operational UI remains compact while page composition can breathe;
+- large whitespace is earned by large type, product evidence, reading, or narrative separation.
 
 ## 7. Surface / Component Semantics — 7
 
@@ -127,13 +149,15 @@ Deduct for:
 - Card Soup;
 - nested surface mazes;
 - boxing every group;
-- inappropriate component semantics.
+- inappropriate component semantics;
+- one large radius applied indiscriminately across controls, surfaces, and marketing frames.
 
 ## 8. Typography & Readability — 5
 
 Evaluate:
 
 - hierarchy;
+- calibrated scale for the current experience mode;
 - line length;
 - paragraph rhythm;
 - metadata treatment;
@@ -142,15 +166,16 @@ Evaluate:
 
 Typography should preserve hierarchy even if icons, brand color, and shadows are removed.
 
-## 9. Color & State Semantics — 5
+## 9. Color, Brand & State Semantics — 5
 
 Full score requires:
 
-- restrained brand use;
-- clear selected/current state;
-- semantic state colors used consistently;
-- decorative colors separated from operational semantics;
-- brand identity is not dependent on accent color alone.
+- Brand Expression Level fits the page archetype;
+- selected/current state is clear;
+- semantic state colors are used consistently;
+- decorative colors are separated from operational semantics;
+- brand identity is not dependent on accent color alone;
+- Homepage may be expressive while Workspace remains operationally calm.
 
 ## 10. Interaction Feedback & Accessibility — 5
 
@@ -171,7 +196,7 @@ Evaluate:
 - **95–100 — Reference:** candidate to become a FanUI example.
 - **85–94 — Pass:** FanUI-compliant and suitable to ship.
 - **70–84 — Revise:** direction is usable but meaningful issues remain.
-- **Below 70 — Reject:** redesign hierarchy/archetype/pattern before polishing.
+- **Below 70 — Reject:** redesign hierarchy/archetype/pattern/calibration before polishing.
 
 ## Hard-fail conditions
 
@@ -184,5 +209,6 @@ Regardless of numeric score, do not mark a result FanUI-compliant when any of th
 - documentation navigation makes core content effectively undiscoverable;
 - accessibility prevents keyboard/focus use of key interactions;
 - the design is primarily decorative imitation with little product evidence;
-- a product-led homepage repeatedly uses unreadable thumbnail-scale product UI as core evidence;
+- a product-led Homepage repeatedly uses unreadable thumbnail-scale product UI as core evidence;
+- a wide-desktop product Homepage is materially underscaled across Hero type, CTA, and primary evidence without an intentional reason;
 - generated layout breaks materially in Chinese or common English copy.
