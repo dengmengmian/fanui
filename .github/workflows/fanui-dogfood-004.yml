@@ -1,0 +1,49 @@
+name: FanUI Dogfood 004 Build
+
+on:
+  push:
+    branches: [main, dogfood/004-mafan-blog]
+    paths:
+      - "dogfood/004/**"
+      - "skill/**"
+      - "docs/website/editorial-blog.md"
+      - "docs/website/editorial-visuals.md"
+      - "docs/website/mobile.md"
+      - "docs/foundations/**"
+      - "docs/anti-patterns/**"
+      - "eval/**"
+      - ".github/workflows/fanui-dogfood-004.yml"
+  pull_request:
+    paths:
+      - "dogfood/004/**"
+      - "skill/**"
+      - "docs/website/editorial-blog.md"
+      - "docs/website/editorial-visuals.md"
+      - "docs/website/mobile.md"
+      - "docs/foundations/**"
+      - "docs/anti-patterns/**"
+      - "eval/**"
+      - ".github/workflows/fanui-dogfood-004.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dogfood/004
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: dogfood/004/package.json
+      - name: Install dependencies
+        run: npm install
+      - name: Verify editorial and responsive closure
+        run: npm run verify
+      - name: Build
+        run: npm run build
