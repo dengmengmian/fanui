@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use FanUI when designing, implementing, revising, or reviewing Web UI. FanUI is an AI-native **decision, calibration, fidelity, and evaluation system**. It is not a generic component skin.
+Use FanUI when designing, implementing, revising, or reviewing Web UI. FanUI is an AI-native **decision, calibration, fidelity, precision, and evaluation system**. It is not a generic component skin.
 
 ## Required workflow
 
@@ -114,6 +114,7 @@ Mandatory for substantial work:
 - `docs/foundations/optical-layout.md`
 - `docs/foundations/semantic-product-color.md`
 - `docs/foundations/surface-hierarchy.md`
+- `docs/foundations/iconography.md`
 
 Core formulations:
 
@@ -130,6 +131,8 @@ Core formulations:
 > Large evidence must earn its area through fidelity.
 
 > Workspace owns the viewport.
+
+> Icon meaning comes before icon decoration.
 
 ### 7. Calibrate the experience
 
@@ -207,7 +210,34 @@ Do not create a card because content needs a box.
 
 Apply `surface-hierarchy.md`: radius/elevation should become tighter and quieter toward operational UI.
 
-### 11. Enforce Product Evidence Fidelity
+### 11. Apply iconography precision
+
+Read `docs/foundations/iconography.md` whenever icons are part of repeated rows, navigation, feature explanations, controls, or product state.
+
+Hard rules:
+
+- choose semantic meaning before visual similarity;
+- do not use a Git-branch icon as a generic workflow icon when a workflow-specific glyph exists;
+- do not use a robot icon to communicate permissions, boundaries, policy, or authority;
+- peer icons must share glyph size, stroke weight, and container geometry;
+- icon glyphs must be optically centered inside their boxes;
+- an icon beside title + supporting copy aligns to the **first-line information anchor**, not the geometric center of the full text block;
+- broad descendant CSS selectors must not override icon-box display, margin, line-height, or color;
+- icon-only controls require accessible label/tooltip and adequate hit area.
+
+Practical compact feature-row starting band:
+
+```text
+icon box       28–32px
+icon glyph     14–16px
+column gap     10–12px
+stroke         1.7–2.0
+optical Y fix  0–2px only when needed
+```
+
+If a glyph still looks wrong after ~2px optical correction, choose a better glyph rather than forcing the alignment.
+
+### 12. Enforce Product Evidence Fidelity
 
 For every core/Hero product visual, classify:
 
@@ -240,13 +270,13 @@ Check:
 
 Avoid a large frame containing a few tiny nodes. Use `fidelity-density.md`.
 
-### 12. Enforce effective density and readability
+### 13. Enforce effective density and readability
 
 Ask whether a large surface would lose nothing if reduced 30–40%. If yes, either reduce the surface or increase its meaningful content.
 
 Do not use tiny typography to fake professional density. Respect the Minimum Readability Floor in `fidelity-density.md`.
 
-### 13. Apply semantic product color
+### 14. Apply semantic product color
 
 Read `semantic-product-color.md`.
 
@@ -268,7 +298,7 @@ Keep these roles distinct:
 
 Brand color says who the product is. Semantic color says what is happening.
 
-### 14. Enforce viewport ownership for Professional / AI Workspaces
+### 15. Enforce viewport ownership for Professional / AI Workspaces
 
 Read `viewport-ownership.md`.
 
@@ -276,7 +306,7 @@ Core workspace should normally use remaining viewport height and internal pane s
 
 A page with a 450–550px workspace region and a large blank area below is a failure unless the workflow is intentionally document-shaped.
 
-### 15. Use an Editorial Visual System
+### 16. Use an Editorial Visual System
 
 For Blog/Editorial read `editorial-visuals.md`.
 
@@ -286,7 +316,7 @@ Prefer idea-bearing visuals derived from workflow, traces, approvals, artifacts,
 
 A large article Hero image is optional; it must earn its area.
 
-### 16. Check anti-patterns
+### 17. Check anti-patterns
 
 Read both:
 
@@ -305,11 +335,19 @@ V0.3.2 additions include:
 - Rounded Rectangle Everywhere;
 - Tiny Product Typography.
 
-### 17. Check Chinese / English behavior
+Iconography precision also rejects:
 
-Validate Chinese title wrapping, mixed technical labels, navigation width, pricing units, tables, product rows, and minimum readability.
+- Icon Confetti;
+- Approximate Icon Semantics;
+- Glyph Drift;
+- Icon-box Override;
+- Text-block Centering for icon + title + description rows.
 
-### 18. Evaluate before completion
+### 18. Check Chinese / English behavior
+
+Validate Chinese title wrapping, mixed technical labels, navigation width, pricing units, tables, product rows, icon/text rows, and minimum readability.
+
+### 19. Evaluate before completion
 
 Use:
 
@@ -328,7 +366,8 @@ Hard failures cannot be rescued by average score:
 - Professional/AI Workspace not owning its viewport;
 - primary editorial visual that is obviously a placeholder;
 - documentation with severe optical imbalance;
-- operational typography below readability floor across repeated rows.
+- operational typography below readability floor across repeated rows;
+- repeated icon/text patterns with visibly broken centering or semantically misleading glyphs.
 
 ## Output expectations
 
@@ -371,10 +410,14 @@ fanui:
     fidelity: high
   optical_balance: checked
   section_rhythm: varied
+  iconography:
+    semantic_fit: checked
+    peer_geometry: checked
+    optical_alignment: checked
 ```
 
 These YAML blocks are reasoning aids, not required user-visible output.
 
 ## Reference rule
 
-Apifox remains the primary reference and Pixso secondary. Never clone their exact assets/layouts. FanUI extracts quality characteristics: mature scale, credible product evidence, readable density, optical balance, semantic color discipline, and cross-surface coherence.
+Apifox remains the primary reference and Pixso secondary. Never clone their exact assets/layouts. FanUI extracts quality characteristics: mature scale, credible product evidence, readable density, optical balance, semantic color discipline, component precision, and cross-surface coherence.
