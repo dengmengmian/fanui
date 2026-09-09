@@ -182,15 +182,24 @@ Operational status colors remain separate from the brand palette.
 
 ## Mechanical validation
 
-Expected repository validation:
+Actual repository validation:
 
 ```text
 ROUTES_IMPLEMENTED=9
 CROSS_SURFACE_FAMILIES=5
 CHINESE_STRESS_ROUTE=YES
-BUILD_CHECK=GITHUB_ACTIONS
+BUILD_CHECK=PASS
+GITHUB_ACTIONS_RUN=34329704536
 RENDERED_VISUAL_ACCEPTANCE=PENDING
 ```
+
+GitHub Actions `FanUI Dogfood 003 Build` completed successfully on Node 20:
+
+- dependency install: PASS;
+- `npm run build`: PASS;
+- job conclusion: `success`.
+
+This proves the committed Next.js implementation compiles. It does not prove rendered visual quality.
 
 ## Rendered acceptance gate
 
@@ -214,6 +223,6 @@ The rendered gate should answer:
 
 ```text
 IMPLEMENTATION=COMPLETE
-REMOTE_BUILD=PENDING
+REMOTE_BUILD=PASS
 FULL_RENDERED_ACCEPTANCE=PENDING
 ```
