@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "verify:responsive": "node scripts/verify-responsive.mjs",
     "start": "next start"
   },
   "dependencies": {
