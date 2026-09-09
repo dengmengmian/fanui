@@ -118,7 +118,7 @@
 
 **Why it fails:** visual decisions become arbitrary.
 
-**Correction:** experience family → Web App archetype when applicable → task → hierarchy → pattern → component → visual system → evaluation.
+**Correction:** experience family → Web App archetype when applicable → task → hierarchy → pattern → calibration → component → visual system → evaluation.
 
 ## 16. Management Console Drift
 
@@ -180,3 +180,27 @@ when the real product loop happens inside a project/workflow/task.
 **Why it fails:** changing one color would make the entire product indistinguishable from a generic template.
 
 **Correction:** create product character through composition, typography, surface language, product-specific visuals, interaction patterns, and restrained brand motifs—not color alone.
+
+## 22. Underscaled Content on a Large Canvas
+
+**Symptom:** a wide desktop page contains a small centered content island: timid headline, compact CTA, narrow screenshot, and large unused empty fields.
+
+**Why it fails:** whitespace and viewport scale overpower the actual content. The page feels unfinished even when alignment is clean.
+
+**Correction:** use FanUI layout calibration. Increase the primary content/product width, raise the appropriate typographic role, reduce unearned whitespace, and make the main evidence proportionate to the viewport.
+
+## 23. Timid Product Hero
+
+**Symptom:** the Homepage Hero uses safe 40–48px display type, product-workspace-sized buttons, and a screenshot that does not visually compete with the copy.
+
+**Why it fails:** the product feels provisional rather than mature. Marketing and Product typography collapse into one scale system.
+
+**Correction:** use `docs/website/hero.md` and the calibrated Marketing typography bands. Hero scale should be confident but not oversized for spectacle.
+
+## 24. Anonymous Neutral + Accent
+
+**Symptom:** the website is almost entirely white/gray and the only brand expression is one accent button.
+
+**Why it fails:** restraint becomes anonymity. The interface can be rebranded by changing one hex value.
+
+**Correction:** choose a Brand Expression Level and apply consistent brand behavior through display treatment, selection tint, product frame, section fields, and recurring motifs while preserving semantic color separation.
