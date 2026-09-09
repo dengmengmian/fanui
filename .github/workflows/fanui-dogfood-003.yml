@@ -7,9 +7,11 @@ on:
       - "dogfood/003/**"
       - "skill/**"
       - "docs/foundations/responsive.md"
+      - "docs/foundations/mobile-precision.md"
+      - "docs/foundations/iconography.md"
       - "docs/website/mobile.md"
       - "docs/web-app/mobile-workspace.md"
-      - "docs/anti-patterns/v033.md"
+      - "docs/anti-patterns/**"
       - "eval/**"
       - ".github/workflows/fanui-dogfood-003.yml"
   workflow_dispatch:
@@ -31,7 +33,7 @@ jobs:
           cache-dependency-path: dogfood/003/package.json
       - name: Install dependencies
         run: npm install
-      - name: Verify responsive closure
+      - name: Verify responsive precision closure
         run: npm run verify:responsive
       - name: Build
         run: npm run build
