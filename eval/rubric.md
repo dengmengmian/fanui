@@ -62,9 +62,30 @@ Evaluate whether Website, Docs, Blog, Pricing, and Web App feel like one product
 - 3–4: mostly coherent; one surface feels templated or detached.
 - 0–2: generic templates or identical density/response recipe across families.
 
-# Hard failures
+## Desktop App scoring interpretation
 
-Any of these prevents pass regardless of total score:
+For `desktop_app`, keep the 100-point structure but interpret responsive transformation as native window adaptation, Product Evidence Fidelity as task/state realism, and cross-surface coherence as platform coherence. Use `docs/desktop-app/acceptance.md` as the acceptance authority. Phone/mobile criteria do not apply unless the product also targets mobile.
+
+- Product/information architecture includes desktop archetype, window/document context, and command model.
+- Hierarchy/optical composition includes native shell ownership across compact, normal, large, maximized, and full-screen states.
+- Calibration includes platform metrics, keyboard/pointer density, localization, and supported accessibility settings.
+- Task realism includes selection, focus, process state, command authority, restoration, and failure paths.
+- Finish includes native chrome integration, system appearance, semantic controls, focus visibility, and input-state precision.
+
+# Hard failures by experience family
+
+## Shared hard failures
+
+For every experience family, any of these prevents pass regardless of total score:
+
+1. The primary task, current context, or critical failure state is unreadable or unreachable in a supported presentation state.
+2. Repeated operational text sits materially below the Minimum Readability Floor.
+3. Brand, selection, running, approval, success, warning, and danger collapse into ambiguous state treatment where those roles are present.
+4. Build success is treated as visual acceptance without the rendered review required for the selected experience family.
+
+## Web experience hard failures
+
+For Website, Documentation, Editorial, Pricing, and `web_app`, any of these prevents pass regardless of total score:
 
 1. Task-oriented Web App uses the wrong primary archetype and behaves mainly as a Management Console.
 2. Core/Hero product evidence is unreadable at normal Desktop scale.
@@ -89,12 +110,32 @@ Any of these prevents pass regardless of total score:
 21. Repeated/icon-only controls show semantically misleading glyphs, visibly broken centering, inconsistent peer stroke/size, or a Mobile-only icon regression.
 22. A primary route fits at 390px but collides, clips, or document-overflows at the required 375×812 pressure test.
 
-# Reference acceptance
+## Desktop App hard failures
 
-Before promoting a Dogfood page into a FanUI reference:
+For `desktop_app`, any of these prevents pass regardless of total score:
+
+1. The interface is a web-dashboard shell inside a native window and ignores native chrome, command routing, focus, or lifecycle behavior.
+2. The primary task, current selection, failure state, or required command becomes unreachable at a supported window size.
+3. A collapsed navigation/inspector/status pane has no discoverable replacement command.
+4. Compact, normal, and large windows were not rendered and reviewed; build success alone was treated as acceptance.
+5. Maximized/full-screen/restored behavior creates clipped panes, wrong command scope, lost context, or a major unusable blank field.
+6. The core value loop cannot be completed by keyboard, or custom controls lose semantic roles, visible focus, or state announcements.
+
+# Reference acceptance by experience family
+
+## Shared reference acceptance
+
+Before promoting any FanUI surface into a reference:
 
 - score 90+;
 - no hard failures;
+- cross-surface or platform-family comparison performed where relevant;
+- the surface demonstrates at least one reusable FanUI principle rather than only good local styling.
+
+## Web reference acceptance
+
+For Website, Documentation, Editorial, Pricing, and `web_app`:
+
 - rendered review at 1440 × 1000;
 - rendered review at 768 × 1024;
 - rendered review at 390 × 844;
@@ -102,6 +143,14 @@ Before promoting a Dogfood page into a FanUI reference:
 - Website header and Docs navigation replacement paths explicitly reviewed;
 - code-block and local-tab scrolling behavior explicitly reviewed;
 - icon semantics/centering/touch targets reviewed at Desktop and Mobile;
-- cross-surface comparison performed;
-- Chinese stress behavior checked where relevant;
-- page demonstrates at least one reusable FanUI principle rather than only good local styling.
+- Chinese stress behavior checked where relevant.
+
+## Desktop App reference acceptance
+
+For `desktop_app`:
+
+- rendered review at the configured minimum window;
+- rendered review at 1280 × 720 compact, 1440 × 900 normal, and 1728 × 1117 large windows, or documented product-specific equivalents;
+- maximized, restored, and full-screen behavior reviewed where supported;
+- native chrome, application commands, selection/focus, keyboard/pointer input, localization, system appearance, and accessibility reviewed;
+- collapsed-pane replacement commands and primary-task continuity explicitly reviewed.

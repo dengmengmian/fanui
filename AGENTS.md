@@ -4,7 +4,7 @@ This repository defines an AI-native UI design system. Agents must preserve the 
 
 ## Mission
 
-FanUI exists to help AI-generated Web UI feel structurally correct, visually finished, realistically operational, responsive by design, mobile-precise, and coherent across Website, Docs, Blog, Pricing, and Product UI.
+FanUI exists to help AI-generated Web and native Desktop App UI feel structurally correct, visually finished, realistically operational, adaptive by design, and coherent across Website, Docs, Blog, Pricing, Web App, and Desktop Application surfaces.
 
 ## Reference priority
 
@@ -19,6 +19,9 @@ References are evidence for principles. Do not copy proprietary assets, exact la
 Do:
 
 - classify experience family before styling;
+- distinguish `desktop_app` from `web_app` by runtime contract, not rendering technology;
+- preserve native window chrome, command routing, focus, keyboard/pointer behavior, lifecycle, system appearance, and accessibility for Desktop Apps;
+- validate Desktop Apps at compact, normal, and large windows plus maximized/full-screen states where supported;
 - classify Web App archetype before shell design;
 - use page-family calibration bands instead of one generic spacing/type recipe;
 - define responsive transformations explicitly rather than relying on framework breakpoints alone;
@@ -67,13 +70,16 @@ Do not:
 - collapse Running, Selected, Approval, Success, and Brand into one accent color;
 - use roughly the same 12–16px radius for every surface family;
 - allow repeated operational text below FanUI readability floor;
-- treat a successful build as visual acceptance.
+- treat a successful build as visual acceptance;
+- apply phone breakpoints to a Desktop App that does not target mobile;
+- wrap a Web dashboard in fake native chrome and call it a Desktop App;
+- collapse a Desktop sidebar/inspector without a discoverable replacement command.
 
 ## Required references
 
 Use `skill/SKILL.md` as the operational entry point.
 
-For substantial UI work, the V0.3.4 foundation set includes:
+For substantial UI work, the shared foundation set includes:
 
 - `docs/foundations/experience-metrics.md`
 - `docs/foundations/fidelity-density.md`
@@ -81,9 +87,13 @@ For substantial UI work, the V0.3.4 foundation set includes:
 - `docs/foundations/semantic-product-color.md`
 - `docs/foundations/surface-hierarchy.md`
 - `docs/foundations/iconography.md`
+
+For Web responsive/mobile work also read:
+
 - `docs/foundations/responsive.md`
 - `docs/foundations/mobile-precision.md`
-- existing Visual DNA / typography / layout / spacing / color / depth foundations.
+
+Also use the existing Visual DNA / typography / layout / spacing / color / depth foundations.
 
 For Website/Docs/Editorial/Pricing mobile behavior also read `docs/website/mobile.md`.
 
@@ -94,12 +104,17 @@ For Professional/AI Workspace read both:
 - `docs/web-app/viewport-ownership.md`
 - `docs/web-app/mobile-workspace.md`
 
-Read anti-pattern sets:
+For Desktop App work read:
 
-- `docs/anti-patterns/core.md`
-- `docs/anti-patterns/v032.md`
-- `docs/anti-patterns/v033.md`
-- `docs/anti-patterns/v034.md`
+- `docs/desktop-app/classification.md`
+- `docs/desktop-app/native-shell.md`
+- `docs/desktop-app/acceptance.md`
+
+Read `docs/anti-patterns/core.md` for every experience.
+
+For Web work, read `docs/anti-patterns/v032.md`; for Web responsive/mobile work also read `docs/anti-patterns/v033.md` and `docs/anti-patterns/v034.md`.
+
+For Desktop App work, read `docs/anti-patterns/desktop-app.md`; read `docs/anti-patterns/v032.md` only when its fidelity, color, or surface rules are relevant.
 
 ## Design hierarchy
 
@@ -124,24 +139,28 @@ Never sacrifice the first ten to improve the last four.
 
 ## Completion standard
 
-Before completion:
+### Shared completion
 
 1. classify experience/archetype;
 2. load relevant pattern and calibration;
-3. define responsive transformations;
-4. apply `mobile-precision.md` after structural responsive work;
-5. validate 1440 / 768 / 390 / 375-class behavior where materially relevant;
-6. verify one-row Website mobile chrome and complete Docs/navigation replacement paths;
-7. verify surface-specific Mobile typography, local-scrolling strategy, and code semantics;
-8. verify touch targets and icon semantics/centering/first-line alignment at Desktop and Mobile;
-9. check optical layout;
-10. check Product Evidence Fidelity at Desktop and Mobile when applicable;
-11. check effective density/readability floor;
-12. check semantic product color;
-13. check viewport ownership / Mobile Workspace or Editorial visual rules where applicable;
-14. check anti-pattern documents;
-15. evaluate with `eval/checklist.md`;
-16. score major work with `eval/rubric.md`;
-17. revise on any hard failure.
+3. check optical layout, effective density/readability, semantic color, surface hierarchy, and applicable Product Evidence Fidelity;
+4. verify icon semantics, centering, first-line alignment, and input geometry;
+5. check the anti-pattern documents routed for the selected family;
+6. evaluate with `eval/checklist.md`, score major work with `eval/rubric.md`, and revise on any hard failure.
+
+### Web experiences
+
+1. define responsive transformations;
+2. apply `docs/foundations/mobile-precision.md` after structural responsive work;
+3. validate 1440 / 768 / 390 / 375-class behavior where materially relevant;
+4. verify Website/Docs navigation replacement, surface-specific Mobile typography, local scrolling, code semantics, touch targets, and applicable Workspace/Editorial rules;
+5. re-evaluate Product Evidence Fidelity at Desktop and Mobile.
+
+### Desktop App
+
+1. read `docs/desktop-app/classification.md`, `docs/desktop-app/native-shell.md`, and `docs/desktop-app/acceptance.md`;
+2. validate the actual minimum plus compact, normal, and large rendered windows;
+3. verify maximized/full-screen, restoration, multi-window, command, focus, keyboard/pointer, localization, and accessibility behavior where supported;
+4. confirm every collapsed pane retains a discoverable replacement command and the primary task remains reachable.
 
 Rendered screenshot review remains the visual authority. A passing build proves code validity and mechanical rule wiring, not FanUI visual acceptance.

@@ -1,18 +1,19 @@
 # FanUI
 
-**FanUI is an AI-native UI design system for building consistent, polished web experiences with coding agents.**
+**FanUI is an AI-native UI design system for building consistent, polished web and native desktop experiences with coding agents.**
 
 FanUI is not primarily a component library. It is a design language, page-pattern system, calibration framework, product-fidelity model, responsive decision system, AI decision system, and evaluation rubric.
 
 ## Current scope
 
-FanUI Web V0.3.4 covers five first-class web experience families:
+FanUI covers six first-class experience families:
 
 1. Product Website
 2. Documentation
 3. Editorial / Blog
 4. Pricing / Conversion
 5. Web Application
+6. Desktop Application
 
 Web Application archetypes:
 
@@ -21,7 +22,19 @@ Web Application archetypes:
 - Data Application
 - AI Workspace
 
+Desktop Application archetypes:
+
+- Focused Utility
+- Document Workspace
+- Professional Workspace
+- Monitoring / Control
+- Menu Bar / System Tray Companion
+
+`desktop_app` is a separate delivery family, not a desktop-width alias for `web_app`. It adds native window, command, focus, keyboard/pointer, lifecycle, accessibility, and multi-size rendered acceptance rules while preserving the Web V0.3.4 baseline.
+
 Primary reference: **Apifox** across website/docs/blog/pricing/product UI. Secondary reference: **Pixso** for brand expression, Marketing composition, and product presentation. References are used to extract quality characteristics, not copy appearance.
+
+For Desktop Application behavior, the target operating system and framework conventions are authoritative; web references may inform visual quality but never override the native runtime contract.
 
 ## Core direction
 
@@ -92,6 +105,21 @@ Rendered phone dogfood exposed a second-level mobile gap after the main responsi
 
 See `docs/foundations/mobile-precision.md`.
 
+### Desktop Application support
+
+Added explicit Web App vs Desktop App classification, native-shell and window-state guidance, desktop input/accessibility rules, compact/normal/large rendered acceptance, and a self-contained Skill packaging check.
+
+## Build an installable Skill
+
+The repository keeps documentation at the root for maintainability. Build a standalone Skill directory before installing it:
+
+```bash
+node scripts/verify-skill.mjs
+node scripts/package-skill.mjs /absolute/path/to/new/fanui
+```
+
+The package builder refuses to overwrite an existing directory. The verifier builds an isolated temporary package and checks that every `docs/` and `eval/` path referenced by the installed `SKILL.md` resolves inside that package.
+
 ## Repository map
 
 ```text
@@ -135,13 +163,21 @@ fanui/
 │   │   ├── workspace.md
 │   │   ├── viewport-ownership.md
 │   │   └── mobile-workspace.md
+│   ├── desktop-app/
+│   │   ├── classification.md
+│   │   ├── native-shell.md
+│   │   └── acceptance.md
 │   └── anti-patterns/
 │       ├── core.md
 │       ├── v032.md
 │       ├── v033.md
-│       └── v034.md
+│       ├── v034.md
+│       └── desktop-app.md
 ├── references/
 ├── skill/SKILL.md
+├── scripts/
+│   ├── package-skill.mjs
+│   └── verify-skill.mjs
 ├── eval/
 └── dogfood/003/
 ```
@@ -150,7 +186,7 @@ fanui/
 
 The Skill requires agents to:
 
-1. classify experience family;
+1. classify experience family, including `desktop_app` as distinct from `web_app`;
 2. classify Web App archetype;
 3. identify core value loop / primary task;
 4. choose page pattern and hierarchy;
@@ -163,14 +199,16 @@ The Skill requires agents to:
 11. preserve Mobile access when Sidebar/Inspector/TOC collapses;
 12. evaluate through FanUI hard gates before completion.
 
+For Desktop Application work, the Skill instead routes adaptation through native window states, platform commands, keyboard/pointer behavior, accessibility, and compact/normal/large rendered review. Phone breakpoints are not required unless the product also targets mobile.
+
 See `skill/SKILL.md`.
 
 ## Status
 
-**FanUI Web V0.3.4 — Mobile Precision Closure.**
+**FanUI Web V0.3.4 + Desktop Application support.**
 
 Specification rules are dogfooded against `dogfood/003` across Homepage, Pricing, Docs Home/Article, Blog Index/Article, Product Home, AI/Professional Workspace, and Chinese stress surface.
 
-Mechanical validation now gates both Responsive Transformation and Mobile Precision before `next build`.
+`node scripts/verify-skill.mjs` gates the Skill's Desktop routing, acceptance baseline, and install-package reference closure. Existing dogfood validation continues to gate Responsive Transformation and Mobile Precision before `next build`.
 
-Rendered authority requires multi-viewport acceptance, including **1440 × 1000, 768 × 1024, 390 × 844, and 375 × 812**. A passing build proves implementation integrity, not final visual acceptance.
+Web rendered authority requires multi-viewport acceptance, including **1440 × 1000, 768 × 1024, 390 × 844, and 375 × 812**. Desktop rendered authority uses the actual minimum plus compact, normal, and large windows and supported maximized/full-screen states. A passing build proves implementation integrity, not final visual acceptance.

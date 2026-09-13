@@ -1,8 +1,8 @@
-# FanUI Web — Cross-Surface Experience Metrics
+# FanUI — Cross-Surface Experience Metrics
 
 ## Purpose
 
-FanUI pages must feel like one design family without forcing Homepage, Documentation, Editorial, Pricing, and Product UI into one density or spacing recipe.
+FanUI surfaces must feel like one design family without forcing Homepage, Documentation, Editorial, Pricing, Web App, and Desktop App into one density or spacing recipe.
 
 This document calibrates each experience family at a reference wide-desktop viewport of approximately **1440px**.
 
@@ -318,7 +318,28 @@ high state clarity
 medium-compact density
 ```
 
-## 7. Cross-surface consistency rules
+## 7. Desktop Application
+
+Desktop App calibration begins with the target platform and framework rather than browser CSS defaults. Values remain bands and must yield to native controls, localization, accessibility settings, and the application's configured minimum window.
+
+```text
+Toolbar/content bar: platform standard or ~36–52px when custom composition is required
+Sidebar: ~200–280px
+Inspector: ~260–360px
+Dense row: ~26–32px
+Normal row: ~30–38px
+Primary operational control: ~28–36px
+Panel padding: ~12–20px
+Task-region gap: ~12–24px
+```
+
+Do not apply these as universal tokens. A menu-bar utility, document editor, and professional workspace need different shell ownership and density. Prefer the target platform's native metrics when a native control exists.
+
+Use `docs/desktop-app/acceptance.md` to validate the actual minimum plus compact, normal, and large windows. Flexible canvas/editor/content regions grow before persistent sidebars and inspectors. At compact sizes, collapse or move a secondary pane only with a discoverable replacement command.
+
+Desktop App is not subject to Web mobile breakpoints unless it also targets mobile. Its adaptive axis is the resizable native window plus maximized/full-screen and lifecycle state.
+
+## 8. Cross-surface consistency rules
 
 The same product should retain:
 
@@ -339,7 +360,7 @@ But do **not** force the same:
 - visual amplitude;
 - brand expression level.
 
-## 8. Calibration failure patterns
+## 9. Calibration failure patterns
 
 ### Marketing-sized Docs
 
@@ -363,14 +384,22 @@ Every page uses the same `py-24`, same max-width, and same heading scale.
 
 These are failures even if individual pages look clean.
 
-## 9. AI calibration output
+### Web-sized Desktop Shell
+
+A Desktop App uses oversized browser controls, decorative fake chrome, and a centered dashboard while ignoring native commands, focus, window ownership, and pointer/keyboard efficiency.
+
+### Screenshot-sized Desktop Layout
+
+The application looks acceptable at one window size but clips, empties out, or loses command access when compact, maximized, restored, or full-screen.
+
+## 10. AI calibration output
 
 Before implementing a substantial surface, the agent should be able to state internally:
 
 ```yaml
 experience_metrics:
   reference_viewport: 1440
-  family: website | documentation | editorial | pricing | web_app
+  family: website | documentation | editorial | pricing | web_app | desktop_app
   primary_container: ...
   reading_measure: ... | none
   header_height: ...

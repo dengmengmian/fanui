@@ -1,16 +1,17 @@
-# FanUI Web Overview
+# FanUI Overview
 
 ## What FanUI is
 
-FanUI is a design language, calibrated visual framework, and AI execution system for modern web products. Its purpose is not to prescribe one visual template, but to constrain AI design decisions strongly enough that different pages and products remain coherent and visually mature.
+FanUI is a design language, calibrated visual framework, and AI execution system for modern web products and native desktop applications. Its purpose is not to prescribe one visual template, but to constrain AI design decisions strongly enough that different surfaces remain coherent and visually mature.
 
-FanUI Web V0.3.1 treats five experience families as first-class:
+FanUI treats six experience families as first-class:
 
 - Product Website
 - Documentation
 - Editorial / Blog
 - Pricing / Conversion
 - Web Application
+- Desktop Application (`desktop_app`)
 
 Web Application is further classified into:
 
@@ -19,30 +20,48 @@ Web Application is further classified into:
 - Data Application
 - AI Workspace
 
+Desktop Application is further classified into:
+
+- Focused Utility
+- Document Workspace
+- Professional Workspace
+- Monitoring / Control
+- Menu Bar / System Tray Companion
+
 These families share a visual language but use different density, typography, navigation, composition, visual amplitude, and calibration ranges.
 
 ## Core model
 
 ```text
-FanUI Web Core
+FanUI Core
       │
       ├── Website / Marketing
       ├── Documentation
       ├── Editorial / Blog
       ├── Pricing / Conversion
-      └── Web Application
+      ├── Web Application
             ├── Management Console
             ├── Professional Workspace
             ├── Data Application
             └── AI Workspace
+      │
+      └── Desktop Application
+            ├── Focused Utility
+            ├── Document Workspace
+            ├── Professional Workspace
+            ├── Monitoring / Control
+            └── Menu Bar Companion
 ```
 
-The design system should answer four different questions:
+Web App and Desktop App may share a task archetype or visual language, but not a runtime contract. Web App behavior is owned by browser navigation and responsive viewports. Desktop App behavior is owned by native windows/scenes, command routing, keyboard and pointer input, focus, lifecycle, system appearance, and accessibility.
+
+The design system should answer five different questions:
 
 1. **What should this feel like?** — Visual DNA.
 2. **How should this page behave?** — Page/archetype patterns.
 3. **At what scale and intensity should it be rendered?** — calibration ranges.
 4. **How should this surface differ from the rest of the product family?** — cross-surface experience metrics.
+5. **Which runtime owns interaction?** — browser-responsive behavior or native desktop window/command behavior.
 
 ## Reference model
 

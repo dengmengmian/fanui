@@ -1,6 +1,12 @@
 # FanUI Evaluation Checklist
 
-Use this checklist before calling a substantial FanUI page complete.
+Use this checklist before calling a substantial FanUI surface complete.
+
+Select sections by experience family before evaluation:
+
+- All families use shared sections A, B, D, E, G, H, I, J, applicable Product Evidence checks in F, and applicable anti-patterns in P.
+- Web experiences use C/C1 and the applicable page/archetype sections K–O.
+- `desktop_app` uses Q and `docs/desktop-app/acceptance.md`; it does not inherit Web mobile gates unless the product also has a mobile target.
 
 ## A. Classification
 
@@ -18,7 +24,7 @@ Use this checklist before calling a substantial FanUI page complete.
 - [ ] Control density matches the page family.
 - [ ] Brand expression level is intentional.
 
-## C. Responsive transformation
+## C. Web-only responsive transformation
 
 Read `docs/foundations/responsive.md` and `docs/foundations/mobile-precision.md`.
 
@@ -33,7 +39,7 @@ Read `docs/foundations/responsive.md` and `docs/foundations/mobile-precision.md`
 - [ ] Mobile typography remains stable rather than producing word-by-word headings.
 - [ ] Product evidence remains readable without pinch zoom.
 
-### C1. Mobile precision closure
+### C1. Web-only mobile precision closure
 
 - [ ] Website phone header uses one persistent primary row unless a second row has a strong task reason.
 - [ ] Website primary navigation remains reachable through a complete drawer/menu after collapse.
@@ -166,7 +172,7 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Mobile uses one plan per row or another clear decision pattern.
 - [ ] Comparison uses local scroll/alternate comparison, not whole-page overflow.
 
-## O. Professional / AI Workspace
+## O. Web App Professional / AI Workspace
 
 - [ ] Desktop Workspace owns the remaining viewport height.
 - [ ] Desktop browser page does not leave a large blank region below the core workspace.
@@ -184,6 +190,8 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] Workspace icon-only controls maintain 40–44px targets and consistent 16–19px glyphs on Mobile.
 
 ## P. Anti-pattern gate
+
+Check only the anti-pattern sets routed for the selected experience family. The Web responsive/mobile items below do not apply to a pure `desktop_app`; Desktop-specific anti-patterns are checked in Q.
 
 - [ ] No Card Soup.
 - [ ] No Fake SaaS Dashboard.
@@ -222,6 +230,23 @@ When repeated icons or icon-only controls are present, check `docs/foundations/i
 - [ ] No Tiny Icon Target.
 - [ ] No Mobile Icon Regression.
 - [ ] No Header Collision at 375px.
+
+## Q. Desktop Application
+
+For `desktop_app`, use `docs/desktop-app/acceptance.md`.
+
+- [ ] Desktop App is distinguished from Web App by runtime contract and has an explicit desktop archetype, platform, and framework.
+- [ ] Native chrome, application menus/commands, window lifecycle, system appearance, and restoration behavior are preserved.
+- [ ] Rendered review covers the actual minimum plus 1280×720 compact, 1440×900 normal, and 1728×1117 large windows, or documented product-specific equivalents.
+- [ ] Maximized, restored, and full-screen behavior is checked where supported.
+- [ ] Flexible working content grows before fixed sidebars/inspectors at large sizes.
+- [ ] Compact-window pane collapse preserves a discoverable replacement command and current selection/focus.
+- [ ] The primary task is completable by keyboard only and by pointer/trackpad.
+- [ ] Native commands expose conventional shortcuts with accurate enabled/disabled state.
+- [ ] Hover, pressed, selected, disabled, busy, context-menu, drag/drop, and splitter states are verified where applicable.
+- [ ] Accessibility roles, labels, values, focus order/restoration, status announcements, non-color cues, reduced motion, contrast modes, and appearance modes are verified.
+- [ ] Localization and IME/text entry do not clip commands or corrupt the primary task.
+- [ ] No Web App in a Native Frame, Fake Native Chrome, Window-size Snapshot, Touch-sizing Desktop, Hover-only Authority, Pane Collapse Without Command, or Custom Control Semantic Loss.
 
 ## Completion gate
 

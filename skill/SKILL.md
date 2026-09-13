@@ -1,8 +1,13 @@
-# FanUI Web Skill
+---
+name: fanui
+description: Design, implement, revise, or review polished Web and native desktop application UI with experience-specific calibration, platform-aware interaction, responsive or window-adaptive behavior, and rendered acceptance gates.
+---
+
+# FanUI Skill
 
 ## Purpose
 
-Use FanUI when designing, implementing, revising, or reviewing Web UI. FanUI is an AI-native **decision, calibration, fidelity, responsive, precision, and evaluation system**. It is not a generic component skin.
+Use FanUI when designing, implementing, revising, or reviewing Web UI or native desktop application UI. FanUI is an AI-native **decision, calibration, fidelity, adaptive behavior, precision, and evaluation system**. It is not a generic component skin.
 
 ## Required workflow
 
@@ -15,8 +20,11 @@ Choose one or more:
 - `editorial`
 - `pricing`
 - `web_app`
+- `desktop_app`
 
-### 2. Classify Web App archetype
+Do not infer `web_app` from the presence of panels, sidebars, or web technology. Classify the delivery surface and runtime contract first.
+
+### 2. Classify application archetype
 
 For every substantial Web App, read `docs/web-app/archetypes.md` and choose:
 
@@ -33,6 +41,16 @@ Hard rule:
 
 Identify the core value loop before navigation.
 
+For every Desktop App, read `docs/desktop-app/classification.md` and choose:
+
+- `focused_utility`
+- `document_workspace`
+- `professional_workspace`
+- `monitoring_control`
+- `menu_bar_companion`
+
+Also identify the native platform target and application framework. A Desktop App may reuse a task archetype from Web App guidance, but it must retain a desktop runtime contract: window lifecycle, native commands, keyboard and pointer input, system appearance, accessibility, and platform conventions.
+
 ### 3. Identify task and context
 
 Before styling, state internally:
@@ -42,6 +60,8 @@ fanui:
   experience: ...
   primary_archetype: ...
   secondary_archetype: ...
+  platform: web | macos | windows | linux | cross_platform_desktop
+  framework: ...
   core_value_loop: ...
   page_archetype: ...
   primary_user: ...
@@ -74,6 +94,17 @@ current context
 → metadata
 ```
 
+Desktop App default hierarchy:
+
+```text
+current window/document context
+→ current state
+→ primary task
+→ working content
+→ contextual commands
+→ secondary status
+```
+
 Every substantial surface needs one primary visual/task anchor.
 
 ### 5. Load the relevant pattern
@@ -98,7 +129,14 @@ Web App:
 - `docs/web-app/viewport-ownership.md`
 - `docs/web-app/mobile-workspace.md`
 
+Desktop App:
+
+- `docs/desktop-app/classification.md`
+- `docs/desktop-app/native-shell.md`
+- `docs/desktop-app/acceptance.md`
+
 Do not reuse Homepage composition for Docs/Blog/Product UI. Do not reuse Management Console shells for AI/Professional Workspaces without explicit justification.
+Do not treat a Desktop App as a Web App inside a decorative native frame. Preserve the target platform's window, command, focus, input, and lifecycle behavior.
 
 ### 6. Load calibrated foundations
 
@@ -117,7 +155,8 @@ Mandatory for substantial work:
 - `docs/foundations/semantic-product-color.md`
 - `docs/foundations/surface-hierarchy.md`
 - `docs/foundations/iconography.md`
-- `docs/foundations/responsive.md`
+
+For Web responsive work also read `docs/foundations/responsive.md`. For Desktop App work, load the Desktop App references instead of Web mobile guidance unless the product also targets mobile.
 
 Core formulations:
 
@@ -139,11 +178,13 @@ Core formulations:
 
 > Responsive preserves task hierarchy, not desktop geometry.
 
+> Desktop adapts to window state without losing native behavior.
+
 ### 7. Calibrate the experience
 
-Reference wide desktop viewport: ~1440px.
+For Web, use the reference wide desktop viewport of ~1440px. For Desktop App, calibrate against usable content size inside the actual native window, excluding system window chrome owned by the platform.
 
-Use `experience-metrics.md`; do not reuse one max-width, H1, `py-*`, button height, or radius across all surface families.
+Use `docs/foundations/experience-metrics.md`; do not reuse one max-width, H1, `py-*`, button height, or radius across all surface families.
 
 Internal calibration should include:
 
@@ -176,9 +217,9 @@ Hero evidence            78–90vw, max 1120–1280px
 
 Use dedicated ranges for Docs, Editorial, Pricing, and Product UI.
 
-### 8. Define responsive transformations
+### 8. Define adaptive transformations
 
-Read `docs/foundations/responsive.md` for every substantial page. Responsive work is required even when the request only names Desktop UI unless the target explicitly excludes narrow screens.
+For Web experiences, read `docs/foundations/responsive.md`. Responsive work is required even when the request only names a wide browser layout unless the target explicitly excludes narrow screens.
 
 Validate at least these reference classes:
 
@@ -228,9 +269,11 @@ Hard rules:
 For Website/Docs/Editorial/Pricing also read `docs/website/mobile.md`.
 For Professional/AI Workspace also read `docs/web-app/mobile-workspace.md`.
 
+For `desktop_app`, read `docs/desktop-app/native-shell.md` and `docs/desktop-app/acceptance.md`. Validate compact, normal, and large windows plus maximized/full-screen behavior where supported. Do not require phone breakpoints unless the product also targets mobile. Preserve commands, focus order, selection, pane access, and task continuity as the window changes size.
+
 ### 9. Apply optical layout
 
-Read `optical-layout.md`.
+Read `docs/foundations/optical-layout.md`.
 
 For sidebars/inspectors, reason about the **remaining canvas**.
 
@@ -267,7 +310,7 @@ Use tables for comparison, trees for hierarchy, tabs for alternate views of one 
 
 Do not create a card because content needs a box.
 
-Apply `surface-hierarchy.md`: radius/elevation should become tighter and quieter toward operational UI.
+Apply `docs/foundations/surface-hierarchy.md`: radius/elevation should become tighter and quieter toward operational UI.
 
 ### 12. Apply iconography precision
 
@@ -327,7 +370,7 @@ Check:
 - semantic role color;
 - believable navigation/inspector/runtime structure.
 
-Avoid a large frame containing a few tiny nodes. Use `fidelity-density.md`.
+Avoid a large frame containing a few tiny nodes. Use `docs/foundations/fidelity-density.md`.
 
 On Mobile, Product Evidence Fidelity is re-evaluated after transformation; Desktop fidelity does not automatically carry over.
 
@@ -335,11 +378,11 @@ On Mobile, Product Evidence Fidelity is re-evaluated after transformation; Deskt
 
 Ask whether a large surface would lose nothing if reduced 30–40%. If yes, either reduce the surface or increase its meaningful content.
 
-Do not use tiny typography to fake professional density. Respect the Minimum Readability Floor in `fidelity-density.md`.
+Do not use tiny typography to fake professional density. Respect the Minimum Readability Floor in `docs/foundations/fidelity-density.md`.
 
 ### 15. Apply semantic product color
 
-Read `semantic-product-color.md`.
+Read `docs/foundations/semantic-product-color.md`.
 
 Keep these roles distinct:
 
@@ -359,19 +402,19 @@ Keep these roles distinct:
 
 Brand color says who the product is. Semantic color says what is happening.
 
-### 16. Enforce viewport ownership for Professional / AI Workspaces
+### 16. Enforce workspace ownership by delivery family
 
-Read `viewport-ownership.md` and `mobile-workspace.md`.
+For a Professional / AI `web_app`, read `docs/web-app/viewport-ownership.md` and `docs/web-app/mobile-workspace.md`.
 
-Desktop core workspace should normally use remaining viewport height and internal pane scrolling.
+Its wide-browser core workspace should normally use remaining viewport height and internal pane scrolling. A 450–550px workspace region followed by a large blank page area is a failure unless the workflow is intentionally document-shaped.
 
-A Desktop page with a 450–550px workspace region and a large blank area below is a failure unless the workflow is intentionally document-shaped.
+On Mobile, Web App viewport ownership may become a deliberate sequential task flow. Persistent browser panes may transform into compact context, tabs, drawers, sheets, or sequential review sections.
 
-On Mobile, viewport ownership may become a deliberate sequential task flow. Persistent Desktop panes may transform into compact context, tabs, drawers, sheets, or sequential review sections.
+For a Professional Workspace Desktop App, use `docs/desktop-app/native-shell.md` and `docs/desktop-app/acceptance.md` instead. Validate native compact/normal/large window ownership plus maximized, full-screen, restoration, focus, and replacement-command behavior where supported; do not apply Web mobile-workspace rules unless the product also has a mobile target.
 
 ### 17. Use an Editorial Visual System
 
-For Blog/Editorial read `editorial-visuals.md`.
+For Blog/Editorial read `docs/website/editorial-visuals.md`.
 
 Do not use pastel gradient rectangles with empty white panels as default article art.
 
@@ -381,11 +424,16 @@ A large article Hero image is optional; it must earn its area.
 
 ### 18. Check anti-patterns
 
-Read:
+For every experience, read:
 
 - `docs/anti-patterns/core.md`
-- `docs/anti-patterns/v032.md`
+
+For `desktop_app`, also read `docs/anti-patterns/desktop-app.md`. Read `docs/anti-patterns/v032.md` when relevant to product evidence, workspace fidelity, semantic color, or surface hierarchy.
+
+For Web work, read `docs/anti-patterns/v032.md`. For Web responsive/mobile work, also read:
+
 - `docs/anti-patterns/v033.md`
+- `docs/anti-patterns/v034.md`
 
 Responsive hard anti-patterns include:
 
@@ -408,7 +456,9 @@ Iconography precision also rejects:
 
 ### 19. Check Chinese / English behavior
 
-Validate Chinese title wrapping, mixed technical labels, navigation width, pricing units, tables, product rows, icon/text rows, minimum readability, and responsive transformation at Mobile widths.
+For Web experiences and any product with a mobile target, validate Chinese title wrapping, mixed technical labels, navigation width, pricing units, tables, product rows, icon/text rows, minimum readability, and responsive transformation at Mobile widths.
+
+For Desktop App, use `docs/desktop-app/acceptance.md` and validate localized menu items, toolbar labels, dialog copy, shortcut discoverability, truncation at the supported minimum window, and IME/text-entry behavior where text input is material.
 
 ### 20. Evaluate before completion
 
@@ -433,7 +483,10 @@ Hard failures cannot be rescued by average score:
 - repeated icon/text patterns with visibly broken centering or semantically misleading glyphs;
 - Desktop evidence merely shrunk into unreadable Mobile evidence;
 - essential mobile navigation/inspector context removed without a replacement path;
-- whole-page horizontal overflow at a reference Mobile viewport.
+- whole-page horizontal overflow at a reference Mobile viewport;
+- Desktop App is a web-dashboard shell that ignores native window, command, focus, or input behavior;
+- Desktop App loses the primary task, selected object, or required command access at a supported compact window size;
+- maximized/full-screen or restored-window behavior produces unusable blank regions, clipped panes, or unreachable controls.
 
 ## Output expectations
 
@@ -489,6 +542,39 @@ fanui:
     semantic_fit: checked
     peer_geometry: checked
     optical_alignment: checked
+```
+
+### Desktop App reasoning example
+
+```yaml
+fanui:
+  experience: desktop_app
+  primary_archetype: monitoring_control
+  platform: macos
+  framework: native
+  core_value_loop: inspect_status_identify_issue_take_action
+  primary_task: supervise_current_system_state
+  window:
+    minimum_supported: checked
+    compact: 1280x720
+    normal: 1440x900
+    large: 1728x1117
+    maximized: checked
+    full_screen: checked_if_supported
+    restoration: checked
+  shell:
+    native_chrome: preserved
+    toolbar_commands: task_scoped
+    selection_context: visible
+  input:
+    keyboard_navigation: checked
+    pointer_states: checked
+    shortcuts_and_menus: checked
+  accessibility:
+    focus_order: checked
+    semantic_labels: checked
+    reduced_motion: checked
+  rendered_acceptance: complete
 ```
 
 These YAML blocks are reasoning aids, not required user-visible output.
