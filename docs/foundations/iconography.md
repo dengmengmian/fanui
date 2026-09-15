@@ -35,8 +35,9 @@ The icon container should use explicit centering:
 
 ```css
 .icon-box {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
 }
 
@@ -119,7 +120,7 @@ At each responsive transformation verify:
 - the glyph remains centered in the control;
 - peer glyph size/stroke remains consistent;
 - icon + wrapped text keeps first-line alignment;
-- mobile selectors do not overwrite `display`, `place-items`, `line-height`, `margin`, or color of dedicated icon boxes;
+- mobile selectors do not overwrite `display`, `align-items`, `justify-content`, `line-height`, `margin`, or color of dedicated icon boxes;
 - drawer/menu icons use direct navigation semantics;
 - hidden desktop controls that reappear in a mobile drawer do not acquire decorative or approximate replacement icons.
 

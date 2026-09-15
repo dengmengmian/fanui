@@ -6,6 +6,17 @@ FanUI V0.3 introduces calibrated ranges because purely semantic guidance caused 
 
 These numbers are **calibration bands**, not immutable design tokens. Choose within the band according to content, language, and product character. Deviate only with a clear reason.
 
+## Layout model selection
+
+Choose the layout model from the relationship the content must preserve.
+
+- Use Flexbox for one-dimensional rows, columns, toolbars, navigation, and linear split panes.
+- Use CSS Grid when both row and column alignment matter, or when elements deliberately span tracks.
+- Use native table layout or the host Table component for truly tabular content.
+- Use Absolute / Fixed only for overlays and intentional layering.
+- Give Flex items and Grid tracks content-safe minimum sizes and preserve DOM reading order during responsive reflow.
+- Avoid Grid for ordinary one-axis alignment and avoid nested Flex wrappers that only simulate a simple Grid.
+
 ## 1. Desktop reference frame
 
 Primary calibration viewport:

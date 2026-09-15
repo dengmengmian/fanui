@@ -1,0 +1,19 @@
+{
+  "name": "fanui-workspace",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p packages/react/tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "jsdom": "^26.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

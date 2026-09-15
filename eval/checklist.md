@@ -7,6 +7,7 @@ Select sections by experience family before evaluation:
 - All families use shared sections A, B, D, E, G, H, I, J, applicable Product Evidence checks in F, and applicable anti-patterns in P.
 - Web experiences use C/C1 and the applicable page/archetype sections K–O.
 - `desktop_app` uses Q and `docs/desktop-app/acceptance.md`; it does not inherit Web mobile gates unless the product also has a mobile target.
+- React + Tailwind implementations also use R.
 
 ## A. Classification
 
@@ -18,6 +19,8 @@ Select sections by experience family before evaluation:
 
 ## B. Cross-surface calibration
 
+- [ ] One-dimensional flow uses Flexbox; genuine two-dimensional alignment/spanning may use CSS Grid; tabular data retains table semantics.
+- [ ] The chosen model preserves DOM reading order and avoids unnecessary nested wrappers or track complexity.
 - [ ] Correct `experience-metrics.md` family is used.
 - [ ] Homepage, Docs, Editorial, Pricing, and Product UI do not share one generic max-width/H1/spacing/control recipe.
 - [ ] Major vertical rhythm matches the page family.
@@ -26,7 +29,12 @@ Select sections by experience family before evaluation:
 
 ## C. Web-only responsive transformation
 
-Read `docs/foundations/responsive.md` and `docs/foundations/mobile-precision.md`.
+Read `docs/foundations/web-delivery.md`, `docs/foundations/responsive.md`, and `docs/foundations/mobile-precision.md`.
+
+- [ ] Browser target comes from project Browserslist/user data or a documented Baseline fallback, and supported browsers were actually tested.
+- [ ] Limited Web APIs/CSS have feature detection or usable fallback; build success is not treated as compatibility proof.
+- [ ] Public indexable pages pass title/description/canonical/robots/status/rendered-content checks; private/authenticated pages are not accidentally indexed.
+- [ ] Structured data, when present, matches visible facts; GEO uses source-clear textual content and explicit crawler policy rather than special markup tricks.
 
 - [ ] Page has been checked at 1440, 1024, 768, 390, and 375-class widths when materially relevant.
 - [ ] Important regions have deliberate `preserve / stack / reorder / collapse / scroll / crop / replace / sheet / drawer` strategies.
@@ -230,6 +238,7 @@ Check only the anti-pattern sets routed for the selected experience family. The 
 - [ ] No Tiny Icon Target.
 - [ ] No Mobile Icon Regression.
 - [ ] No Header Collision at 375px.
+- [ ] No Layout-model Misuse: Grid is not used for a simple row, and nested Flex does not merely imitate a straightforward Grid.
 
 ## Q. Desktop Application
 
@@ -247,6 +256,19 @@ For `desktop_app`, use `docs/desktop-app/acceptance.md`.
 - [ ] Accessibility roles, labels, values, focus order/restoration, status announcements, non-color cues, reduced motion, contrast modes, and appearance modes are verified.
 - [ ] Localization and IME/text entry do not clip commands or corrupt the primary task.
 - [ ] No Web App in a Native Frame, Fake Native Chrome, Window-size Snapshot, Touch-sizing Desktop, Hover-only Authority, Pane Collapse Without Command, or Custom Control Semantic Loss.
+
+## R. React + Tailwind implementation
+
+Read `docs/implementation/react-tailwind.md`, `docs/implementation/theming.md`, `docs/implementation/accessibility.md`, and `docs/implementation/testing.md`.
+
+- [ ] Components consume semantic roles; repeated raw palette values and arbitrary values are not acting as hidden design tokens.
+- [ ] Tailwind class names are statically discoverable; dynamic variants use complete typed maps.
+- [ ] Existing host primitives and libraries are reused; no competing UI system was added for one screen.
+- [ ] The layout model matches content dimension and DOM reading/focus order remains correct.
+- [ ] Light, Dark, and system resolution are coherent, avoid first-paint mismatch, and retain contrast/focus/status distinctions.
+- [ ] Primary tasks work by keyboard and expose correct accessible names, roles, states, errors, and focus restoration.
+- [ ] Typecheck/lint/build, behavior tests, supported browser engines, visual regression states, and manual accessibility checks are recorded in proportion to risk.
+- [ ] Public pages include SEO/GEO verification; authenticated/private product surfaces retain the intended indexing policy.
 
 ## Completion gate
 

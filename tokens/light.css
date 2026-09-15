@@ -1,0 +1,31 @@
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --fan-color-canvas: #f8fafc;
+  --fan-color-surface: #ffffff;
+  --fan-color-surface-subtle: #f1f5f9;
+  --fan-color-surface-elevated: #ffffff;
+  --fan-color-text: #0f172a;
+  --fan-color-text-secondary: #475569;
+  --fan-color-text-muted: #64748b;
+  --fan-color-border: #dbe3ee;
+  --fan-color-border-strong: #94a3b8;
+  --fan-color-brand: #2563eb;
+  --fan-color-brand-hover: #1d4ed8;
+  --fan-color-brand-active: #1e40af;
+  --fan-color-on-brand: #ffffff;
+  --fan-color-focus: #2563eb;
+  --fan-color-selection: #dbeafe;
+  --fan-color-on-selection: #1e3a8a;
+  --fan-color-success: #047857;
+  --fan-color-success-subtle: #d1fae5;
+  --fan-color-warning: #b45309;
+  --fan-color-warning-subtle: #fef3c7;
+  --fan-color-danger: #be123c;
+  --fan-color-danger-subtle: #ffe4e6;
+  --fan-color-info: #0369a1;
+  --fan-color-info-subtle: #e0f2fe;
+  --fan-color-overlay: rgb(15 23 42 / 55%);
+  --fan-shadow-color: rgb(15 23 42 / 10%);
+}
+

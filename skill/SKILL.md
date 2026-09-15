@@ -11,6 +11,29 @@ Use FanUI when designing, implementing, revising, or reviewing Web UI or native 
 
 ## Required workflow
 
+### Layout implementation rule
+
+Choose the simplest layout model that represents the actual content relationship.
+
+- Use Flexbox for one-dimensional flow: navigation, toolbars, action rows, linear split panes, and layouts whose primary relationship follows one axis.
+- Use CSS Grid for genuine two-dimensional composition: aligned rows and columns, repeated matrices, or deliberate row/column spanning.
+- Use semantic table markup or the host Table component for tabular data; do not replace table semantics with Flex or Grid.
+- Use Absolute / Fixed only for overlays, badges, and intentional layering, never for primary page geometry.
+- Responsive transformations may change Flex wrapping/direction or Grid tracks. Preserve DOM reading order and react to content pressure rather than device labels alone.
+- Do not use Grid for a simple row, or add nested Flex containers merely to imitate a straightforward two-dimensional Grid.
+- Preserve a correct host-project layout model; do not refactor it only to express a preference.
+
+For React + Tailwind CSS implementation, also read:
+
+- `docs/implementation/react-tailwind.md`
+- `docs/implementation/theming.md`
+- `docs/implementation/accessibility.md`
+- `docs/implementation/testing.md`
+
+Use the host design system first. When no validated product theme exists, use the installable defaults in `tokens/index.css` and the Tailwind v4 mapping in `tokens/tailwind.css`; treat them as an overrideable fallback, not a universal product brand.
+
+When the user asks to use Apifox as a reference or to form reusable components, read `references/apifox-page-study.md` and `docs/components/candidates.md`. Reuse `packages/react/` candidates only when their contract fits; do not force page-specific structure into a generic component.
+
 ### 1. Classify the experience
 
 Choose one or more:
@@ -156,7 +179,7 @@ Mandatory for substantial work:
 - `docs/foundations/surface-hierarchy.md`
 - `docs/foundations/iconography.md`
 
-For Web responsive work also read `docs/foundations/responsive.md`. For Desktop App work, load the Desktop App references instead of Web mobile guidance unless the product also targets mobile.
+For every Web implementation also read `docs/foundations/web-delivery.md`. For Web responsive work also read `docs/foundations/responsive.md`. For Desktop App work, load the Desktop App references instead of Web mobile guidance unless the product also targets mobile.
 
 Core formulations:
 
@@ -471,6 +494,13 @@ Score below 85 normally triggers revision.
 
 Hard failures cannot be rescued by average score:
 
+- the layout model conflicts with the content dimension, breaks reading order, or creates avoidable wrapper/track complexity;
+- a Web implementation uses unsupported platform features without a fallback for its declared browser target;
+- a public indexable page hides critical content from rendered HTML or ships conflicting title, canonical, robots, status, or structured-data signals;
+- GEO relies on hidden text, fabricated citations/schema, or crawler access that conflicts with the product owner's privacy/legal policy;
+- React/Tailwind implementation bypasses semantic tokens with repeated palette literals, constructs class names dynamically, or introduces a second UI library without a product need;
+- Light/Dark support loses required contrast, focus visibility, semantic state distinctions, or causes server/client theme mismatch;
+- a primary Web task cannot be completed by keyboard or lacks essential accessible name/role/state behavior;
 - wrong Web App archetype;
 - tiny/unreadable core product evidence;
 - Hero scale outside calibration without reason;

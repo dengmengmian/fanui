@@ -1,6 +1,6 @@
 # FanUI Agent Instructions
 
-This repository defines an AI-native UI design system. Agents must preserve the distinction between **design rules**, **calibration bands**, **responsive transformations**, **mobile precision rules**, **fidelity gates**, and future **implementation tokens**.
+This repository defines an AI-native UI design system. Agents must preserve the distinction between **design rules**, **calibration bands**, **responsive transformations**, **mobile precision rules**, **fidelity gates**, and **implementation tokens**.
 
 ## Mission
 
@@ -18,6 +18,7 @@ References are evidence for principles. Do not copy proprietary assets, exact la
 
 Do:
 
+- choose the layout model by content dimension: Flexbox for one-dimensional flow, CSS Grid for genuine two-dimensional alignment/spanning, and semantic tables for tabular data;
 - classify experience family before styling;
 - distinguish `desktop_app` from `web_app` by runtime contract, not rendering technology;
 - preserve native window chrome, command routing, focus, keyboard/pointer behavior, lifecycle, system appearance, and accessibility for Desktop Apps;
@@ -48,6 +49,7 @@ Do:
 
 Do not:
 
+- force every layout through one model, use Grid for simple one-dimensional rows, or add nested Flex wrappers merely to imitate a straightforward two-dimensional Grid;
 - build a full component library yet;
 - freeze calibration bands into universal constants;
 - default task-oriented Web Apps to Overview + noun collections;
@@ -92,6 +94,19 @@ For Web responsive/mobile work also read:
 
 - `docs/foundations/responsive.md`
 - `docs/foundations/mobile-precision.md`
+
+For every Web implementation read `docs/foundations/web-delivery.md`. Its compatibility gate applies to all Web surfaces; SEO/GEO applies only to public indexable surfaces, not authenticated consoles by default.
+
+For React + Tailwind CSS work also read:
+
+- `docs/implementation/react-tailwind.md`
+- `docs/implementation/theming.md`
+- `docs/implementation/accessibility.md`
+- `docs/implementation/testing.md`
+
+Prefer host tokens/components. If the product has no validated theme, use `tokens/index.css` plus `tokens/tailwind.css` as the overrideable FanUI fallback.
+
+For Apifox-derived pattern or component work, read `references/apifox-page-study.md` and `docs/components/candidates.md`. Treat unobserved authenticated areas as unknown.
 
 Also use the existing Visual DNA / typography / layout / spacing / color / depth foundations.
 
@@ -155,6 +170,7 @@ Never sacrifice the first ten to improve the last four.
 3. validate 1440 / 768 / 390 / 375-class behavior where materially relevant;
 4. verify Website/Docs navigation replacement, surface-specific Mobile typography, local scrolling, code semantics, touch targets, and applicable Workspace/Editorial rules;
 5. re-evaluate Product Evidence Fidelity at Desktop and Mobile.
+6. for React + Tailwind work, verify semantic-token use, Light/Dark behavior, keyboard/accessibility, supported engines, and stable visual regression states.
 
 ### Desktop App
 

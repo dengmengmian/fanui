@@ -4,6 +4,14 @@
 
 FanUI is not primarily a component library. It is a design language, page-pattern system, calibration framework, product-fidelity model, responsive decision system, AI decision system, and evaluation rubric.
 
+Implementation rule: choose layout by content dimension. Use Flexbox for one-dimensional flow, CSS Grid for genuine two-dimensional alignment or spanning, semantic tables for tabular data, and Absolute/Fixed only for intentional overlays. Do not force every layout through one model.
+
+Every Web implementation also passes a compatibility gate. Public indexable pages additionally pass SEO and GEO gates; authenticated product surfaces are not treated as SEO pages by default. See `docs/foundations/web-delivery.md`.
+
+React + Tailwind implementations use a documented engineering contract and executable semantic tokens. FanUI fixes role names and ships an overrideable Light/Dark fallback; each product may replace the values without rewriting components. See `docs/implementation/` and `tokens/`.
+
+The first `candidate` React components are extracted from repeated Apifox public page patterns and live in `packages/react/`. They are intentionally experimental: FanUI reimplements reusable behavior and hierarchy without copying Apifox code or proprietary assets.
+
 ## Current scope
 
 FanUI covers six first-class experience families:
@@ -119,6 +127,7 @@ node scripts/package-skill.mjs /absolute/path/to/new/fanui
 ```
 
 The package builder refuses to overwrite an existing directory. The verifier builds an isolated temporary package and checks that every `docs/` and `eval/` path referenced by the installed `SKILL.md` resolves inside that package.
+The package also includes executable `tokens/` so no-design-spec React + Tailwind work starts from a coherent fallback theme.
 
 ## Repository map
 
@@ -167,6 +176,13 @@ fanui/
 │   │   ├── classification.md
 │   │   ├── native-shell.md
 │   │   └── acceptance.md
+│   ├── implementation/
+│   │   ├── react-tailwind.md
+│   │   ├── theming.md
+│   │   ├── accessibility.md
+│   │   └── testing.md
+│   ├── components/
+│   │   └── candidates.md
 │   └── anti-patterns/
 │       ├── core.md
 │       ├── v032.md
@@ -174,6 +190,15 @@ fanui/
 │       ├── v034.md
 │       └── desktop-app.md
 ├── references/
+│   └── apifox-page-study.md
+├── packages/react/
+│   ├── src/
+│   └── test/
+├── tokens/
+│   ├── index.css
+│   ├── light.css
+│   ├── dark.css
+│   └── tailwind.css
 ├── skill/SKILL.md
 ├── scripts/
 │   ├── package-skill.mjs

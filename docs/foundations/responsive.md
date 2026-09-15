@@ -49,6 +49,10 @@ Do not default everything to `scale`.
 
 ## Core rules
 
+### 0. Reflow with the appropriate layout model
+
+Responsive transformations may change Flex `flex-basis`, wrapping, ordering, or direction, and may change Grid track count or placement when the composition is genuinely two-dimensional. Preserve DOM reading order and use the simplest model that matches the relationship.
+
 ### 1. Preserve task hierarchy, not desktop geometry
 
 A mobile layout may look structurally different while preserving the same user task and current context.
@@ -196,6 +200,7 @@ responsive:
 
 ## Hard failures
 
+- Responsive layout uses the wrong model, changes reading order, or preserves cramped tracks/items past their content limit.
 - Desktop evidence is merely scaled until unreadable.
 - A two-column Marketing section remains two cramped columns below ~560px.
 - Essential sidebar/inspector/navigation is removed without replacement access.

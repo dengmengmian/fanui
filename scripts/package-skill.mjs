@@ -24,7 +24,7 @@ if (fs.existsSync(output)) {
 fs.mkdirSync(output, { recursive: true });
 fs.copyFileSync(path.join(root, 'skill/SKILL.md'), path.join(output, 'SKILL.md'));
 
-for (const directory of ['docs', 'eval', 'references']) {
+for (const directory of ['docs', 'eval', 'references', 'tokens', 'packages']) {
   fs.cpSync(path.join(root, directory), path.join(output, directory), {
     recursive: true,
     errorOnExist: true,

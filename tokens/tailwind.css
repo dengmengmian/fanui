@@ -1,0 +1,33 @@
+@theme inline {
+  --font-sans: var(--fan-font-sans);
+  --color-canvas: var(--fan-color-canvas);
+  --color-surface: var(--fan-color-surface);
+  --color-surface-subtle: var(--fan-color-surface-subtle);
+  --color-surface-elevated: var(--fan-color-surface-elevated);
+  --color-content: var(--fan-color-text);
+  --color-content-secondary: var(--fan-color-text-secondary);
+  --color-content-muted: var(--fan-color-text-muted);
+  --color-divider: var(--fan-color-border);
+  --color-divider-strong: var(--fan-color-border-strong);
+  --color-brand: var(--fan-color-brand);
+  --color-brand-hover: var(--fan-color-brand-hover);
+  --color-brand-active: var(--fan-color-brand-active);
+  --color-on-brand: var(--fan-color-on-brand);
+  --color-focus: var(--fan-color-focus);
+  --color-selection: var(--fan-color-selection);
+  --color-on-selection: var(--fan-color-on-selection);
+  --color-success: var(--fan-color-success);
+  --color-success-subtle: var(--fan-color-success-subtle);
+  --color-warning: var(--fan-color-warning);
+  --color-warning-subtle: var(--fan-color-warning-subtle);
+  --color-danger: var(--fan-color-danger);
+  --color-danger-subtle: var(--fan-color-danger-subtle);
+  --color-info: var(--fan-color-info);
+  --color-info-subtle: var(--fan-color-info-subtle);
+  --radius-control: var(--fan-radius-control);
+  --radius-panel: var(--fan-radius-panel);
+  --radius-feature: var(--fan-radius-feature);
+  --shadow-panel: var(--fan-shadow-panel);
+  --ease-standard: var(--fan-ease-standard);
+}
+

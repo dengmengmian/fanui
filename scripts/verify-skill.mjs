@@ -21,6 +21,17 @@ const rubric = read('eval/rubric.md');
 const classification = read('docs/desktop-app/classification.md');
 const nativeShell = read('docs/desktop-app/native-shell.md');
 const acceptance = read('docs/desktop-app/acceptance.md');
+const webDelivery = read('docs/foundations/web-delivery.md');
+const reactTailwind = read('docs/implementation/react-tailwind.md');
+const theming = read('docs/implementation/theming.md');
+const accessibility = read('docs/implementation/accessibility.md');
+const testing = read('docs/implementation/testing.md');
+const tokenIndex = read('tokens/index.css');
+const lightTokens = read('tokens/light.css');
+const darkTokens = read('tokens/dark.css');
+const tailwindTokens = read('tokens/tailwind.css');
+const componentCandidates = read('docs/components/candidates.md');
+const apifoxStudy = read('references/apifox-page-study.md');
 const packageScript = path.join(root, 'scripts/package-skill.mjs');
 const markdownReferences = [...skill.matchAll(/`([^`\n]*\.md)`/g)].map((match) => match[1]);
 const basenameOnlyReferences = markdownReferences.filter((reference) => !reference.includes('/'));
@@ -32,7 +43,59 @@ const desktopAgentCompletion = agentCompletion.match(/### Desktop App[\s\S]*$/)?
 const desktopReferenceAcceptance = rubric.match(/## Desktop App reference acceptance[\s\S]*$/)?.[0] ?? '';
 
 expect('Skill has valid YAML frontmatter', skill.startsWith('---\nname: fanui\n'));
+expect(
+  'Skill selects layout model by content dimension',
+  skill.includes('Layout implementation rule') &&
+    skill.includes('Use Flexbox for one-dimensional flow') &&
+    skill.includes('Use CSS Grid for genuine two-dimensional composition') &&
+    skill.includes('semantic table markup'),
+);
+expect(
+  'Checklist gates layout-model misuse',
+  checklist.includes('genuine two-dimensional alignment/spanning may use CSS Grid') &&
+    checklist.includes('No Layout-model Misuse'),
+);
 expect('Skill recognizes desktop_app', skill.includes('- `desktop_app`'));
+expect(
+  'Skill routes every Web implementation to delivery quality rules',
+  skill.includes('For every Web implementation also read `docs/foundations/web-delivery.md`'),
+);
+expect(
+  'Web delivery separates compatibility from public SEO and GEO scope',
+  webDelivery.includes('Compatibility applies to every Web implementation') &&
+    webDelivery.includes('Authenticated consoles/private workspaces normally remain `noindex`') &&
+    webDelivery.includes('GEO has no separate universal technical standard'),
+);
+expect(
+  'React and Tailwind implementation contract exists',
+  reactTailwind.includes('React + Tailwind implementation contract') &&
+    reactTailwind.includes('Do not construct Tailwind class names dynamically') &&
+    reactTailwind.includes('CSS Grid'),
+);
+expect(
+  'Theme contract separates stable roles from product values',
+  theming.includes('Stable contract') && theming.includes('Product override') && theming.includes('Default theme'),
+);
+expect(
+  'Accessibility baseline is WCAG 2.2 AA',
+  accessibility.includes('WCAG 2.2 Level AA') && accessibility.includes('keyboard') && accessibility.includes('reduced motion'),
+);
+expect(
+  'Testing contract covers semantic, browser, visual, and accessibility checks',
+  testing.includes('Playwright') && testing.includes('axe') && testing.includes('visual regression') && testing.includes('WebKit'),
+);
+expect(
+  'Executable theme tokens include light, dark, and Tailwind mappings',
+  tokenIndex.includes("@import './light.css'") &&
+    tokenIndex.includes("@import './dark.css'") &&
+    lightTokens.includes('[data-theme="light"]') &&
+    darkTokens.includes('[data-theme="dark"]') &&
+    tailwindTokens.includes('@theme inline'),
+);
+expect(
+  'Apifox study maps observed page families to candidate components',
+  apifoxStudy.includes('Observed page families') && componentCandidates.includes('Button') && componentCandidates.includes('PricingCard'),
+);
 expect(
   'Skill routes desktop work to desktop references',
   skill.includes('docs/desktop-app/classification.md') &&
@@ -100,6 +163,8 @@ if (fs.existsSync(packageScript)) {
     const referencedFiles = [...packagedSkill.matchAll(/`([^`\n]*\.md)`/g)].map((match) => match[1]);
 
     expect('Packaged Skill has an entrypoint', Boolean(packagedSkill));
+    expect('Packaged Skill includes executable tokens', fs.existsSync(path.join(output, 'tokens/index.css')));
+    expect('Packaged Skill includes React candidates', fs.existsSync(path.join(output, 'packages/react/src/index.ts')));
     expect('Packaged Skill declares supporting references', referencedFiles.length > 0);
     expect(
       'Every packaged Skill reference resolves inside the package',
