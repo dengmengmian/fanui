@@ -6,6 +6,7 @@ Select sections by experience family before evaluation:
 
 - All families use shared sections A, B, D, E, G, H, I, J, applicable Product Evidence checks in F, and applicable anti-patterns in P.
 - Web experiences use C/C1 and the applicable page/archetype sections K–O.
+- Authentication gateways also use S.
 - `desktop_app` uses Q and `docs/desktop-app/acceptance.md`; it does not inherit Web mobile gates unless the product also has a mobile target.
 - React + Tailwind implementations also use R.
 
@@ -34,6 +35,7 @@ Read `docs/foundations/web-delivery.md`, `docs/foundations/responsive.md`, and `
 - [ ] Browser target comes from project Browserslist/user data or a documented Baseline fallback, and supported browsers were actually tested.
 - [ ] Limited Web APIs/CSS have feature detection or usable fallback; build success is not treated as compatibility proof.
 - [ ] Public indexable pages pass title/description/canonical/robots/status/rendered-content checks; private/authenticated pages are not accidentally indexed.
+- [ ] Route families have an explicit index policy; SSR claims are verified against response HTML rather than inferred from the framework or rendering flags.
 - [ ] Structured data, when present, matches visible facts; GEO uses source-clear textual content and explicit crawler policy rather than special markup tricks.
 
 - [ ] Page has been checked at 1440, 1024, 768, 390, and 375-class widths when materially relevant.
@@ -266,9 +268,23 @@ Read `docs/implementation/react-tailwind.md`, `docs/implementation/theming.md`, 
 - [ ] Existing host primitives and libraries are reused; no competing UI system was added for one screen.
 - [ ] The layout model matches content dimension and DOM reading/focus order remains correct.
 - [ ] Light, Dark, and system resolution are coherent, avoid first-paint mismatch, and retain contrast/focus/status distinctions.
+- [ ] Switching theme preserves the same information architecture, task availability, and data behavior; it does not swap page implementations or change which requests run.
 - [ ] Primary tasks work by keyboard and expose correct accessible names, roles, states, errors, and focus restoration.
 - [ ] Typecheck/lint/build, behavior tests, supported browser engines, visual regression states, and manual accessibility checks are recorded in proportion to risk.
 - [ ] Public pages include SEO/GEO verification; authenticated/private product surfaces retain the intended indexing policy.
+
+## S. Authentication gateway
+
+Read `docs/web-app/authentication.md` for sign-in, registration, password recovery, one-time-code, or session-gated entry.
+
+- [ ] The requested destination and action intent survive authentication, with a safe internal fallback.
+- [ ] Session/bootstrap state resolves before redirects, permission failures, or role-specific UI become actionable.
+- [ ] Immutable account realm/role choices are explicit before submission and do not use a risky default.
+- [ ] Controls have labels, autocomplete/input modes, associated errors, useful pending states, and password visibility buttons with accessible names/states.
+- [ ] One-time-code delivery, resend, expiry, paste, rate-limit, and failure states are truthful and testable.
+- [ ] Modal auth has labelled dialog semantics, focus entry/trap/restoration, safe Escape behavior, and an inert background; long flows use a route/sheet when the modal no longer fits.
+- [ ] Keyboard, screen reader, autofill/password manager, 200% zoom, 390/375px, mobile keyboard pressure, and service failures are verified.
+- [ ] The review records session-storage and SSR reality without treating visual polish or framework choice as security evidence.
 
 ## Completion gate
 

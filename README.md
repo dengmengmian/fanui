@@ -160,6 +160,7 @@ fanui/
 │   │   ├── homepage.md
 │   │   ├── hero.md
 │   │   ├── navigation.md
+│   │   ├── public-marketplace.md
 │   │   ├── product-showcase.md
 │   │   ├── pricing.md
 │   │   ├── documentation.md

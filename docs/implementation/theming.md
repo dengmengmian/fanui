@@ -27,6 +27,7 @@ Use `tokens/index.css` for the default Light/Dark values and `tokens/tailwind.cs
 
 ## Theme behavior
 
+- A theme switch must preserve the same information architecture, task availability, content hierarchy, and network behavior. Theme controls appearance and component state styling; it must not silently select a different page implementation, fetch a different dataset, or remove a workflow. If those differences are intentional, model them as a product mode, experiment, or route with an explicit contract instead of calling them a theme.
 - Support `light`, `dark`, and `system`; store an explicit user choice when one exists.
 - Apply the resolved mode to the root `data-theme` attribute before first paint to avoid a theme flash.
 - Set `color-scheme` so native controls match the resolved theme.
@@ -37,4 +38,3 @@ Use `tokens/index.css` for the default Light/Dark values and `tokens/tailwind.cs
 ## Token promotion rule
 
 A value becomes a token when it is shared, repeated, theme-dependent, or semantically meaningful. A truly local optical correction may remain local. Do not create a token for every pixel and do not repeat a system decision as arbitrary values.
-

@@ -119,6 +119,8 @@ For Professional/AI Workspace read both:
 - `docs/web-app/viewport-ownership.md`
 - `docs/web-app/mobile-workspace.md`
 
+For sign-in, registration, password recovery, one-time-code, or session-gated entry read `docs/web-app/authentication.md`.
+
 For Desktop App work read:
 
 - `docs/desktop-app/classification.md`

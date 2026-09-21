@@ -122,6 +122,15 @@ Use customer logos, usage signals, testimonials, case studies, or compatibility 
 
 Do not overload the page with logos before explaining the product.
 
+## Contribution loop
+
+When a homepage asks visitors for requests, feedback, or co-creation ideas and also publishes accepted outcomes, treat submission and public history as one contribution loop. Keep them inside one shared region or connect adjacent surfaces with an explicit divider and hierarchy; a detached history heading plus faint helper copy looks like an unfinished page fragment.
+
+- Give an empty history a named state, a short expectation, and enough surface structure to remain intentional.
+- Preserve the sequence `why contribute → submit → see accepted outcomes` on narrow screens.
+- Do not fabricate adopted items, rewards, dates, activity, or progress to make the section look populated.
+- When real records exist, keep their status, public summary, attribution, schedule, and reward wording aligned with the source contract.
+
 ## Enterprise sections
 
 Enterprise messaging should introduce new reasons to buy, not simply repeat the standard feature list.

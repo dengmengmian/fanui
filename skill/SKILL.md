@@ -137,6 +137,7 @@ Website:
 - `docs/website/homepage.md`
 - `docs/website/hero.md`
 - `docs/website/navigation.md`
+- `docs/website/public-marketplace.md` for customer portals, service directories, public plazas, and transactional listing/detail flows
 - `docs/website/product-showcase.md`
 - `docs/website/pricing.md`
 - `docs/website/documentation.md`
@@ -151,6 +152,7 @@ Web App:
 - `docs/web-app/workspace.md`
 - `docs/web-app/viewport-ownership.md`
 - `docs/web-app/mobile-workspace.md`
+- `docs/web-app/authentication.md` for sign-in, registration, recovery, one-time-code, or session-gated entry
 
 Desktop App:
 

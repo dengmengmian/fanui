@@ -53,6 +53,8 @@ Do not default everything to `scale`.
 
 Responsive transformations may change Flex `flex-basis`, wrapping, ordering, or direction, and may change Grid track count or placement when the composition is genuinely two-dimensional. Preserve DOM reading order and use the simplest model that matches the relationship.
 
+Composed page-container classes must preserve the narrowest required inline gutter. When a page-specific wrapper also carries a shared `container` or `page` class, inspect the final computed width at every breakpoint: a later generic `width: 100%` rule must not erase the page's safe area. Fix the owning container contract instead of hiding the resulting overflow globally.
+
 ### 1. Preserve task hierarchy, not desktop geometry
 
 A mobile layout may look structurally different while preserving the same user task and current context.

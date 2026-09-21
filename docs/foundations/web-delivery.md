@@ -11,7 +11,9 @@ Compatibility applies to every Web implementation. SEO and GEO apply to public i
 
 ## SEO gate for public pages
 
+- Establish a route-level index policy before setting root metadata: classify each route family as `public_indexable`, `public_noindex`, or `private_noindex`. A root-level `noindex` must not silently suppress a public acquisition surface, and generic root metadata must not leak into a route that needs product-specific copy.
 - Render critical content in crawlable HTML; prefer SSR/static output when supported.
+- Framework presence or a dynamic-rendering flag does not prove meaningful SSR. Inspect the response HTML: record which critical content, metadata, and session-dependent state exist before hydration and which remain client-only.
 - Require descriptive title and meta description, canonical URL, semantic landmarks/headings, crawlable links, meaningful alt text, correct status codes, and consistent robots/sitemap/redirect/locale policy.
 - Do not index authenticated, staging, duplicate, filtered, or private URLs.
 - JSON-LD must use a supported type and match visible facts. Never invent ratings, authors, dates, products, or FAQ content.
@@ -31,7 +33,13 @@ Do not require hidden text, keyword stuffing, fake citations, invented schema, o
 
 ## Delivery record
 
-Record browser target source, browsers tested, `public_indexable` vs `private_noindex`, metadata/canonical/robots outcome, rendered-content result, structured-data result when applicable, and known gaps.
+Record browser target source, browsers tested, route-level index policy, metadata/canonical/robots outcome, response-HTML and post-hydration results, structured-data result when applicable, and known gaps.
+
+## Security-policy verification
+
+- Validate CSP and external resource origins against the production build, including fonts, images, API/SSE connections, workers, frames, and third-party scripts. Report-only is evidence collection, not enforcement.
+- Separate development-only violations such as framework `unsafe-eval` tooling from production violations. Do not dismiss a real external-origin mismatch because the console also contains development noise.
+- Record the blocked path before changing policy. Do not weaken a directive globally to make one unisolated embed or campaign page work.
 
 ## Normative references
 

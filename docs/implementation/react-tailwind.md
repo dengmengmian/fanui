@@ -6,10 +6,12 @@ Use this contract when the target is React + Tailwind CSS. The host repository's
 
 - Use TypeScript, function components, semantic HTML, and the host component primitives.
 - Preserve server/client boundaries. Browser-only APIs must not run during SSR, and initial markup must not depend on viewport measurements.
+- Treat SSR, server components, static generation, and client hydration as separate facts. Verify response HTML and session dependencies; do not claim an SSR benefit from framework choice or a rendering flag alone.
 - Keep state close to its owner. Do not mirror derivable props into state or add global state for local interaction.
 - Prefer native controls. Custom controls must reproduce keyboard, focus, name, role, value, disabled, and error behavior.
 - Reuse the host router, form, table, dialog, icon, and data-fetching conventions. Do not introduce a second UI library for one screen.
 - Model variants with typed maps or a variant helper. Do not grow unbounded boolean props.
+- Split a page when one file simultaneously owns remote-data orchestration, workflow transitions, layout, and many local view components. Split at behavior and test boundaries, not at an arbitrary line-count threshold; do not fragment a cohesive component merely to make files shorter.
 
 ## Tailwind CSS
 
@@ -33,4 +35,3 @@ Implement loading, empty, error, permission-denied, disabled, selected, hover, f
 ## Definition of done
 
 Run the host typecheck/lint/tests, then apply `docs/implementation/accessibility.md`, `docs/implementation/testing.md`, and the relevant FanUI rendered checklist. Compilation is not visual acceptance.
-

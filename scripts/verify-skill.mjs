@@ -22,10 +22,14 @@ const classification = read('docs/desktop-app/classification.md');
 const nativeShell = read('docs/desktop-app/native-shell.md');
 const acceptance = read('docs/desktop-app/acceptance.md');
 const webDelivery = read('docs/foundations/web-delivery.md');
+const responsive = read('docs/foundations/responsive.md');
 const reactTailwind = read('docs/implementation/react-tailwind.md');
 const theming = read('docs/implementation/theming.md');
 const accessibility = read('docs/implementation/accessibility.md');
 const testing = read('docs/implementation/testing.md');
+const authentication = read('docs/web-app/authentication.md');
+const publicMarketplace = read('docs/website/public-marketplace.md');
+const homepage = read('docs/website/homepage.md');
 const tokenIndex = read('tokens/index.css');
 const lightTokens = read('tokens/light.css');
 const darkTokens = read('tokens/dark.css');
@@ -67,6 +71,40 @@ expect(
     webDelivery.includes('GEO has no separate universal technical standard'),
 );
 expect(
+  'Web delivery verifies route-level index policy and meaningful SSR output',
+  webDelivery.includes('route-level index policy') &&
+    webDelivery.includes('Framework presence or a dynamic-rendering flag does not prove meaningful SSR'),
+);
+expect(
+  'Responsive containers preserve page gutters after class composition',
+  responsive.includes('Composed page-container classes must preserve the narrowest required inline gutter'),
+);
+expect(
+  'Authentication gateway contract covers intent, modal focus, and credential flows',
+  authentication.includes('requested destination and action intent') &&
+    authentication.includes('focus trap') &&
+    authentication.includes('Do not use validation, error, or brand-colored outlines to indicate selection') &&
+    authentication.includes('password visibility') &&
+    authentication.includes('one-time-code'),
+);
+expect(
+  'Skill routes authentication work to the gateway contract',
+  skill.includes('docs/web-app/authentication.md'),
+);
+expect(
+  'Public marketplace pattern separates discovery, reading, and conversion',
+  publicMarketplace.includes('Discovery index') &&
+    publicMarketplace.includes('Decision detail') &&
+    publicMarketplace.includes('quiet atmospheric field') &&
+    publicMarketplace.includes('Platform signal strip') &&
+    publicMarketplace.includes('weak sign-in') &&
+    skill.includes('docs/website/public-marketplace.md'),
+);
+expect(
+  'Homepage contribution loops keep submission and public outcomes together',
+  homepage.includes('Contribution loop') && homepage.includes('Do not fabricate adopted items'),
+);
+expect(
   'React and Tailwind implementation contract exists',
   reactTailwind.includes('React + Tailwind implementation contract') &&
     reactTailwind.includes('Do not construct Tailwind class names dynamically') &&
@@ -75,6 +113,12 @@ expect(
 expect(
   'Theme contract separates stable roles from product values',
   theming.includes('Stable contract') && theming.includes('Product override') && theming.includes('Default theme'),
+);
+expect(
+  'Theme switching preserves information architecture and behavior',
+  theming.includes('must preserve the same information architecture') &&
+    theming.includes('network behavior') &&
+    checklist.includes('same information architecture, task availability, and data behavior'),
 );
 expect(
   'Accessibility baseline is WCAG 2.2 AA',
