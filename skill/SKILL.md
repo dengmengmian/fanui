@@ -11,6 +11,43 @@ Use FanUI when designing, implementing, revising, or reviewing Web UI or native 
 
 ## Required workflow
 
+### Workflow routing and progressive disclosure
+
+Choose one primary workflow from the user's requested outcome before loading detailed guidance. Load the shared context workflow first, then only the selected workflow and the references it routes to. Do not load every page-family, platform, and evaluation document pre-emptively. <!-- rule:fanui-route-progressive-disclosure -->
+
+- **`shape`** — clarify the task, audience, evidence, states, constraints, and information architecture; produce a confirmed brief and stop before implementation.
+- **`build`** — create a new surface or implement an approved brief. Classify the experience and archetype, choose the applicable pattern capsule, implement, render, and verify.
+- **`review`** — assess an existing rendered experience and report evidence-backed findings. Do not modify it unless the user separately asks for fixes. <!-- rule:fanui-review-is-read-only -->
+- **`audit`** — inspect measurable implementation quality such as accessibility, compatibility, responsive behavior, theming, performance, and delivery integrity. Do not convert an audit request into implementation. <!-- rule:fanui-audit-is-read-only -->
+- **`adapt`** — preserve the primary task while transforming an existing surface across Web viewports or native Desktop window states.
+- **`polish`** — refine an already-correct concept and task flow; do not conceal a redesign inside a polish request. <!-- rule:fanui-polish-preserves-concept -->
+
+Read `docs/workflows/context.md` for all six workflows. Then read only the selected workflow material: `docs/workflows/redesign.md` for a redesign or replacement visual world, `docs/workflows/review-protocol.md` for review/audit/final acceptance, and `docs/workflows/pattern-capsules.md` when selecting the smallest applicable page or product pattern. <!-- rule:fanui-route-workflow-references -->
+
+Before proceeding, resolve and retain this compact context record:
+
+```yaml
+workflow_context:
+  workflow: shape | build | review | audit | adapt | polish
+  experience: website | documentation | editorial | pricing | web_app | desktop_app
+  primary_task: ...
+  brief_read: true | false
+  change_mode: greenfield | preserve | overhaul
+  expression_profile: quiet | balanced | expressive
+  evidence_available: [...]
+  unresolved_decisions: [...]
+```
+
+`brief_read` means the agent inspected the user's brief and the host project's durable product/design context when present; it does not require FanUI-specific files. Do not invent missing product truth. <!-- rule:fanui-context-brief-read -->
+
+`change_mode` controls authority: `greenfield` creates a surface with no incumbent surface contract, `preserve` keeps the incumbent product and design contracts while allowing compatible extensions, and `overhaul` may replace structure or visual direction while preserving protected product truth, content, function, platform conventions, and explicit constraints. Only explicit authority or a confirmed replacement brief selects `overhaul`; ambiguous work on an existing product defaults to `preserve`. <!-- rule:fanui-context-change-mode -->
+
+`expression_profile` calibrates visual amplitude, not product quality: `quiet` for sustained operational/reading focus, `balanced` for mixed information and narrative, and `expressive` for surfaces whose job is persuasion or experience. The user brief and incumbent system override category defaults. <!-- rule:fanui-context-expression-profile -->
+
+For `review` and `audit`, keep findings and implementation separate. For `build`, `adapt`, and `polish`, finish with a fresh evidence-based acceptance pass rather than relying on the author's intent. <!-- rule:fanui-separate-author-review -->
+
+Workflow scope controls the steps below: `shape` performs classification, context, hierarchy, and pattern selection, then stops with the brief; `review` and `audit` inspect only the applicable rules and must not enter implementation steps; `build`, `adapt`, and `polish` use the applicable implementation and acceptance steps. “Substantial work” requirements apply only inside the selected workflow's scope, not as permission to load every reference. <!-- rule:fanui-workflow-step-boundaries -->
+
 ### Layout implementation rule
 
 Choose the simplest layout model that represents the actual content relationship.
@@ -46,6 +83,7 @@ Choose one or more:
 - `desktop_app`
 
 Do not infer `web_app` from the presence of panels, sidebars, or web technology. Classify the delivery surface and runtime contract first.
+<!-- rule:fanui-route-experience-family -->
 
 ### 2. Classify application archetype
 
@@ -73,6 +111,7 @@ For every Desktop App, read `docs/desktop-app/classification.md` and choose:
 - `menu_bar_companion`
 
 Also identify the native platform target and application framework. A Desktop App may reuse a task archetype from Web App guidance, but it must retain a desktop runtime contract: window lifecycle, native commands, keyboard and pointer input, system appearance, accessibility, and platform conventions.
+<!-- rule:fanui-route-desktop-runtime -->
 
 ### 3. Identify task and context
 
@@ -92,6 +131,9 @@ fanui:
   primary_action: ...
   current_context: ...
   key_information: ...
+  brief_read: true | false
+  change_mode: greenfield | preserve | overhaul
+  expression_profile: quiet | balanced | expressive
 ```
 
 ### 4. Establish hierarchy and primary visual anchor
@@ -132,6 +174,8 @@ Every substantial surface needs one primary visual/task anchor.
 
 ### 5. Load the relevant pattern
 
+Start with the routing capsule in `docs/workflows/pattern-capsules.md`, then load the smallest applicable detailed pattern below. A capsule selects references; it does not replace their requirements. <!-- rule:fanui-pattern-capsule-first -->
+
 Website:
 
 - `docs/website/homepage.md`
@@ -144,6 +188,8 @@ Website:
 - `docs/website/editorial-blog.md`
 - `docs/website/editorial-visuals.md`
 - `docs/website/mobile.md`
+
+For expressive Homepage, Editorial, or brand-led Pricing work, also read `docs/website/expression-profiles.md`. Do not load it for quiet Product UI merely because the product has a brand.
 
 Web App:
 
@@ -255,6 +301,7 @@ Validate at least these reference classes:
 390 × 844     mobile
 375 × 812     small mobile
 ```
+<!-- rule:fanui-web-multiviewport-obligation -->
 
 For every important region choose explicit transformations:
 
@@ -295,6 +342,7 @@ For Website/Docs/Editorial/Pricing also read `docs/website/mobile.md`.
 For Professional/AI Workspace also read `docs/web-app/mobile-workspace.md`.
 
 For `desktop_app`, read `docs/desktop-app/native-shell.md` and `docs/desktop-app/acceptance.md`. Validate compact, normal, and large windows plus maximized/full-screen behavior where supported. Do not require phone breakpoints unless the product also targets mobile. Preserve commands, focus order, selection, pane access, and task continuity as the window changes size.
+<!-- rule:fanui-desktop-window-obligation -->
 
 ### 9. Apply optical layout
 
@@ -495,6 +543,7 @@ Use:
 Score below 85 normally triggers revision.
 
 Hard failures cannot be rescued by average score:
+<!-- rule:fanui-hard-failures-override-score -->
 
 - the layout model conflicts with the content dimension, breaks reading order, or creates avoidable wrapper/track complexity;
 - a Web implementation uses unsupported platform features without a fallback for its declared browser target;
@@ -519,6 +568,8 @@ Hard failures cannot be rescued by average score:
 - Desktop App is a web-dashboard shell that ignores native window, command, focus, or input behavior;
 - Desktop App loses the primary task, selected object, or required command access at a supported compact window size;
 - maximized/full-screen or restored-window behavior produces unusable blank regions, clipped panes, or unreachable controls.
+
+Use the disposition contract from `docs/workflows/review-protocol.md`: invalid or missing required render evidence is `recapture`; a wrong archetype, replacement-level concept failure, or system-wide contradiction is `rebuild`; bounded material failures are `fix`; only complete evidence with no hard failure is `ship`. Never report `ship` while a hard failure remains, regardless of numeric score. <!-- rule:fanui-hard-failure-disposition -->
 
 ## Output expectations
 

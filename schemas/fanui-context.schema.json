@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fanui.dev/schemas/fanui-context.schema.json",
+  "title": "FanUI workflow context",
+  "type": "object",
+  "required": ["workflow", "experience", "primary_task", "change_mode", "brief_read", "expression_profile"],
+  "properties": {
+    "workflow": { "enum": ["shape", "build", "review", "audit", "adapt", "polish"] },
+    "experience": { "enum": ["website", "documentation", "editorial", "pricing", "web_app", "desktop_app"] },
+    "primary_archetype": { "type": ["string", "null"] },
+    "primary_task": { "type": "string", "minLength": 1 },
+    "change_mode": { "enum": ["greenfield", "preserve", "overhaul"] },
+    "brief_read": { "type": "boolean" },
+    "expression_profile": { "enum": ["quiet", "balanced", "expressive"] },
+    "evidence_available": { "type": "array", "items": { "type": "string" } },
+    "unresolved_decisions": { "type": "array", "items": { "type": "string" } },
+    "brief": { "type": "object", "additionalProperties": true },
+    "expression_axes": {
+      "type": "object",
+      "properties": {
+        "composition_order": { "enum": ["linear", "layered", "asymmetric"] },
+        "visual_amplitude": { "enum": ["low", "medium", "high"] },
+        "motion_intensity": { "enum": ["none", "restrained", "expressive"] },
+        "narrative_axis": { "enum": ["product_evidence", "transformation", "idea", "people", "craft"] },
+        "recurring_motif": { "type": "string" },
+        "second_read_moment": { "type": "string" },
+        "image_strategy": { "enum": ["supplied", "documentary", "product_derived", "illustrative", "typographic", "none"] },
+        "contrast_strategy": { "enum": ["tonal", "chromatic", "spatial", "typographic"] },
+        "mobile_translation": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

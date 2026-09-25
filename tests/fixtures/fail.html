@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FanUI acceptance failing fixture</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; color: #aaa; background: #fff; font-family: sans-serif; }
+      header { height: 48px; }
+      button { border: 0; height: 20px; padding: 0; width: 20px; }
+      [data-fanui-collapsible] { display: none; }
+      [data-fanui-workspace] { height: 120px; }
+      .overflow { width: 1200px; }
+      pre { max-width: 100%; overflow-x: visible; padding: 8px; white-space: pre; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <button type="button" data-fanui-icon-only>
+        <svg aria-hidden="true" width="12" height="12"><circle cx="6" cy="6" r="5"/></svg>
+      </button>
+    </header>
+    <aside data-fanui-collapsible="navigation">Hidden navigation without replacement</aside>
+    <main data-fanui-workspace="remaining-viewport">
+      <div class="overflow">This element forces document-level overflow.</div>
+      <pre><code>const brokenExample = "This code line has no bounded local scroller and instead expands the full document beyond the mobile viewport.";</code></pre>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='20' height='20'/%3E%3C/svg%3E">
+    </main>
+  </body>
+</html>

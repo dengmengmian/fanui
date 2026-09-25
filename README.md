@@ -4,6 +4,8 @@
 
 FanUI is not primarily a component library. It is a design language, page-pattern system, calibration framework, product-fidelity model, responsive decision system, AI decision system, and evaluation rubric.
 
+Its delivery workflow now also separates brief resolution, redesign protection, implementation, rendered design review, implementation audit, and a traceable finish gate. Existing host requirements and design systems remain authoritative; optional `.fanui/` files only fill context gaps.
+
 Implementation rule: choose layout by content dimension. Use Flexbox for one-dimensional flow, CSS Grid for genuine two-dimensional alignment or spanning, semantic tables for tabular data, and Absolute/Fixed only for intentional overlays. Do not force every layout through one model.
 
 Every Web implementation also passes a compatibility gate. Public indexable pages additionally pass SEO and GEO gates; authenticated product surfaces are not treated as SEO pages by default. See `docs/foundations/web-delivery.md`.
@@ -124,9 +126,11 @@ The repository keeps documentation at the root for maintainability. Build a stan
 ```bash
 node scripts/verify-skill.mjs
 node scripts/package-skill.mjs /absolute/path/to/new/fanui
+# Update an existing FanUI install after verification:
+node scripts/sync-skill.mjs /absolute/path/to/existing/fanui
 ```
 
-The package builder refuses to overwrite an existing directory. The verifier builds an isolated temporary package and checks that every `docs/` and `eval/` path referenced by the installed `SKILL.md` resolves inside that package.
+The package builder refuses to overwrite an existing directory. The explicit-target sync command refuses non-FanUI directories, verifies a same-filesystem staged package, then swaps it into place. The verifier builds an isolated temporary package and checks that every `docs/` and `eval/` path referenced by the installed `SKILL.md` resolves inside that package.
 The package also includes executable `tokens/` so no-design-spec React + Tailwind work starts from a coherent fallback theme.
 
 ## Repository map
@@ -166,6 +170,7 @@ fanui/
 │   │   ├── documentation.md
 │   │   ├── editorial-blog.md
 │   │   ├── editorial-visuals.md
+│   │   ├── expression-profiles.md
 │   │   └── mobile.md
 │   ├── web-app/
 │   │   ├── archetypes.md
@@ -182,6 +187,11 @@ fanui/
 │   │   ├── theming.md
 │   │   ├── accessibility.md
 │   │   └── testing.md
+│   ├── workflows/
+│   │   ├── context.md
+│   │   ├── pattern-capsules.md
+│   │   ├── redesign.md
+│   │   └── review-protocol.md
 │   ├── components/
 │   │   └── candidates.md
 │   └── anti-patterns/
@@ -203,9 +213,12 @@ fanui/
 ├── skill/SKILL.md
 ├── scripts/
 │   ├── package-skill.mjs
+│   ├── review-snapshot.mjs
+│   ├── sync-skill.mjs
 │   └── verify-skill.mjs
-├── eval/
-└── dogfood/003/
+└── eval/
+    ├── checklist.md
+    └── rubric.md
 ```
 
 ## AI usage
@@ -223,7 +236,9 @@ The Skill requires agents to:
 9. enforce Product Evidence Fidelity and effective density at Desktop and Mobile;
 10. apply semantic color, surface hierarchy, and iconography precision;
 11. preserve Mobile access when Sidebar/Inspector/TOC collapses;
-12. evaluate through FanUI hard gates before completion.
+12. preserve routes, content, analytics, SEO, accessibility, and runtime contracts according to an explicit greenfield/preserve/overhaul mode;
+13. validate copy and data truth instead of inventing realistic-looking claims;
+14. evaluate through separate design review and implementation audit, then issue a traceable `recapture`, `rebuild`, `fix`, or `ship` finish disposition.
 
 For Desktop Application work, the Skill instead routes adaptation through native window states, platform commands, keyboard/pointer behavior, accessibility, and compact/normal/large rendered review. Phone breakpoints are not required unless the product also targets mobile.
 
@@ -231,10 +246,10 @@ See `skill/SKILL.md`.
 
 ## Status
 
-**FanUI Web V0.3.4 + Desktop Application support.**
+**FanUI Web V0.3.4 + Desktop Application support, with executable workflow and evidence closure.**
 
-Specification rules are dogfooded against `dogfood/003` across Homepage, Pricing, Docs Home/Article, Blog Index/Article, Product Home, AI/Professional Workspace, and Chinese stress surface.
+The repository ships the specification, evaluation documents, semantic tokens, candidate React components, package/sync tools, rule-ID and deterministic trace contracts, review snapshot hashing, and Playwright + axe rendered acceptance. Static and trace tests validate their declared data and event contracts; they do not execute or prove a live model's behavior. A real product still requires current captures and an independent finish review before `ship`.
 
-`node scripts/verify-skill.mjs` gates the Skill's Desktop routing, acceptance baseline, and install-package reference closure. Existing dogfood validation continues to gate Responsive Transformation and Mobile Precision before `next build`.
+Historical dogfood findings remain documented, but the removed dogfood 003 and dogfood 004 implementations are not current executable acceptance fixtures. Do not cite them as an active CI gate. CI now runs root contracts and a rendered fixture matrix; product-specific approval still comes only from evidence captured against that product URL.
 
-Web rendered authority requires multi-viewport acceptance, including **1440 × 1000, 768 × 1024, 390 × 844, and 375 × 812**. Desktop rendered authority uses the actual minimum plus compact, normal, and large windows and supported maximized/full-screen states. A passing build proves implementation integrity, not final visual acceptance.
+Web rendered authority requires current, traceable acceptance in Chromium, Firefox, and WebKit at **1440 × 1000, 1024 × 900, 768 × 1024, 390 × 844, and 375 × 812**, with relevant themes and states. Desktop rendered authority uses the actual minimum plus compact, normal, and large windows and supported maximized/full-screen states. A passing build proves implementation integrity, not final visual acceptance. See `docs/workflows/review-protocol.md` for evidence and reviewer requirements.

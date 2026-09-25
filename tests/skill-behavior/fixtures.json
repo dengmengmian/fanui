@@ -1,0 +1,88 @@
+[
+  {
+    "name": "website shape stops before implementation",
+    "surface": "web",
+    "workflow": "shape",
+    "requiredReads": ["docs/workflows/context.md", "docs/workflows/pattern-capsules.md"],
+    "forbiddenReads": ["docs/desktop-app/native-shell.md"],
+    "trace": [
+      {"type": "context", "brief_read": true, "change_mode": "preserve", "expression_profile": "balanced"},
+      {"type": "classify", "experience": "website"},
+      {"type": "read", "path": "docs/workflows/context.md"},
+      {"type": "read", "path": "docs/workflows/pattern-capsules.md"},
+      {"type": "complete", "artifact": "confirmed-brief"}
+    ]
+  },
+  {
+    "name": "desktop build uses window acceptance without web mobile",
+    "surface": "desktop",
+    "workflow": "build",
+    "requiredReads": ["docs/workflows/context.md", "docs/desktop-app/classification.md", "docs/desktop-app/native-shell.md", "docs/desktop-app/acceptance.md"],
+    "forbiddenReads": ["docs/foundations/mobile-precision.md", "docs/web-app/mobile-workspace.md"],
+    "requiredWindows": ["minimum", "compact", "normal", "large", "maximized"],
+    "trace": [
+      {"type": "context", "brief_read": true, "change_mode": "preserve", "expression_profile": "quiet"},
+      {"type": "classify", "experience": "desktop_app"},
+      {"type": "read", "path": "docs/workflows/context.md"},
+      {"type": "read", "path": "docs/desktop-app/classification.md"},
+      {"type": "read", "path": "docs/desktop-app/native-shell.md"},
+      {"type": "read", "path": "docs/desktop-app/acceptance.md"},
+      {"type": "capture", "window": "minimum"},
+      {"type": "capture", "window": "compact"},
+      {"type": "capture", "window": "normal"},
+      {"type": "capture", "window": "large"},
+      {"type": "capture", "window": "maximized"},
+      {"type": "disposition", "value": "ship", "hardFailures": 0, "evidenceValid": true}
+    ]
+  },
+  {
+    "name": "web adapt preserves full viewport matrix",
+    "surface": "web",
+    "workflow": "adapt",
+    "requiredReads": ["docs/workflows/context.md", "docs/foundations/responsive.md", "docs/foundations/mobile-precision.md"],
+    "requiredViewports": [1440, 1024, 768, 390, 375],
+    "trace": [
+      {"type": "context", "brief_read": true, "change_mode": "preserve", "expression_profile": "balanced"},
+      {"type": "classify", "experience": "web_app"},
+      {"type": "read", "path": "docs/workflows/context.md"},
+      {"type": "read", "path": "docs/foundations/responsive.md"},
+      {"type": "read", "path": "docs/foundations/mobile-precision.md"},
+      {"type": "capture", "viewport": 1440},
+      {"type": "capture", "viewport": 1024},
+      {"type": "capture", "viewport": 768},
+      {"type": "capture", "viewport": 390},
+      {"type": "capture", "viewport": 375},
+      {"type": "disposition", "value": "ship", "hardFailures": 0, "evidenceValid": true}
+    ]
+  },
+  {
+    "name": "review cannot ship a hard failure",
+    "surface": "web",
+    "workflow": "review",
+    "requiredReads": ["docs/workflows/context.md", "docs/workflows/review-protocol.md"],
+    "readOnly": true,
+    "trace": [
+      {"type": "context", "brief_read": true, "change_mode": "preserve", "expression_profile": "quiet"},
+      {"type": "classify", "experience": "web_app"},
+      {"type": "read", "path": "docs/workflows/context.md"},
+      {"type": "read", "path": "docs/workflows/review-protocol.md"},
+      {"type": "finding", "severity": "hard", "id": "hidden-without-replacement"},
+      {"type": "disposition", "value": "fix", "hardFailures": 1, "evidenceValid": true}
+    ]
+  },
+  {
+    "name": "missing required evidence recaptures",
+    "surface": "web",
+    "workflow": "review",
+    "requiredReads": ["docs/workflows/context.md", "docs/workflows/review-protocol.md"],
+    "readOnly": true,
+    "trace": [
+      {"type": "context", "brief_read": true, "change_mode": "preserve", "expression_profile": "balanced"},
+      {"type": "classify", "experience": "website"},
+      {"type": "read", "path": "docs/workflows/context.md"},
+      {"type": "read", "path": "docs/workflows/review-protocol.md"},
+      {"type": "capture", "viewport": 375, "valid": false},
+      {"type": "disposition", "value": "recapture"}
+    ]
+  }
+]

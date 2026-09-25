@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fanui.dev/schemas/pattern-capsule.schema.json",
+  "title": "FanUI page pattern capsule",
+  "type": "object",
+  "required": ["page_pattern_capsule"],
+  "properties": {
+    "page_pattern_capsule": {
+      "type": "object",
+      "required": ["id", "name", "status", "experience_families", "use_when", "avoid_when", "required_content_and_state", "responsive_or_window_transformations", "accessibility_contract", "content_truth_constraints", "evidence"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["observed", "candidate", "validated", "deprecated"] },
+        "experience_families": { "type": "array", "minItems": 1, "items": { "enum": ["website", "documentation", "editorial", "pricing", "web_app", "desktop_app"] } },
+        "archetypes": { "type": "array", "items": { "type": "string" } },
+        "user_job": { "type": "string" },
+        "use_when": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "avoid_when": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "prerequisites": { "type": "array", "items": { "type": "string" } },
+        "hierarchy": { "type": "object" },
+        "required_content_and_state": { "type": "array", "items": { "type": "string" } },
+        "interaction_model": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] },
+        "responsive_or_window_transformations": { "type": "object" },
+        "fidelity_requirements": { "type": "array", "items": { "type": "string" } },
+        "semantic_roles": { "type": "array", "items": { "type": "string" } },
+        "accessibility_contract": { "type": "array", "items": { "type": "string" } },
+        "content_truth_constraints": { "type": "array", "items": { "type": "string" } },
+        "known_failure_modes": { "type": "array", "items": { "type": "string" } },
+        "implementation_notes": { "type": "array", "items": { "type": "string" } },
+        "evidence": { "type": "object" },
+        "related_rules": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

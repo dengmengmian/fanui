@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -24,11 +25,17 @@ if (fs.existsSync(output)) {
 fs.mkdirSync(output, { recursive: true });
 fs.copyFileSync(path.join(root, 'skill/SKILL.md'), path.join(output, 'SKILL.md'));
 
-for (const directory of ['docs', 'eval', 'references', 'tokens', 'packages']) {
+for (const directory of ['docs', 'eval', 'references', 'tokens', 'packages', 'schemas']) {
   fs.cpSync(path.join(root, directory), path.join(output, directory), {
     recursive: true,
     errorOnExist: true,
   });
+}
+
+const runtimeScripts = path.join(output, 'scripts');
+fs.mkdirSync(runtimeScripts, { recursive: true });
+for (const filename of ['verify-skill.mjs']) {
+  fs.copyFileSync(path.join(root, 'scripts', filename), path.join(runtimeScripts, filename));
 }
 
 const agents = path.join(root, 'skill/agents');
@@ -38,5 +45,27 @@ if (fs.existsSync(agents)) {
     errorOnExist: true,
   });
 }
+
+const packagedFiles = [];
+const visit = (directory) => {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const absolute = path.join(directory, entry.name);
+    if (entry.isDirectory()) visit(absolute);
+    else if (entry.isFile() && entry.name !== '.fanui-skill.json') {
+      packagedFiles.push({
+        path: path.relative(output, absolute).split(path.sep).join('/'),
+        sha256: crypto.createHash('sha256').update(fs.readFileSync(absolute)).digest('hex'),
+      });
+    }
+  }
+};
+visit(output);
+packagedFiles.sort((left, right) => left.path.localeCompare(right.path));
+const packageHash = crypto.createHash('sha256').update(JSON.stringify(packagedFiles)).digest('hex');
+fs.writeFileSync(
+  path.join(output, '.fanui-skill.json'),
+  `${JSON.stringify({ schemaVersion: 2, name: 'fanui', packageHash, files: packagedFiles }, null, 2)}\n`,
+  'utf8',
+);
 
 console.log(`Built installable FanUI skill package at ${output}`);

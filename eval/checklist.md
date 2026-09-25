@@ -4,7 +4,7 @@ Use this checklist before calling a substantial FanUI surface complete.
 
 Select sections by experience family before evaluation:
 
-- All families use shared sections A, B, D, E, G, H, I, J, applicable Product Evidence checks in F, and applicable anti-patterns in P.
+- All families use shared sections A, B, D, E, G, H, I, J, T, U, applicable Product Evidence checks in F, and applicable anti-patterns in P.
 - Web experiences use C/C1 and the applicable page/archetype sections K–O.
 - Authentication gateways also use S.
 - `desktop_app` uses Q and `docs/desktop-app/acceptance.md`; it does not inherit Web mobile gates unless the product also has a mobile target.
@@ -14,6 +14,8 @@ Select sections by experience family before evaluation:
 
 - [ ] Experience family is explicit.
 - [ ] Web App primary archetype is explicit when applicable.
+- [ ] Change mode is explicit: `greenfield`, `preserve`, or `overhaul`.
+- [ ] Host requirements, design-system evidence, and optional `.fanui/` context were resolved in source-priority order.
 - [ ] Core value loop is explicit.
 - [ ] Primary task/action is explicit.
 - [ ] One primary visual/task anchor is identifiable.
@@ -285,6 +287,34 @@ Read `docs/web-app/authentication.md` for sign-in, registration, password recove
 - [ ] Modal auth has labelled dialog semantics, focus entry/trap/restoration, safe Escape behavior, and an inert background; long flows use a route/sheet when the modal no longer fits.
 - [ ] Keyboard, screen reader, autofill/password manager, 200% zoom, 390/375px, mobile keyboard pressure, and service failures are verified.
 - [ ] The review records session-storage and SSR reality without treating visual polish or framework choice as security evidence.
+
+## T. Copy and data truth
+
+- [ ] Product names, prices, metrics, customer claims, quotes, dates, legal/compliance statements, and availability claims are traceable to a supplied or authoritative source.
+- [ ] Unknown facts remain unknown; realistic-looking numbers or testimonials were not invented to simulate fidelity.
+- [ ] Fixtures and sample data are clearly identified and use plausible domain structure without impersonating real customers or production outcomes.
+- [ ] Labels preserve domain meaning and do not trade precision for fashionable language.
+- [ ] Empty, loading, error, permission, approval, and success copy accurately describes the available state and recovery action.
+- [ ] Visible facts agree with structured data, metadata, accessibility text, and product state.
+- [ ] Redesigns preserve required content and legal text or record their explicitly authorized removal.
+
+## U. Evidence, review separation, and trace
+
+Read `docs/workflows/review-protocol.md`.
+
+Apply the evidence-validity and finding-trace items to `review` and `audit`. Apply the author-independent finish review, release disposition, and `ship` items only when the workflow is final acceptance or release review; an ordinary diagnostic review/audit does not imply release authority.
+
+- [ ] Rendered evidence matches the current source revision, route/window, fixture/state, viewport/window size, engine/platform, theme, and locale.
+- [ ] Each material snapshot or trace records capture time, artifact location, and whether it was automated or manual.
+- [ ] Equivalent states are compared; loading, empty, populated, error, and approval states are not substituted for one another.
+- [ ] Visual acceptance uses rendered evidence; build/typecheck output is treated only as implementation evidence.
+- [ ] Findings have stable IDs, severity, evidence, expected result, and closure status.
+- [ ] Fixed findings link to current evidence that demonstrates closure.
+- [ ] Substantial work has an author-independent finish review or clean review context.
+- [ ] Design review and implementation audit are reported separately even when one reviewer performs both.
+- [ ] The finish gate returns exactly one of `recapture`, `rebuild`, `fix`, or `ship`.
+- [ ] `ship` records the source revision, evidence set, checklist result, rubric score when applicable, and accepted limitations.
+- [ ] After two unresolved remediation rounds, autonomous polishing stopped for re-scoping or an explicit user decision before any further bounded round.
 
 ## Completion gate
 

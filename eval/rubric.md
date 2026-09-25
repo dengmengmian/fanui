@@ -4,7 +4,7 @@ Score major pages out of 100. A normal pass target is **85+**, but hard failures
 
 ## 1. Product / information architecture — 15
 
-- 13–15: task hierarchy and page archetype are unmistakably correct across Desktop and Mobile; collapsed navigation preserves complete access paths.
+- 13–15: task hierarchy and page archetype are unmistakably correct across Desktop and Mobile; collapsed navigation preserves complete access paths; redesign contracts preserve or deliberately migrate routes and task access.
 - 9–12: usable but some noun-driven, truncated, or generic structure remains.
 - 0–8: wrong archetype, fake dashboard, management-console drift, or Mobile loses the core task/IA.
 
@@ -28,7 +28,7 @@ Evaluate page-family metrics, surface-specific mobile type, reading measure, con
 
 For Product Websites and Web Apps, evaluate context, navigation, state, data, actions, semantic roles, depth, and Mobile evidence transformation.
 
-- 13–15: product looks operational and credible at Desktop and Mobile; Mobile evidence remains readable without pinch zoom and preserves the active task.
+- 13–15: product looks operational and credible at Desktop and Mobile; content/data claims are sourced or explicitly fictional; Mobile evidence remains readable without pinch zoom and preserves the active task.
 - 9–12: readable but still somewhat demo-like or Mobile loses some useful context.
 - 0–8: large wireframe, placeholder data, sparse nodes, fake product evidence, or compressed unreadable Desktop evidence on Mobile.
 
@@ -62,6 +62,19 @@ Evaluate whether Website, Docs, Blog, Pricing, and Web App feel like one product
 - 3–4: mostly coherent; one surface feels templated or detached.
 - 0–2: generic templates or identical density/response recipe across families.
 
+## Evidence modifier and release gate
+
+The category score evaluates the surface, but the final score is publishable only when its evidence is valid. Record alongside the numeric score:
+
+- source revision or source hash;
+- route/window, fixture/state, viewport/window size, browser/platform, theme, and locale;
+- snapshot/trace artifact locations and capture time;
+- design-review and implementation-audit findings with stable IDs;
+- independent finish reviewer for substantial work;
+- final disposition: `recapture`, `rebuild`, `fix`, or `ship`.
+
+Missing or stale evidence produces `recapture`, even if the visible sample appears strong. A structurally wrong experience produces `rebuild`. Bounded material defects produce `fix`. Only current evidence, closed hard failures, applicable contract checks, and the required score produce `ship`.
+
 ## Desktop App scoring interpretation
 
 For `desktop_app`, keep the 100-point structure but interpret responsive transformation as native window adaptation, Product Evidence Fidelity as task/state realism, and cross-surface coherence as platform coherence. Use `docs/desktop-app/acceptance.md` as the acceptance authority. Phone/mobile criteria do not apply unless the product also targets mobile.
@@ -82,6 +95,8 @@ For every experience family, any of these prevents pass regardless of total scor
 2. Repeated operational text sits materially below the Minimum Readability Floor.
 3. Brand, selection, running, approval, success, warning, and danger collapse into ambiguous state treatment where those roles are present.
 4. Build success is treated as visual acceptance without the rendered review required for the selected experience family.
+5. Material product claims, prices, customer statements, compliance claims, or operational results are fabricated or conflict with their authoritative source.
+6. Acceptance snapshots do not correspond to the source revision, route/state, or supported presentation being approved.
 
 ## Web experience hard failures
 
@@ -131,6 +146,8 @@ Before promoting any FanUI surface into a reference:
 - no hard failures;
 - cross-surface or platform-family comparison performed where relevant;
 - the surface demonstrates at least one reusable FanUI principle rather than only good local styling.
+- snapshot/trace metadata is sufficient to reproduce the accepted state;
+- design review and implementation audit are complete, and an author-independent finish reviewer issued `ship`.
 
 ## Web reference acceptance
 

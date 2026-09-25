@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fanui.dev/schemas/review-report.schema.json",
+  "title": "FanUI finish review report",
+  "type": "object",
+  "required": ["target", "disposition", "score", "source_revision", "source_paths", "evidence_paths", "checklist_passed", "reviewer", "hard_failures", "issues", "accepted_limitations"],
+  "properties": {
+    "target": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string" },
+    "disposition": { "enum": ["recapture", "rebuild", "fix", "ship"] },
+    "score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "source_revision": { "type": "string", "minLength": 1 },
+    "source_paths": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "evidence_paths": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "checklist_passed": { "type": "boolean" },
+    "reviewer": {
+      "type": "object",
+      "required": ["id", "independent"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "independent": { "type": "boolean" } },
+      "additionalProperties": false
+    },
+    "hard_failures": { "type": "array", "items": { "type": "string" } },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "status", "evidence", "expected"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "severity": { "enum": ["P0", "P1", "P2", "P3"] },
+          "status": { "enum": ["open", "fixed", "accepted_with_reason", "not_reproducible"] },
+          "evidence": { "type": "string" },
+          "expected": { "type": "string" },
+          "acceptance_reason": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": { "properties": { "status": { "const": "accepted_with_reason" } }, "required": ["status"] },
+            "then": { "required": ["acceptance_reason"] }
+          }
+        ]
+      }
+    },
+    "accepted_limitations": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "properties": { "disposition": { "const": "ship" } }, "required": ["disposition"] },
+      "then": {
+        "properties": {
+          "score": { "type": "number", "minimum": 85 },
+          "checklist_passed": { "const": true },
+          "reviewer": {
+            "type": "object",
+            "properties": { "independent": { "const": true } },
+            "required": ["independent"]
+          },
+          "hard_failures": { "type": "array", "maxItems": 0 },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": { "status": { "not": { "const": "open" } } }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
