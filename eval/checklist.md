@@ -4,10 +4,11 @@ Use this checklist before calling a substantial FanUI surface complete.
 
 Select sections by experience family before evaluation:
 
-- All families use shared sections A, B, D, E, G, H, I, J, T, U, applicable Product Evidence checks in F, and applicable anti-patterns in P.
+- Web and native Desktop families use shared sections A, B, D, E, G, H, I, J, T, U, applicable Product Evidence checks in F, and applicable anti-patterns in P.
 - Web experiences use C/C1 and the applicable page/archetype sections K–O.
 - Authentication gateways also use S.
 - `desktop_app` uses Q and `docs/desktop-app/acceptance.md`; it does not inherit Web mobile gates unless the product also has a mobile target.
+- `terminal_tui` uses A (task and evidence items), T, U (evidence items), V, and `docs/tui/terminal-tui.md`; it does not inherit Web or native Desktop geometry and input gates.
 - React + Tailwind implementations also use R.
 
 ## A. Classification
@@ -287,6 +288,21 @@ Read `docs/web-app/authentication.md` for sign-in, registration, password recove
 - [ ] Modal auth has labelled dialog semantics, focus entry/trap/restoration, safe Escape behavior, and an inert background; long flows use a route/sheet when the modal no longer fits.
 - [ ] Keyboard, screen reader, autofill/password manager, 200% zoom, 390/375px, mobile keyboard pressure, and service failures are verified.
 - [ ] The review records session-storage and SSR reality without treating visual polish or framework choice as security evidence.
+
+## V. Terminal TUI
+
+Read `docs/tui/terminal-tui.md`. Apply this section for `terminal_tui` instead of Web or native Desktop geometry gates.
+
+- [ ] Primary task, host runtime authority, terminal support matrix, and keyboard contract are recorded.
+- [ ] Current status, final result, and first useful error cause are visible and backed by real state.
+- [ ] Dense history and long output remain reachable without overwhelming the current decision or result.
+- [ ] Selected/focused item and confirmation action stay visible after filtering, long content, and resize.
+- [ ] Enter, Esc, cancellation, permission, and destructive actions have clear, tested meanings.
+- [ ] Scrolling into history preserves reading position; return to latest content is discoverable.
+- [ ] Semantic roles and status remain understandable without relying on color alone.
+- [ ] Idle, running, waiting, empty, populated, error, disabled, long-content, and decision states are checked where applicable.
+- [ ] Actual terminal sizes and color modes are tested; unsupported or untested modes are labeled.
+- [ ] Real PTY evidence and controlled rendered fixtures are distinguished; build success alone is not visual acceptance.
 
 ## T. Copy and data truth
 

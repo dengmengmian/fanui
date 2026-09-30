@@ -1,13 +1,17 @@
 ---
 name: fanui
-description: Design, implement, revise, or review polished Web and native desktop application UI with experience-specific calibration, platform-aware interaction, responsive or window-adaptive behavior, and rendered acceptance gates.
+description: Design, implement, revise, or review Web, native desktop, and terminal TUI interfaces with experience-specific interaction, information hierarchy, adaptive behavior, and rendered acceptance gates. Use only when the user explicitly invokes FanUI.
 ---
 
 # FanUI Skill
 
 ## Purpose
 
-Use FanUI when designing, implementing, revising, or reviewing Web UI or native desktop application UI. FanUI is an AI-native **decision, calibration, fidelity, adaptive behavior, precision, and evaluation system**. It is not a generic component skin.
+Use FanUI for Web, native desktop, or terminal TUI work **only when the user explicitly asks to use FanUI**. FanUI is an AI-native decision and evaluation system, not a generic component skin. UX or TUI wording alone does not invoke this skill.
+
+### Terminal TUI route
+
+For `experience: terminal_tui`, read `docs/workflows/context.md` and `docs/tui/terminal-tui.md`, then the applicable TUI section of `eval/checklist.md`. Choose the requested shape/build/review/audit/adapt/polish workflow and use the host product's terminal, input, and runtime contracts as authority. For review/audit, report findings without editing the product; `docs/tui/terminal-tui.md` supplies the TUI evidence and acceptance contract in place of Web/Desktop checks in `docs/workflows/review-protocol.md`. For implementation, render and inspect the actual terminal UI, including keyboard behavior and constrained sizes. **After this route, skip Web/desktop sections 1–20 below:** CSS, px, browser breakpoints, native window chrome, touch targets, and Web/Desktop rubric scores do not transfer to terminal cells. Do not classify a TUI as `desktop_app`. <!-- rule:fanui-route-terminal-tui -->
 
 ## Required workflow
 
@@ -29,7 +33,7 @@ Before proceeding, resolve and retain this compact context record:
 ```yaml
 workflow_context:
   workflow: shape | build | review | audit | adapt | polish
-  experience: website | documentation | editorial | pricing | web_app | desktop_app
+  experience: website | documentation | editorial | pricing | web_app | desktop_app | terminal_tui
   primary_task: ...
   brief_read: true | false
   change_mode: greenfield | preserve | overhaul
@@ -81,6 +85,7 @@ Choose one or more:
 - `pricing`
 - `web_app`
 - `desktop_app`
+- `terminal_tui`
 
 Do not infer `web_app` from the presence of panels, sidebars, or web technology. Classify the delivery surface and runtime contract first.
 <!-- rule:fanui-route-experience-family -->

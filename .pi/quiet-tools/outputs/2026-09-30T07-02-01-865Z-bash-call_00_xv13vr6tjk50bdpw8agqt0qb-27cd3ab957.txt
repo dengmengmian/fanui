@@ -1,0 +1,211 @@
+ AGENTS.md                         | 28 +++++++++++++++++++++-------
+ docs/workflows/context.md         |  9 +++++----
+ docs/workflows/review-protocol.md |  2 ++
+ eval/checklist.md                 | 18 +++++++++++++++++-
+ schemas/fanui-context.schema.json |  2 +-
+ scripts/verify-skill.mjs          |  2 ++
+ skill/SKILL.md                    | 11 ++++++++---
+ 7 files changed, 56 insertions(+), 16 deletions(-)
+---UNTRACKED---
+docs/tui/terminal-tui.md
+---DIFF SUMMARY---
+diff --git a/AGENTS.md b/AGENTS.md
+index 99685d0..f7579aa 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -4,18 +4,21 @@ This repository defines an AI-native UI design system. Agents must preserve the
+ 
+ ## Mission
+ 
+-FanUI exists to help AI-generated Web and native Desktop App UI feel structurally correct, visually finished, realistically operational, adaptive by design, and coherent across Website, Docs, Blog, Pricing, Web App, and Desktop Application surfaces.
++FanUI exists to help AI-generated Web, native Desktop App, and terminal TUI interfaces feel structurally correct, operational, adaptive, and coherent. Use it only when the user explicitly requests FanUI. Terminal work follows its own evidence and acceptance lane.
+ 
+ ## Reference priority
+ 
+-1. Apifox — primary reference across website, docs, blog, pricing, and product UI.
++1. Apifox — primary reference across website, docs, blog, pricing, and Web product UI.
+ 2. Pixso — secondary reference for Marketing expression, visual richness, and product presentation.
+-3. Other products — supplementary only when a specific FanUI gap exists.
++3. For terminal TUI, use the host product's runtime/rendered evidence and documented terminal conventions; Web reference geometry does not apply.
++4. Other products — supplementary only when a specific FanUI gap exists.
+ 
+ References are evidence for principles. Do not copy proprietary assets, exact layouts, exact colors, or copywriting.
+ 
+ ## V0.3.4 boundaries
+ 
++The Web and native Desktop boundaries below do not apply to `terminal_tui`; use the terminal route and the host's rendered/runtime evidence.
++
+ Do:
+ 
+ - choose the layout model by content dimension: Flexbox for one-dimensional flow, CSS Grid for genuine two-dimensional alignment/spanning, and semantic tables for tabular data;
+@@ -81,7 +84,7 @@ Do not:
+ 
+ Use `skill/SKILL.md` as the operational entry point.
+ 
+-For substantial UI work, the shared foundation set includes:
++For substantial Web or native Desktop work, the shared foundation set includes:
+ 
+ - `docs/foundations/experience-metrics.md`
+ - `docs/foundations/fidelity-density.md`
+@@ -108,7 +111,7 @@ Prefer host tokens/components. If the product has no validated theme, use `token
+ 
+ For Apifox-derived pattern or component work, read `references/apifox-page-study.md` and `docs/components/candidates.md`. Treat unobserved authenticated areas as unknown.
+ 
+-Also use the existing Visual DNA / typography / layout / spacing / color / depth foundations.
++For Web or native Desktop work, also use the existing Visual DNA / typography / layout / spacing / color / depth foundations.
+ 
+ For Website/Docs/Editorial/Pricing mobile behavior also read `docs/website/mobile.md`.
+ 
+@@ -127,7 +130,9 @@ For Desktop App work read:
+ - `docs/desktop-app/native-shell.md`
+ - `docs/desktop-app/acceptance.md`
+ 
+-Read `docs/anti-patterns/core.md` for every experience.
++For explicitly requested terminal TUI work, read `docs/tui/terminal-tui.md` and section V of `eval/checklist.md`. Do not apply Web px/CSS/mobile or native Desktop window rules to terminal cells.
++
++Read `docs/anti-patterns/core.md` for Web and native Desktop experiences. For terminal TUI, use `docs/tui/terminal-tui.md` and its applicable checklist.
+ 
+ For Web work, read `docs/anti-patterns/v032.md`; for Web responsive/mobile work also read `docs/anti-patterns/v033.md` and `docs/anti-patterns/v034.md`.
+ 
+@@ -135,6 +140,8 @@ For Desktop App work, read `docs/anti-patterns/desktop-app.md`; read `docs/anti-
+ 
+ ## Design hierarchy
+ 
++This ordering is for Web and native Desktop. For terminal TUI, prioritize current task and runtime truth, visible decisions/focus, readable result/error, keyboard access, scrolling, and density at supported cell sizes as described in `docs/tui/terminal-tui.md`.
++
+ When rules conflict, use this order:
+ 
+ 1. User task / core value loop clarity
+@@ -156,7 +163,7 @@ Never sacrifice the first ten to improve the last four.
+ 
+ ## Completion standard
+ 
+-### Shared completion
++### Web and native Desktop shared completion
+ 
+ 1. classify experience/archetype;
+ 2. load relevant pattern and calibration;
+@@ -181,4 +188,11 @@ Never sacrifice the first ten to improve the last four.
+ 3. verify maximized/full-screen, restoration, multi-window, command, focus, keyboard/pointer, localization, and accessibility behavior where supported;
+ 4. confirm every collapsed pane retains a discoverable replacement command and the primary task remains reachable.
+ 
++### Terminal TUI
++
++1. inspect host terminal/runtime contracts and a real rendered terminal session;
++2. validate applicable task states, keyboard decisions, scrolling, and resize at supported cell sizes;
++3. keep controlled fixture evidence distinct from live runtime evidence;
++4. evaluate with section V of `eval/checklist.md`.
++
+ Rendered screenshot review remains the visual authority. A passing build proves code validity and mechanical rule wiring, not FanUI visual acceptance.
+diff --git a/docs/workflows/context.md b/docs/workflows/context.md
+index 0590948..8a4f6a4 100644
+--- a/docs/workflows/context.md
++++ b/docs/workflows/context.md
+@@ -15,7 +15,7 @@ Choose one workflow from the requested outcome before loading page-family detail
+ | `adapt` | Transform an existing surface across viewport/window states | This document; pattern capsule; responsive or native-window guidance | Primary task and access preserved in target states |
+ | `polish` | Refine an already-correct concept | This document; applicable foundations; `review-protocol.md` | Bounded refinement with fresh acceptance evidence |
+ 
+-Use `docs/workflows/redesign.md` whenever the work creates a new visual world or materially changes structure. `Polish` is not an implicit redesign. Load only the family and implementation references routed by the selected workflow.
++Use `docs/workflows/redesign.md` whenever the work creates a new visual world or materially changes structure. `Polish` is not an implicit redesign. Load only the family and implementation references routed by the selected workflow. For `terminal_tui`, `docs/tui/terminal-tui.md` and checklist V replace Web/Desktop geometry, platform, and review gates; keep only the workflow's general scope and evidence separation.
+ 
+ ## Source priority
+ 
+@@ -41,7 +41,8 @@ Repositories may keep durable design context in the following files. None is req
+     ├── website.md
+     ├── docs.md
+     ├── app.md
+-    └── desktop.md
++    ├── desktop.md
++    └── terminal.md
+ ```
+ 
+ ### `product.md`
+@@ -87,7 +88,7 @@ fanui_brief:
+     host_requirements: [...]
+     host_design_system: [...]
+     fanui_context: [...]
+-  experience: website | documentation | editorial | pricing | web_app | desktop_app
++  experience: website | documentation | editorial | pricing | web_app | desktop_app | terminal_tui
+   primary_archetype: ...
+   change_mode: greenfield | preserve | overhaul
+   primary_user: ...
+@@ -107,7 +108,7 @@ Also retain the execution routing fields used by the Skill:
+ ```yaml
+ workflow_context:
+   workflow: shape | build | review | audit | adapt | polish
+-  experience: website | documentation | editorial | pricing | web_app | desktop_app
++  experience: website | documentation | editorial | pricing | web_app | desktop_app | terminal_tui
+   primary_task: ...
+   brief_read: true | false
+   change_mode: greenfield | preserve | overhaul
+diff --git a/docs/workflows/review-protocol.md b/docs/workflows/review-protocol.md
+index 7fb0437..96f5309 100644
+--- a/docs/workflows/review-protocol.md
++++ b/docs/workflows/review-protocol.md
+@@ -2,6 +2,8 @@
+ 
+ FanUI separates design judgment, implementation correctness, and release disposition. A single “looks good” pass cannot establish all three.
+ 
++This protocol's viewport/window, route, HTML, SEO, and browser checks serve Web/native Desktop work. For `terminal_tui`, use `docs/tui/terminal-tui.md` and checklist V as the acceptance contract. Retain the general rules on evidence provenance, distinct author/reviewer passes, and honest unknowns; describe supported terminal cell sizes, color modes, PTY traces, and keyboard states in place of browser routes and window snapshots.
++
+ ## Roles and independence
+ 
+ - **Author** implements or revises the surface.
+diff --git a/eval/checklist.md b/eval/checklist.md
+index ec50520..3c54952 100644
+--- a/eval/checklist.md
++++ b/eval/checklist.md
+@@ -4,10 +4,11 @@ Use this checklist before calling a substantial FanUI surface complete.
+ 
+ Select sections by experience family before evaluation:
+ 
+-- All families use shared sections A, B, D, E, G, H, I, J, T, U, applicable Product Evidence checks in F, and applicable anti-patterns in P.
++- Web and native Desktop families use shared sections A, B, D, E, G, H, I, J, T, U, applicable Product Evidence checks in F, and applicable anti-patterns in P.
+ - Web experiences use C/C1 and the applicable page/archetype sections K–O.
+ - Authentication gateways also use S.
+ - `desktop_app` uses Q and `docs/desktop-app/acceptance.md`; it does not inherit Web mobile gates unless the product also has a mobile target.
++- `terminal_tui` uses A (task and evidence items), T, U (evidence items), V, and `docs/tui/terminal-tui.md`; it does not inherit Web or native Desktop geometry and input gates.
+ - React + Tailwind implementations also use R.
+ 
+ ## A. Classification
+@@ -288,6 +289,21 @@ Read `docs/web-app/authentication.md` for sign-in, registration, password recove
+ - [ ] Keyboard, screen reader, autofill/password manager, 200% zoom, 390/375px, mobile keyboard pressure, and service failures are verified.
+ - [ ] The review records session-storage and SSR reality without treating visual polish or framework choice as security evidence.
+ 
++## V. Terminal TUI
++
++Read `docs/tui/terminal-tui.md`. Apply this section for `terminal_tui` instead of Web or native Desktop geometry gates.
++
++- [ ] Primary task, host runtime authority, terminal support matrix, and keyboard contract are recorded.
++- [ ] Current status, final result, and first useful error cause are visible and backed by real state.
++- [ ] Dense history and long output remain reachable without overwhelming the current decision or result.
++- [ ] Selected/focused item and confirmation action stay visible after filtering, long content, and resize.
++- [ ] Enter, Esc, cancellation, permission, and destructive actions have clear, tested meanings.
++- [ ] Scrolling into history preserves reading position; return to latest content is discoverable.
++- [ ] Semantic roles and status remain understandable without relying on color alone.
++- [ ] Idle, running, waiting, empty, populated, error, disabled, long-content, and decision states are checked where applicable.
++- [ ] Actual terminal sizes and color modes are tested; unsupported or untested modes are labeled.
++- [ ] Real PTY evidence and controlled rendered fixtures are distinguished; build success alone is not visual acceptance.
++
+ ## T. Copy and data truth
+ 
+ - [ ] Product names, prices, metrics, customer claims, quotes, dates, legal/compliance statements, and availability claims are traceable to a supplied or authoritative source.
+diff --git a/schemas/fanui-context.schema.json b/schemas/fanui-context.schema.json
+index 304bfd5..f28099a 100644
+--- a/schemas/fanui-context.schema.json
++++ b/schemas/fanui-context.schema.json
+@@ -6,7 +6,7 @@
+   "required": ["workflow", "experience", "primary_task", "change_mode", "brief_read", "expression_profile"],
+   "properties": {
+     "workflow": { "enum": ["shape", "build", "review", "audit", "adapt", "polish"] },
+-    "experience": { "enum": ["website", "documentation", "editorial", "pricing", "web_app", "desktop_app"] },
++    "experience": { "enum": ["website", "documentation", "editorial", "pricing", "web_app", "desktop_app", "terminal_tui"] },
+     "primary_archetype": { "type": ["string", "null"] },
+     "primary_task": { "type": "string", "minLength": 1 },
+     "change_mode": { "enum": ["greenfield", "preserve", "overhaul"] },
+diff --git a/scripts/verify-skill.mjs b/scripts/verify-skill.mjs
+index 31a56a6..1b470f8 100644
+--- a/scripts/verify-skill.mjs
++++ b/scripts/verify-skill.mjs
+@@ -180,6 +180,7 @@ expect('Checklist exists', Boolean(checklist));
+ expect('Rubric exists', Boolean(rubric));

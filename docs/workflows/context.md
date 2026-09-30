@@ -15,7 +15,7 @@ Choose one workflow from the requested outcome before loading page-family detail
 | `adapt` | Transform an existing surface across viewport/window states | This document; pattern capsule; responsive or native-window guidance | Primary task and access preserved in target states |
 | `polish` | Refine an already-correct concept | This document; applicable foundations; `review-protocol.md` | Bounded refinement with fresh acceptance evidence |
 
-Use `docs/workflows/redesign.md` whenever the work creates a new visual world or materially changes structure. `Polish` is not an implicit redesign. Load only the family and implementation references routed by the selected workflow.
+Use `docs/workflows/redesign.md` whenever the work creates a new visual world or materially changes structure. `Polish` is not an implicit redesign. Load only the family and implementation references routed by the selected workflow. For `terminal_tui`, `docs/tui/terminal-tui.md` and checklist V replace Web/Desktop geometry, platform, and review gates; keep only the workflow's general scope and evidence separation.
 
 ## Source priority
 
@@ -41,7 +41,8 @@ Repositories may keep durable design context in the following files. None is req
     ├── website.md
     ├── docs.md
     ├── app.md
-    └── desktop.md
+    ├── desktop.md
+    └── terminal.md
 ```
 
 ### `product.md`
@@ -87,7 +88,7 @@ fanui_brief:
     host_requirements: [...]
     host_design_system: [...]
     fanui_context: [...]
-  experience: website | documentation | editorial | pricing | web_app | desktop_app
+  experience: website | documentation | editorial | pricing | web_app | desktop_app | terminal_tui
   primary_archetype: ...
   change_mode: greenfield | preserve | overhaul
   primary_user: ...
@@ -107,7 +108,7 @@ Also retain the execution routing fields used by the Skill:
 ```yaml
 workflow_context:
   workflow: shape | build | review | audit | adapt | polish
-  experience: website | documentation | editorial | pricing | web_app | desktop_app
+  experience: website | documentation | editorial | pricing | web_app | desktop_app | terminal_tui
   primary_task: ...
   brief_read: true | false
   change_mode: greenfield | preserve | overhaul

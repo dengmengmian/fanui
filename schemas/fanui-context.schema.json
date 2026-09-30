@@ -6,7 +6,7 @@
   "required": ["workflow", "experience", "primary_task", "change_mode", "brief_read", "expression_profile"],
   "properties": {
     "workflow": { "enum": ["shape", "build", "review", "audit", "adapt", "polish"] },
-    "experience": { "enum": ["website", "documentation", "editorial", "pricing", "web_app", "desktop_app"] },
+    "experience": { "enum": ["website", "documentation", "editorial", "pricing", "web_app", "desktop_app", "terminal_tui"] },
     "primary_archetype": { "type": ["string", "null"] },
     "primary_task": { "type": "string", "minLength": 1 },
     "change_mode": { "enum": ["greenfield", "preserve", "overhaul"] },

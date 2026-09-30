@@ -4,17 +4,20 @@ This repository defines an AI-native UI design system. Agents must preserve the 
 
 ## Mission
 
-FanUI exists to help AI-generated Web and native Desktop App UI feel structurally correct, visually finished, realistically operational, adaptive by design, and coherent across Website, Docs, Blog, Pricing, Web App, and Desktop Application surfaces.
+FanUI exists to help AI-generated Web, native Desktop App, and terminal TUI interfaces feel structurally correct, operational, adaptive, and coherent. Use it only when the user explicitly requests FanUI. Terminal work follows its own evidence and acceptance lane.
 
 ## Reference priority
 
-1. Apifox — primary reference across website, docs, blog, pricing, and product UI.
+1. Apifox — primary reference across website, docs, blog, pricing, and Web product UI.
 2. Pixso — secondary reference for Marketing expression, visual richness, and product presentation.
-3. Other products — supplementary only when a specific FanUI gap exists.
+3. For terminal TUI, use the host product's runtime/rendered evidence and documented terminal conventions; Web reference geometry does not apply.
+4. Other products — supplementary only when a specific FanUI gap exists.
 
 References are evidence for principles. Do not copy proprietary assets, exact layouts, exact colors, or copywriting.
 
 ## V0.3.4 boundaries
+
+The Web and native Desktop boundaries below do not apply to `terminal_tui`; use the terminal route and the host's rendered/runtime evidence.
 
 Do:
 
@@ -81,7 +84,7 @@ Do not:
 
 Use `skill/SKILL.md` as the operational entry point.
 
-For substantial UI work, the shared foundation set includes:
+For substantial Web or native Desktop work, the shared foundation set includes:
 
 - `docs/foundations/experience-metrics.md`
 - `docs/foundations/fidelity-density.md`
@@ -108,7 +111,7 @@ Prefer host tokens/components. If the product has no validated theme, use `token
 
 For Apifox-derived pattern or component work, read `references/apifox-page-study.md` and `docs/components/candidates.md`. Treat unobserved authenticated areas as unknown.
 
-Also use the existing Visual DNA / typography / layout / spacing / color / depth foundations.
+For Web or native Desktop work, also use the existing Visual DNA / typography / layout / spacing / color / depth foundations.
 
 For Website/Docs/Editorial/Pricing mobile behavior also read `docs/website/mobile.md`.
 
@@ -127,13 +130,17 @@ For Desktop App work read:
 - `docs/desktop-app/native-shell.md`
 - `docs/desktop-app/acceptance.md`
 
-Read `docs/anti-patterns/core.md` for every experience.
+For explicitly requested terminal TUI work, read `docs/tui/terminal-tui.md` and section V of `eval/checklist.md`. Do not apply Web px/CSS/mobile or native Desktop window rules to terminal cells.
+
+Read `docs/anti-patterns/core.md` for Web and native Desktop experiences. For terminal TUI, use `docs/tui/terminal-tui.md` and its applicable checklist.
 
 For Web work, read `docs/anti-patterns/v032.md`; for Web responsive/mobile work also read `docs/anti-patterns/v033.md` and `docs/anti-patterns/v034.md`.
 
 For Desktop App work, read `docs/anti-patterns/desktop-app.md`; read `docs/anti-patterns/v032.md` only when its fidelity, color, or surface rules are relevant.
 
 ## Design hierarchy
+
+This ordering is for Web and native Desktop. For terminal TUI, prioritize current task and runtime truth, visible decisions/focus, readable result/error, keyboard access, scrolling, and density at supported cell sizes as described in `docs/tui/terminal-tui.md`.
 
 When rules conflict, use this order:
 
@@ -156,7 +163,7 @@ Never sacrifice the first ten to improve the last four.
 
 ## Completion standard
 
-### Shared completion
+### Web and native Desktop shared completion
 
 1. classify experience/archetype;
 2. load relevant pattern and calibration;
@@ -180,5 +187,12 @@ Never sacrifice the first ten to improve the last four.
 2. validate the actual minimum plus compact, normal, and large rendered windows;
 3. verify maximized/full-screen, restoration, multi-window, command, focus, keyboard/pointer, localization, and accessibility behavior where supported;
 4. confirm every collapsed pane retains a discoverable replacement command and the primary task remains reachable.
+
+### Terminal TUI
+
+1. inspect host terminal/runtime contracts and a real rendered terminal session;
+2. validate applicable task states, keyboard decisions, scrolling, and resize at supported cell sizes;
+3. keep controlled fixture evidence distinct from live runtime evidence;
+4. evaluate with section V of `eval/checklist.md`.
 
 Rendered screenshot review remains the visual authority. A passing build proves code validity and mechanical rule wiring, not FanUI visual acceptance.

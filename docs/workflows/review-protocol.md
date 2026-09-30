@@ -2,6 +2,8 @@
 
 FanUI separates design judgment, implementation correctness, and release disposition. A single “looks good” pass cannot establish all three.
 
+This protocol's viewport/window, route, HTML, SEO, and browser checks serve Web/native Desktop work. For `terminal_tui`, use `docs/tui/terminal-tui.md` and checklist V as the acceptance contract. Retain the general rules on evidence provenance, distinct author/reviewer passes, and honest unknowns; describe supported terminal cell sizes, color modes, PTY traces, and keyboard states in place of browser routes and window snapshots.
+
 ## Roles and independence
 
 - **Author** implements or revises the surface.
