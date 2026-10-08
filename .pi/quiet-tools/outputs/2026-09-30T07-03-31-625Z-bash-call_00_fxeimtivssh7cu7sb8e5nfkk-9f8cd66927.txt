@@ -1,0 +1,306 @@
+===capsule schema===
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fanui.dev/schemas/pattern-capsule.schema.json",
+  "title": "FanUI page pattern capsule",
+  "type": "object",
+  "required": ["page_pattern_capsule"],
+  "properties": {
+    "page_pattern_capsule": {
+      "type": "object",
+      "required": ["id", "name", "status", "experience_families", "use_when", "avoid_when", "required_content_and_state", "responsive_or_window_transformations", "accessibility_contract", "content_truth_constraints", "evidence"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["observed", "candidate", "validated", "deprecated"] },
+        "experience_families": { "type": "array", "minItems": 1, "items": { "enum": ["website", "documentation", "editorial", "pricing", "web_app", "desktop_app"] } },
+        "archetypes": { "type": "array", "items": { "type": "string" } },
+        "user_job": { "type": "string" },
+        "use_when": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "avoid_when": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "prerequisites": { "type": "array", "items": { "type": "string" } },
+        "hierarchy": { "type": "object" },
+        "required_content_and_state": { "type": "array", "items": { "type": "string" } },
+        "interaction_model": { "oneOf": [{ "type": "string" }, { "type": "array", "items": { "type": "string" } }] },
+        "responsive_or_window_transformations": { "type": "object" },
+        "fidelity_requirements": { "type": "array", "items": { "type": "string" } },
+        "semantic_roles": { "type": "array", "items": { "type": "string" } },
+        "accessibility_contract": { "type": "array", "items": { "type": "string" } },
+        "content_truth_constraints": { "type": "array", "items": { "type": "string" } },
+        "known_failure_modes": { "type": "array", "items": { "type": "string" } },
+        "implementation_notes": { "type": "array", "items": { "type": "string" } },
+        "evidence": { "type": "object" },
+        "related_rules": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+===review schema experience===
+10:    "disposition": { "enum": ["recapture", "rebuild", "fix", "ship"] },
+30:          "severity": { "enum": ["P0", "P1", "P2", "P3"] },
+31:          "status": { "enum": ["open", "fixed", "accepted_with_reason", "not_reproducible"] },
+===README===
+# FanUI
+
+**FanUI is an AI-native UI design system for building consistent, polished web and native desktop experiences with coding agents.**
+
+FanUI is not primarily a component library. It is a design language, page-pattern system, calibration framework, product-fidelity model, responsive decision system, AI decision system, and evaluation rubric.
+
+Its delivery workflow now also separates brief resolution, redesign protection, implementation, rendered design review, implementation audit, and a traceable finish gate. Existing host requirements and design systems remain authoritative; optional `.fanui/` files only fill context gaps.
+
+Implementation rule: choose layout by content dimension. Use Flexbox for one-dimensional flow, CSS Grid for genuine two-dimensional alignment or spanning, semantic tables for tabular data, and Absolute/Fixed only for intentional overlays. Do not force every layout through one model.
+
+Every Web implementation also passes a compatibility gate. Public indexable pages additionally pass SEO and GEO gates; authenticated product surfaces are not treated as SEO pages by default. See `docs/foundations/web-delivery.md`.
+
+React + Tailwind implementations use a documented engineering contract and executable semantic tokens. FanUI fixes role names and ships an overrideable Light/Dark fallback; each product may replace the values without rewriting components. See `docs/implementation/` and `tokens/`.
+
+The first `candidate` React components are extracted from repeated Apifox public page patterns and live in `packages/react/`. They are intentionally experimental: FanUI reimplements reusable behavior and hierarchy without copying Apifox code or proprietary assets.
+
+## Current scope
+
+FanUI covers six first-class experience families:
+
+1. Product Website
+2. Documentation
+3. Editorial / Blog
+4. Pricing / Conversion
+5. Web Application
+6. Desktop Application
+
+Web Application archetypes:
+
+- Management Console
+- Professional Workspace
+- Data Application
+- AI Workspace
+
+Desktop Application archetypes:
+
+- Focused Utility
+- Document Workspace
+- Professional Workspace
+- Monitoring / Control
+- Menu Bar / System Tray Companion
+
+`desktop_app` is a separate delivery family, not a desktop-width alias for `web_app`. It adds native window, command, focus, keyboard/pointer, lifecycle, accessibility, and multi-size rendered acceptance rules while preserving the Web V0.3.4 baseline.
+
+Primary reference: **Apifox** across website/docs/blog/pricing/product UI. Secondary reference: **Pixso** for brand expression, Marketing composition, and product presentation. References are used to extract quality characteristics, not copy appearance.
+
+For Desktop Application behavior, the target operating system and framework conventions are authoritative; web references may inform visual quality but never override the native runtime contract.
+
+## Core direction
+
+> **Dense, but calm.**
+
+> **Structured, not sterile.**
+
+> **Rich enough to feel designed. Calm enough to stay usable.**
+
+> **Product stays calm. Marketing may be expressive.**
+
+> **Large canvas requires proportionally confident content scale.**
+
+> **Shared rhythm, different operating density.**
+
+> **Large evidence must earn its area through fidelity.**
+
+> **Workspace owns the viewport.**
+
+> **Responsive preserves task hierarchy, not desktop geometry.**
+
+> **Mobile precision preserves access, readability, touch geometry, and icon semantics.**
+
+## Evolution
+
+### V0.1 — structure
+
+Design philosophy, Visual DNA, Website/Web App patterns, anti-patterns, first Skill/Eval.
+
+### V0.2 — archetype + visual system
+
+Added Web App archetype classification and stopped task-oriented products from defaulting to Management Console IA.
+
+### V0.3 / V0.3.1 — visual calibration
+
+Added calibrated bands for typography, containers, Hero/product evidence scale, spacing rhythm, color expression, radius/depth, and cross-surface density.
+
+### V0.3.2 — product fidelity closure
+
+Added Product Evidence Fidelity, effective density, readability floor, optical layout, viewport ownership, editorial visual system, semantic product color, and surface hierarchy.
+
+### V0.3.3 — responsive / mobile closure
+
+Added:
+
+- Responsive Decision Layer;
+- explicit preserve/stack/reorder/collapse/crop/replace/sheet/drawer transformations;
+- Mobile Website patterns;
+- Mobile Professional/AI Workspace transformation;
+- touch-target and Mobile typography bands;
+- replacement access for hidden Sidebar/Inspector/TOC;
+- responsive hard-fail gates;
+- mandatory multi-viewport Dogfood acceptance.
+
+### V0.3.4 — mobile precision closure
+
+Rendered phone dogfood exposed a second-level mobile gap after the main responsive transformation was already correct. V0.3.4 adds:
+
+- single-row mobile Website header + complete navigation drawer;
+- Docs Sidebar → full mobile drawer instead of truncated navigation chips;
+- separate Docs vs Editorial mobile typography scales;
+- category/tab local-scroll rules;
+- code/configuration local horizontal scrolling without destructive wrapping;
+- explicit 375 × 812 small-mobile pressure testing;
+- 44px phone touch geometry for primary/icon-only controls;
+- mobile icon semantic/centering/stroke/baseline invariance;
+- mobile precision anti-patterns and hard-fail gates.
+
+See `docs/foundations/mobile-precision.md`.
+
+### Desktop Application support
+
+Added explicit Web App vs Desktop App classification, native-shell and window-state guidance, desktop input/accessibility rules, compact/normal/large rendered acceptance, and a self-contained Skill packaging check.
+
+## Build an installable Skill
+
+The repository keeps documentation at the root for maintainability. Build a standalone Skill directory before installing it:
+
+```bash
+node scripts/verify-skill.mjs
+node scripts/package-skill.mjs /absolute/path/to/new/fanui
+# Update an existing FanUI install after verification:
+node scripts/sync-skill.mjs /absolute/path/to/existing/fanui
+```
+
+The package builder refuses to overwrite an existing directory. The explicit-target sync command refuses non-FanUI directories, verifies a same-filesystem staged package, then swaps it into place. The verifier builds an isolated temporary package and checks that every `docs/` and `eval/` path referenced by the installed `SKILL.md` resolves inside that package.
+The package also includes executable `tokens/` so no-design-spec React + Tailwind work starts from a coherent fallback theme.
+
+## Repository map
+
+```text
+fanui/
+├── README.md
+├── AGENTS.md
+├── docs/
+│   ├── 00-overview.md
+│   ├── 01-philosophy.md
+│   ├── 02-visual-dna.md
+│   ├── FANUI_V0.3.2.md
+│   ├── FANUI_V0.3.3.md
+│   ├── foundations/
+│   │   ├── visual-system.md
+│   │   ├── typography.md
+│   │   ├── layout-metrics.md
+│   │   ├── spacing-rhythm.md
+│   │   ├── color-expression.md
+│   │   ├── radius-depth.md
+│   │   ├── experience-metrics.md
+│   │   ├── fidelity-density.md
+│   │   ├── optical-layout.md
+│   │   ├── semantic-product-color.md
+│   │   ├── surface-hierarchy.md
+│   │   ├── iconography.md
+│   │   ├── responsive.md
+│   │   └── mobile-precision.md
+│   ├── website/
+│   │   ├── homepage.md
+│   │   ├── hero.md
+│   │   ├── navigation.md
+│   │   ├── public-marketplace.md
+│   │   ├── product-showcase.md
+│   │   ├── pricing.md
+│   │   ├── documentation.md
+│   │   ├── editorial-blog.md
+│   │   ├── editorial-visuals.md
+│   │   ├── expression-profiles.md
+│   │   └── mobile.md
+│   ├── web-app/
+│   │   ├── archetypes.md
+│   │   ├── app-shell.md
+│   │   ├── workspace.md
+│   │   ├── viewport-ownership.md
+│   │   └── mobile-workspace.md
+│   ├── desktop-app/
+│   │   ├── classification.md
+│   │   ├── native-shell.md
+│   │   └── acceptance.md
+│   ├── implementation/
+│   │   ├── react-tailwind.md
+│   │   ├── theming.md
+│   │   ├── accessibility.md
+│   │   └── testing.md
+│   ├── workflows/
+│   │   ├── context.md
+│   │   ├── pattern-capsules.md
+│   │   ├── redesign.md
+│   │   └── review-protocol.md
+│   ├── components/
+│   │   └── candidates.md
+│   └── anti-patterns/
+│       ├── core.md
+│       ├── v032.md
+│       ├── v033.md
+│       ├── v034.md
+│       └── desktop-app.md
+├── references/
+│   └── apifox-page-study.md
+├── packages/react/
+│   ├── src/
+│   └── test/
+├── tokens/
+│   ├── index.css
+│   ├── light.css
+│   ├── dark.css
+│   └── tailwind.css
+├── skill/SKILL.md
+├── scripts/
+│   ├── package-skill.mjs
+│   ├── review-snapshot.mjs
+│   ├── sync-skill.mjs
+│   └── verify-skill.mjs
+└── eval/
+    ├── checklist.md
+    └── rubric.md
+```
+
+## AI usage
+
+The Skill requires agents to:
+
+1. classify experience family, including `desktop_app` as distinct from `web_app`;
+2. classify Web App archetype;
+3. identify core value loop / primary task;
+4. choose page pattern and hierarchy;
+5. apply cross-surface calibrated metrics;
+6. define responsive transformations for important regions;
+7. close mobile precision: navigation, surface-specific type, touch targets, local scrolling, 375px pressure, and icon invariance;
+8. check optical balance;
+9. enforce Product Evidence Fidelity and effective density at Desktop and Mobile;
+10. apply semantic color, surface hierarchy, and iconography precision;
+11. preserve Mobile access when Sidebar/Inspector/TOC collapses;
+12. preserve routes, content, analytics, SEO, accessibility, and runtime contracts according to an explicit greenfield/preserve/overhaul mode;
+13. validate copy and data truth instead of inventing realistic-looking claims;
+14. evaluate through separate design review and implementation audit, then issue a traceable `recapture`, `rebuild`, `fix`, or `ship` finish disposition.
+
+For Desktop Application work, the Skill instead routes adaptation through native window states, platform commands, keyboard/pointer behavior, accessibility, and compact/normal/large rendered review. Phone breakpoints are not required unless the product also targets mobile.
+
+See `skill/SKILL.md`.
+
+## Status
+
+**FanUI Web V0.3.4 + Desktop Application support, with executable workflow and evidence closure.**
+
+The repository ships the specification, evaluation documents, semantic tokens, candidate React components, package/sync tools, rule-ID and deterministic trace contracts, review snapshot hashing, and Playwright + axe rendered acceptance. Static and trace tests validate their declared data and event contracts; they do not execute or prove a live model's behavior. A real product still requires current captures and an independent finish review before `ship`.
+
+Historical dogfood findings remain documented, but the removed dogfood 003 and dogfood 004 implementations are not current executable acceptance fixtures. Do not cite them as an active CI gate. CI now runs root contracts and a rendered fixture matrix; product-specific approval still comes only from evidence captured against that product URL.
+
+Web rendered authority requires current, traceable acceptance in Chromium, Firefox, and WebKit at **1440 × 1000, 1024 × 900, 768 × 1024, 390 × 844, and 375 × 812**, with relevant themes and states. Desktop rendered authority uses the actual minimum plus compact, normal, and large windows and supported maximized/full-screen states. A passing build proves implementation integrity, not final visual acceptance. See `docs/workflows/review-protocol.md` for evidence and reviewer requirements.
+===pattern-capsules experience===
+13:| Product Website narrative | `docs/website/homepage.md`, `docs/website/hero.md` | navigation, product showcase, pricing, `docs/website/expression-profiles.md`, mobile |
+14:| Documentation discovery or article | `docs/website/documentation.md` | navigation, mobile, code/local-scroll rules |
+15:| Editorial index or article | `docs/website/editorial-blog.md`, `docs/website/editorial-visuals.md` | `docs/website/expression-profiles.md`, mobile |
+16:| Pricing decision | `docs/website/pricing.md` | product evidence, mobile |
+17:| Public marketplace/directory | `docs/website/public-marketplace.md` | navigation, authentication, mobile |
+44:  experience_families: [...]
