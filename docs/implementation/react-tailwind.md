@@ -32,6 +32,18 @@ Use this contract when the target is React + Tailwind CSS. The host repository's
 
 Implement loading, empty, error, permission-denied, disabled, selected, hover, focus-visible, and success states that materially exist in the product. Do not fabricate production data. Text expansion, Chinese/English mixing, long identifiers, and empty values must not break layout.
 
+## Remote reads and operational authority
+
+For stateful operational UI, distinguish initial loading, background refresh, a successful empty result, no search results, request failure, forbidden access, and stale retained data. A missing/failed response must not manufacture zero metrics or an empty collection. Retain previously successful data during refresh; if refresh fails, label its provenance and offer a scoped retry. A forbidden response or revoked read permission must hide cached sensitive content. Failure in a secondary module must not erase a successfully loaded primary object.
+
+Align each query's enabled condition with that resource's read permission. Menu visibility and disabled buttons are presentation, not authorization; the server still checks identity, resource scope, reference ownership, and legal transitions. Do not automatically replace a conflict's base version and retry a business write. Show the changed facts and require a new decision.
+
+For lists with supported query parameters, keep committed filters and pagination in the host router URL. Restore them on direct entry, browser navigation, and return from detail. Reset pagination when a filter changes, restore explicit defaults on reset, and include every result-affecting parameter in the cache key. Pass only declared API fields; do not describe filtering the current page as global search. Update multiple related URL fields atomically so one setter does not erase another.
+
+Preserve domain distinctions: moderation state, transaction stage, temporal expiry, publication, and contract effect are separate dimensions. Map status labels and tones per domain, and render unknown values as neutral and diagnosable. Financial computed obligations, recorded external facts, and executed payments are different evidence; do not infer payment from a successful record write. These rules govern truthful presentation and host-contract verification, not permission to add new domains or payment features.
+
 ## Definition of done
 
 Run the host typecheck/lint/tests, then apply `docs/implementation/accessibility.md`, `docs/implementation/testing.md`, and the relevant FanUI rendered checklist. Compilation is not visual acceptance.
+
+For financial registers, display each record’s actual currency. Do not assign the parent object’s currency to all records, or present a direct total across mixed currencies without a supported conversion contract.

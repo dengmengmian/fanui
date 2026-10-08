@@ -28,12 +28,18 @@ Use `tokens/index.css` for the default Light/Dark values and `tokens/tailwind.cs
 ## Theme behavior
 
 - A theme switch must preserve the same information architecture, task availability, content hierarchy, and network behavior. Theme controls appearance and component state styling; it must not silently select a different page implementation, fetch a different dataset, or remove a workflow. If those differences are intentional, model them as a product mode, experiment, or route with an explicit contract instead of calling them a theme.
-- Support `light`, `dark`, and `system`; store an explicit user choice when one exists.
+- Preserve the host product's supported theme modes. In a partial maintenance task, do not add a theme switch or new mode without scope authority. If theme support is part of the requested implementation, support the contracted modes (commonly `light`, `dark`, and `system`) and store an explicit user choice when one exists.
 - Apply the resolved mode to the root `data-theme` attribute before first paint to avoid a theme flash.
 - Set `color-scheme` so native controls match the resolved theme.
-- Test both modes; do not obtain Dark mode by inverting colors.
+- Test each supported mode; describe unsupported modes as outside the contract, rather than claiming they passed. When Dark mode is supported, do not obtain it by inverting colors.
 - Keep focus, selection, disabled, hover, active, semantic status, chart, and overlay states distinct in both modes.
 - Respect `prefers-reduced-motion`, `prefers-contrast`, and forced-colors where the host browser contract requires them.
+
+## Integrating host component tokens
+
+Verify where the installed library defines its variables before aliasing them. A root-level alias cannot resolve a variable defined only on a descendant such as `body`; the alias becomes invalid even though the library's own controls are colored correctly. For Tailwind v4, use `@theme inline` when semantic utilities must resolve the host variable at the consuming element. Base CSS should reference variables available at that element, or define aliases at the same theme scope.
+
+Check computed background, text, border, selection, and focus colors on a real rendered page after integration. A successful bundle and a colored primary button do not prove that navigation, cards, or text tokens work. Record the failing rendered state before fixing a scope issue, then re-render the same state to verify the repair.
 
 ## Token promotion rule
 

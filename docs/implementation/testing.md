@@ -1,14 +1,14 @@
 # UI testing contract
 
-Test in proportion to risk and preserve the host repository's test stack.
+Test in proportion to risk and preserve the host repository's test stack. For a bounded maintenance phase, verify changed contracts and representative unchanged paths; do not expand the implementation to create unsupported themes, domains, or operations merely to satisfy a generic matrix. Record which states are observed live, exercised with controlled test fixtures, or still unknown.
 
-## Minimum layers
+## Applicable verification layers
 
 1. Static: typecheck, lint, production build, and invalid token/class checks.
 2. Component: behavior, states, accessible name/role, keyboard interaction, and critical content-pressure cases.
 3. Journey: Playwright tests for the primary task and material error/permission paths.
 4. Accessibility: axe automation plus manual keyboard, focus, zoom/reflow, and screen-reader smoke checks.
-5. Automated visual regression: stable screenshots for representative states, Light/Dark themes, and relevant viewport/window sizes.
+5. Automated visual regression: stable screenshots for representative states, supported themes, and relevant viewport/window sizes.
 
 ## Browser and viewport matrix
 
